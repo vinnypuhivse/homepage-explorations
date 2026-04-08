@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsela – Homepage (Figma Faithful)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+      background: #ffffff;
+      color: #1d1d1d;
+      min-width: 1440px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===================== NAV ===================== */
+    .nav {
+      background: #0a6efa;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-waffle {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      grid-template-columns: repeat(3, 7px);
+      grid-template-rows: repeat(3, 7px);
+      gap: 2.5px;
+      flex-shrink: 0;
+    }
+    .nav-waffle span {
+      background: rgba(255,255,255,0.8);
+      border-radius: 1px;
+    }
+
+    .nav-logo {
+      width: 34px;
+      height: 34px;
+      background: white;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-right: 8px;
+    }
+
+    .nav-search-wrap {
+      position: relative;
+      width: 300px;
+      flex-shrink: 0;
+    }
+    .nav-search-wrap svg {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+    .nav-search {
+      width: 100%;
+      height: 40px;
+      background: #f7f8f8;
+      border-radius: 24px;
+      border: none;
+      padding: 0 16px 0 40px;
+      font-size: 14px;
+      color: #333;
+      outline: none;
+      font-family: inherit;
+    }
+    .nav-search::placeholder { color: #9b9aa0; }
+
+    .nav-tabs {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      margin-left: 4px;
+    }
+    .nav-tab {
+      height: 36px;
+      padding: 0 11px;
+      border-radius: 8px;
+      color: white;
+      font-size: 14px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-tab:hover { background: rgba(255,255,255,0.14); }
+    .nav-tab.active {
+      background: rgba(255,255,255,0.18);
+      font-weight: 700;
+    }
+    .chevron-down {
+      width: 0; height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 5px solid rgba(255,255,255,0.75);
+      margin-top: 1px;
+    }
+
+    .nav-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-profile {
+      height: 36px;
+      background: #cce1ff;
+      border-radius: 24px;
+      padding: 0 12px 0 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+    .nav-avatar {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #082c88;
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 0.5px;
+    }
+    .nav-profile-name {
+      color: #082c88;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .nav-icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0.85;
+    }
+    .nav-icon-btn:hover { background: rgba(255,255,255,0.15); opacity: 1; }
+
+    /* ===================== HERO SECTION ===================== */
+    .hero-section {
+      background: #f7f7f7;
+      padding: 32px 64px 24px;
+    }
+    .hero-row {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    /* ===================== FEATURED CARD ===================== */
+    .featured-col {
+      width: 863px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .section-heading {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1d1d1d;
+      line-height: 1.33;
+    }
+    .featured-card {
+      background: white;
+      border-radius: 32px;
+      overflow: hidden;
+    }
+    .featured-card-img-wrap {
+      position: relative;
+      height: 400px;
+      overflow: hidden;
+    }
+    .featured-card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 32px 32px 0 0;
+      display: block;
+    }
+    .featured-bookmark-btn {
+      position: absolute;
+      top: 14px;
+      right: 13px;
+      width: 32px;
+      height: 32px;
+      background: rgba(255,255,255,0.92);
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.14);
+    }
+    .featured-chip {
+      position: absolute;
+      left: 0;
+      bottom: 96px;
+      background: #1d1d1d;
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.14;
+      padding: 6px 8px;
+    }
+    .featured-title-band {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 863px;
+      background: linear-gradient(90deg, #008cbd 0%, #12a7da 50%, rgba(49,198,255,0.30) 100%);
+      padding: 16px 20px;
+    }
+    .featured-title-band p {
+      font-size: 32px;
+      font-weight: 700;
+      color: white;
+      line-height: 1.25;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    .featured-lower {
+      padding: 16px 16px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .card-meta-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 16px;
+    }
+    .card-date {
+      font-size: 12px;
+      color: #424147;
+      line-height: 1.33;
+      font-weight: 400;
+    }
+    .card-icons-row {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .icon-16 {
+      width: 16px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-body-text {
+      font-size: 16px;
+      color: #424147;
+      line-height: 1.5;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+    .badge-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      color: #1d1d1d;
+      line-height: 1.33;
+      white-space: nowrap;
+    }
+    .badge-green { background: #d3fbf2; }
+    .badge-blue  { background: #deecff; }
+
+    .cta-row {
+      display: flex;
+      gap: 16px;
+      height: 48px;
+    }
+    .btn {
+      height: 48px;
+      border-radius: 8px;
+      padding: 0 20px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: inherit;
+      transition: background 0.12s, opacity 0.12s;
+      border: none;
+    }
+    .btn-secondary {
+      background: white;
+      color: #0a6efa;
+      border: 1.5px solid #0a6efa;
+      flex: 1;
+    }
+    .btn-secondary:hover { background: #f0f6ff; }
+    .btn-primary {
+      background: #0a6efa;
+      color: white;
+    }
+    .btn-primary:hover { background: #0860d8; }
+
+    /* ===================== SIDE PANEL ===================== */
+    .side-panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 0;
+    }
+    .panel-card {
+      background: white;
+      border-radius: 16px;
+      padding: 16px;
+    }
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .panel-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1d1d1d;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .view-all {
+      background: #eef2ff;
+      color: #0a6efa;
+      border: none;
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .view-all:hover { background: #ddeaff; }
+
+    .horiz-article {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      padding: 9px 0;
+      border-bottom: 1px solid #f2f2f4;
+    }
+    .horiz-article:first-of-type { padding-top: 0; }
+    .horiz-article:last-of-type { border-bottom: none; padding-bottom: 0; }
+
+    .article-thumb {
+      width: 89px;
+      height: 62px;
+      border-radius: 16px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #e5e7ea;
+    }
+    .article-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .article-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .article-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 3px;
+    }
+    .article-assigned {
+      font-size: 11px;
+      color: #767676;
+      line-height: 1.33;
+    }
+    .article-status {
+      font-size: 11px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+    .s-done        { color: #17786c; }
+    .s-done .status-dot { background: #17786c; }
+    .s-progress    { color: #31afcb; }
+    .s-progress .status-dot { background: #31afcb; }
+    .s-draft       { color: #bc8100; }
+    .s-draft .status-dot { background: #bc8100; }
+    .s-submitted   { color: #17786c; }
+    .s-submitted .status-dot { background: #17786c; }
+
+    .article-title-text {
+      font-size: 14px;
+      color: #333;
+      line-height: 1.4;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    /* Luna tag */
+    .luna-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      background: linear-gradient(-62.56deg, #691c9c 4.6%, #1f3cd7 66.6%, #1088eb 100%);
+      border-radius: 20px;
+      padding: 3px 10px;
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+    }
+    .writing-header-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .start-new-btn {
+      height: 32px;
+      border-radius: 20px;
+      padding: 0 14px;
+      background: #0a6efa;
+      color: white;
+      border: none;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      flex-shrink: 0;
+    }
+    .start-new-btn:hover { background: #0860d8; }
+
+    /* ===================== STANDARDS ROW ===================== */
+    .standards-section {
+      background: white;
+      padding: 24px 64px;
+      border-top: 1px solid #f0f0f2;
+    }
+    .standards-row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .std-pill {
+      border-radius: 64px;
+      padding: 20px 38px;
+      font-size: 24px;
+      font-weight: 700;
+      color: #1d1d1d;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.12s;
+    }
+    .std-pill:hover { opacity: 0.82; }
+    .std-green { background: #d3fbf2; }
+    .std-blue  { background: #deecff; }
+
+    /* ===================== QUICK LINKS ===================== */
+    .quicklinks-section {
+      background: white;
+      padding: 0 64px 28px;
+    }
+    .quicklinks-row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .ql-pill {
+      border-radius: 64px;
+      padding: 18px 28px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #1d1d1d;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+      transition: opacity 0.12s;
+    }
+    .ql-pill:hover { opacity: 0.82; }
+    .ql-green    { background: #d3fbf2; }
+    .ql-orange   { background: #fde7c7; }
+    .ql-blue     { background: #deecff; }
+    .ql-pink     { background: #ffe2e2; }
+    .ql-lavender { background: #f2edfa; }
+
+    .ql-icon svg { display: block; }
+
+    /* ===================== CARD GRID SECTIONS ===================== */
+    .grid-section {
+      background: white;
+      padding: 32px 64px;
+    }
+    .grid-section + .grid-section {
+      padding-top: 8px;
+    }
+    .grid-heading {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1d1d1d;
+      margin-bottom: 20px;
+      line-height: 1.33;
+    }
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 316px);
+      gap: 16px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    /* ===================== ARTICLE CARD ===================== */
+    .a-card {
+      background: white;
+      border-radius: 8px;
+      border: 1px solid #e1e3e5;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .a-card-img {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 400 / 225;
+      overflow: hidden;
+      background: #e5e8ec;
+    }
+    .a-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .a-card-bookmark {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 32px;
+      height: 32px;
+      background: rgba(255,255,255,0.92);
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.14);
+    }
+    .a-card-chip {
+      position: absolute;
+      bottom: 7.5px;
+      left: 8px;
+      background: #1d1d1d;
+      color: white;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.71;
+      padding: 0 8px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      border-radius: 2px;
+    }
+    .a-card-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      flex: 1;
+    }
+    .a-card-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .a-card-date {
+      font-size: 12px;
+      color: #424147;
+      line-height: 1.33;
+    }
+    .a-card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1d1d1d;
+      line-height: 1.2;
+      height: 48px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    .a-card-levels {
+      font-size: 12px;
+      color: #5b5a61;
+      line-height: 1.33;
+      display: flex;
+      gap: 8px;
+      white-space: nowrap;
+    }
+    .a-card-cta {
+      display: flex;
+      gap: 16px;
+      height: 48px;
+      margin-top: auto;
+    }
+    .btn-muted {
+      flex: 1;
+      height: 48px;
+      border-radius: 8px;
+      border: 1.5px solid #e1e3e5;
+      background: transparent;
+      color: #424147;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: inherit;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding: 0 8px;
+    }
+    .btn-muted:hover { background: #f7f8f8; }
+
+    /* Placeholder image gradients */
+    .ph-dogs      { background: linear-gradient(160deg, #b8924a 0%, #e4c988 60%, #c8a96e 100%); }
+    .ph-butterfly { background: linear-gradient(160deg, #1d6b38 0%, #3caa60 50%, #a2d96f 100%); }
+    .ph-kayak     { background: linear-gradient(160deg, #1a3d5c 0%, #1a6fa0 60%, #6ec1e8 100%); }
+    .ph-credit    { background: linear-gradient(160deg, #a01818 0%, #c83030 60%, #e88080 100%); }
+    .ph-soccer    { background: linear-gradient(160deg, #c05a10 0%, #e07a30 60%, #f0b060 100%); }
+    .ph-wind      { background: linear-gradient(160deg, #e06010 0%, #f08820 50%, #1a3050 100%); }
+
+    .section-divider {
+      border: none;
+      border-top: 1px solid #f0f0f2;
+      margin: 0 64px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <nav class="nav">
+    <!-- Waffle + Logo -->
+    <div class="nav-waffle">
+      <span></span><span></span><span></span>
+      <span></span><span></span><span></span>
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-logo">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M12 3L3 8.5V15.5L12 21L21 15.5V8.5L12 3Z" fill="#0a6efa"/>
+        <path d="M12 3L21 8.5L12 14L3 8.5L12 3Z" fill="#4d9fff"/>
+      </svg>
+    </div>
+
+    <!-- Search -->
+    <div class="nav-search-wrap">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M6.5 11a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zm4.293-.207 2.914 2.914a1 1 0 0 1-1.414 1.414L9.38 12.207A5.5 5.5 0 1 1 10.793 10.793z" fill="#9b9aa0"/>
+      </svg>
+      <input class="nav-search" type="text" placeholder="Search for texts and more">
+    </div>
+
+    <!-- Tabs -->
+    <div class="nav-tabs">
+      <a class="nav-tab active">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="1" y="1" width="11" height="11" rx="2" stroke="white" stroke-width="1.5"/><path d="M4 6.5h5M6.5 4v5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+        ELA
+      </a>
+      <a class="nav-tab">Social Studies</a>
+      <a class="nav-tab">Science</a>
+      <a class="nav-tab">Content library <div class="chevron-down"></div></a>
+      <a class="nav-tab">Classes <div class="chevron-down"></div></a>
+      <a class="nav-tab">Assignments</a>
+    </div>
+
+    <!-- Right: profile + settings -->
+    <div class="nav-right">
+      <div class="nav-profile">
+        <div class="nav-avatar">NM</div>
+        <span class="nav-profile-name">NM</span>
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style="margin-left:2px"><path d="M1 1l4 4 4-4" stroke="#082c88" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="nav-icon-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ============ HERO: Current Unit + Side Panel ============ -->
+  <section class="hero-section">
+    <div class="hero-row">
+
+      <!-- Featured Card Column -->
+      <div class="featured-col">
+        <h2 class="section-heading">Current Unit</h2>
+
+        <div class="featured-card">
+          <!-- Image area -->
+          <div class="featured-card-img-wrap">
+            <img src="https://newsela.imgix.net/article_media/2017/06/lib-history-july-4th-d137a88b.jpg" alt="Liberty and Equality — All Men Are Created Equal">
+            <!-- Bookmark -->
+            <div class="featured-bookmark-btn">
+              <svg width="13" height="15" viewBox="0 0 13 17" fill="none" stroke="#424147" stroke-width="1.6" stroke-linejoin="round">
+                <path d="M1.5 1.5h10v14l-5-3.5-5 3.5V1.5z"/>
+              </svg>
+            </div>
+            <!-- Category chip -->
+            <div class="featured-chip">Amplify ELA · Grade 8</div>
+            <!-- Title gradient band -->
+            <div class="featured-title-band">
+              <p>Unit 8B: Liberty and Equality</p>
+            </div>
+          </div>
+
+          <!-- Lower card content -->
+          <div class="featured-lower">
+            <!-- Date + icons -->
+            <div>
+              <div class="card-meta-top" style="margin-bottom:8px;">
+                <span class="card-date">Mar 03, 2026</span>
+                <div class="card-icons-row">
+                  <!-- Power word icon -->
+                  <div class="icon-16">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="#d4a000">
+                      <path d="M8.5 1L5 8h3.5L7 15l7-9h-4.5L12 1H8.5z"/>
+                    </svg>
+                  </div>
+                  <!-- Formative check icon -->
+                  <div class="icon-16">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <circle cx="8" cy="8" r="6.5" fill="#35b89c" opacity="0.9"/>
+                      <path d="M5 8l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <!-- Spanish icon -->
+                  <div class="icon-16">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <rect x="1.5" y="2.5" width="13" height="11" rx="2" fill="#e03535" opacity="0.9"/>
+                      <text x="4" y="11.5" font-size="7" font-weight="700" fill="white" font-family="sans-serif">ES</text>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <p class="card-body-text">This unit examines the ways Americans have tried to live up to the foundational creed that "all men are created equal" — from the Declaration of Independence through the Abolition Movement and beyond. Students analyze primary sources, speeches, and arguments from key historical figures.</p>
+            </div>
+
+            <!-- Tags -->
+            <div class="badge-row">
+              <span class="badge badge-green">Argument Writing</span>
+              <span class="badge badge-green">Primary Sources</span>
+              <span class="badge badge-blue">RI.8.6</span>
+              <span class="badge badge-blue">W.8.1</span>
+            </div>
+
+            <!-- CTA buttons -->
+            <div class="cta-row">
+              <button class="btn btn-secondary">Share</button>
+              <button class="btn btn-secondary">Assign This Unit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Side Panel -->
+      <div class="side-panel">
+
+        <!-- Recent Assignments -->
+        <div class="panel-card">
+          <div class="panel-header">
+            <div class="panel-title">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <rect x="2" y="3" width="16" height="14" rx="2" fill="#0a6efa" opacity="0.15"/>
+                <path d="M5 7h10M5 10h8M5 13h6" stroke="#0a6efa" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              Recent Assignments
+            </div>
+            <button class="view-all">View all</button>
+          </div>
+
+          <div class="horiz-article">
+            <div class="article-thumb">
+              <img src="https://newsela.imgix.net/article_media/2019/07/lib-frederick-douglass-causes-civil-war-5a7c467b.jpg" alt="">
+            </div>
+            <div class="article-info">
+              <div class="article-meta-row">
+                <span class="article-assigned">Assigned 3/17/2026</span>
+                <span class="article-status s-done"><span class="status-dot"></span>Done</span>
+              </div>
+              <div class="article-title-text">Speeches from Abolitionists</div>
+            </div>
+          </div>
+
+          <div class="horiz-article">
+            <div class="article-thumb">
+              <img src="https://newsela.imgix.net/article_media/2016/08/overview-voting-rights-4f9c1969.jpg" alt="">
+            </div>
+            <div class="article-info">
+              <div class="article-meta-row">
+                <span class="article-assigned">Assigned 3/15/2026</span>
+                <span class="article-status s-progress"><span class="status-dot"></span>In progress</span>
+              </div>
+              <div class="article-title-text">Arguments and Claims</div>
+            </div>
+          </div>
+
+          <div class="horiz-article">
+            <div class="article-thumb">
+              <img src="https://newsela.imgix.net/article_media/2019/09/lib-antebellum-reform-728015a4.png" alt="">
+            </div>
+            <div class="article-info">
+              <div class="article-meta-row">
+                <span class="article-assigned">Finalized 3/11/2026</span>
+                <span class="article-status s-draft"><span class="status-dot"></span>Draft</span>
+              </div>
+              <div class="article-title-text">Abolition Movement</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Newsela Writing / Luna -->
+        <div class="panel-card">
+          <div class="panel-header">
+            <div class="writing-header-left">
+              <span class="panel-title">Newsela Writing</span>
+              <span class="luna-tag">LUNA ✦</span>
+            </div>
+            <button class="start-new-btn">Start New</button>
+          </div>
+
+          <div class="horiz-article">
+            <div class="article-thumb">
+              <img src="https://newsela.imgix.net/article_media/2017/06/lib-history-july-4th-d137a88b.jpg" alt="">
+            </div>
+            <div class="article-info">
+              <div class="article-meta-row">
+                <span class="article-assigned">Assigned 3/17/2026</span>
+                <span class="article-status s-submitted"><span class="status-dot"></span>Submitted</span>
+              </div>
+              <div class="article-title-text">"All Men Are Created Equal" — Argument Essay</div>
+            </div>
+          </div>
+
+          <div class="horiz-article">
+            <div class="article-thumb">
+              <img src="https://newsela.imgix.net/article_media/2019/07/lib-frederick-douglass-causes-civil-war-5a7c467b.jpg" alt="">
+            </div>
+            <div class="article-info">
+              <div class="article-meta-row">
+                <span class="article-assigned">Assigned 3/11/2026</span>
+                <span class="article-status s-submitted"><span class="status-dot"></span>Submitted</span>
+              </div>
+              <div class="article-title-text">Abolitionist Speeches — Rhetorical Analysis</div>
+            </div>
+          </div>
+
+          <div class="horiz-article">
+            <div class="article-thumb">
+              <img src="https://newsela.imgix.net/article_media/2019/09/lib-antebellum-reform-728015a4.png" alt="">
+            </div>
+            <div class="article-info">
+              <div class="article-meta-row">
+                <span class="article-assigned">Assigned 3/5/2026</span>
+                <span class="article-status s-submitted"><span class="status-dot"></span>Submitted</span>
+              </div>
+              <div class="article-title-text">Abolition Movement — Compare & Contrast</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ STANDARDS PILLS ============ -->
+  <section class="standards-section">
+    <div class="standards-row">
+      <div class="std-pill std-green">R.L.8.1</div>
+      <div class="std-pill std-green">R.L.8.2</div>
+      <div class="std-pill std-green">R.L.8.3</div>
+      <div class="std-pill std-blue">R.I.8.1</div>
+      <div class="std-pill std-blue">R.I.8.2</div>
+      <div class="std-pill std-blue">R.I.8.3</div>
+    </div>
+  </section>
+
+
+  <!-- ============ QUICK LINKS ============ -->
+  <section class="quicklinks-section">
+    <div class="quicklinks-row">
+
+      <div class="ql-pill ql-green">
+        <span class="ql-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <path d="M4 11h14M11 4l7 7-7 7" stroke="#1d1d1d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18 11H4M11 18l-7-7 7-7" stroke="#1d1d1d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        Text Leveler
+      </div>
+
+      <div class="ql-pill ql-orange">
+        <span class="ql-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <rect x="3" y="3" width="16" height="16" rx="2" stroke="#1d1d1d" stroke-width="1.6"/>
+            <path d="M7 15l2-4 2 3 2-5 2 6" stroke="#1d1d1d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        Reports
+      </div>
+
+      <div class="ql-pill ql-blue">
+        <span class="ql-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <path d="M11 3L3 7v5c0 4.418 3.358 8.167 8 9 4.642-.833 8-4.582 8-9V7l-8-4z" stroke="#1d1d1d" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        District Promoted
+      </div>
+
+      <div class="ql-pill ql-pink">
+        <span class="ql-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <rect x="3" y="4" width="16" height="14" rx="2" stroke="#1d1d1d" stroke-width="1.6"/>
+            <path d="M7 8h8M7 12h6" stroke="#1d1d1d" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </span>
+        Assignments
+      </div>
+
+      <div class="ql-pill ql-lavender">
+        <span class="ql-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <path d="M5 3h12v16l-6-4-6 4V3z" stroke="#1d1d1d" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        Saved
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============ 4-COL GRID: Unit 8B Text Sets ============ -->
+  <section class="grid-section">
+    <h3 class="grid-heading">Unit 8B: Liberty and Equality</h3>
+    <div class="grid-4">
+
+      <!-- Card 1: All Men Are Created Equal -->
+      <div class="a-card">
+        <div class="a-card-img">
+          <img src="https://newsela.imgix.net/article_media/2017/06/lib-history-july-4th-d137a88b.jpg" alt="All Men Are Created Equal">
+          <div class="a-card-bookmark">
+            <svg width="12" height="14" viewBox="0 0 12 16" fill="none" stroke="#424147" stroke-width="1.5" stroke-linejoin="round">
+              <path d="M1 1h10v14l-5-3.5L1 15V1z"/>
+            </svg>
+          </div>
+          <div class="a-card-chip">Text Set</div>
+        </div>
+        <div class="a-card-body">
+          <div class="a-card-meta">
+            <div class="a-card-date">Mar 03, 2026</div>
+            <div class="a-card-title">"All Men Are Created Equal"</div>
+            <div class="a-card-levels">
+              <span>Maturity level: 6th-12th</span>
+              <span>Reading: 800-1100L</span>
+            </div>
+          </div>
+          <div class="a-card-cta">
+            <button class="btn-muted">Add to assign...</button>
+            <button class="btn-muted">Assign</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Abolition Movement -->
+      <div class="a-card">
+        <div class="a-card-img">
+          <img src="https://newsela.imgix.net/article_media/2019/09/lib-antebellum-reform-728015a4.png" alt="Abolition Movement">
+          <div class="a-card-bookmark">
+            <svg width="12" height="14" viewBox="0 0 12 16" fill="none" stroke="#424147" stroke-width="1.5" stroke-linejoin="round"><path d="M1 1h10v14l-5-3.5L1 15V1z"/></svg>
+          </div>
+          <div class="a-card-chip">Text Set</div>
+        </div>
+        <div class="a-card-body">
+          <div class="a-card-meta">
+            <div class="a-card-date">Mar 02, 2026</div>
+            <div class="a-card-title">Abolition Movement</div>
+            <div class="a-card-levels">
+              <span>Maturity level: 6th-12th</span>
+              <span>Reading: 750-1050L</span>
+            </div>
+          </div>
+          <div class="a-card-cta">
+            <button class="btn-muted">Add to assign...</button>
+            <button class="btn-muted">Assign</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Speeches from Abolitionists -->
+      <div class="a-card">
+        <div class="a-card-img">
+          <img src="https://newsela.imgix.net/article_media/2019/07/lib-frederick-douglass-causes-civil-war-5a7c467b.jpg" alt="Speeches from Abolitionists">
+          <div class="a-card-bookmark">
+            <svg width="12" height="14" viewBox="0 0 12 16" fill="none" stroke="#424147" stroke-width="1.5" stroke-linejoin="round"><path d="M1 1h10v14l-5-3.5L1 15V1z"/></svg>
+          </div>
+          <div class="a-card-chip">Text Set</div>
+        </div>
+        <div class="a-card-body">
+          <div class="a-card-meta">
+            <div class="a-card-date">Mar 03, 2026</div>
+            <div class="a-card-title">Speeches from Abolitionists</div>
+            <div class="a-card-levels">
+              <span>Maturity level: 6th-12th</span>
+              <span>Reading: 800-1100L</span>
+            </div>
+          </div>
+          <div class="a-card-cta">
+            <button class="btn-muted">Add to assign...</button>
+            <button class="btn-muted">Assign</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Arguments and Claims -->
+      <div class="a-card">
+        <div class="a-card-img">
+          <img src="https://newsela.imgix.net/article_media/2016/08/overview-voting-rights-4f9c1969.jpg" alt="Arguments and Claims">
+          <div class="a-card-bookmark">
+            <svg width="12" height="14" viewBox="0 0 12 16" fill="none" stroke="#424147" stroke-width="1.5" stroke-linejoin="round"><path d="M1 1h10v14l-5-3.5L1 15V1z"/></svg>
+          </div>
+          <div class="a-card-chip">Text Set</div>
+        </div>
+        <div class="a-card-body">
+          <div class="a-card-meta">
+            <div class="a-card-date">Mar 02, 2026</div>
+            <div class="a-card-title">Arguments and Claims</div>
+            <div class="a-card-levels">
+              <span>Maturity level: 6th-12th</span>
+              <span>Reading: 750-1050L</span>
+            </div>
+          </div>
+          <div class="a-card-cta">
+            <button class="btn-muted">Add to assign...</button>
+            <button class="btn-muted">Assign</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+
+  <!-- ============ 3-COL GRID: Unit 8A ============ -->
+  <section class="grid-section">
+    <h3 class="grid-heading">Unit 8A: Perspectives and Narratives</h3>
+    <div class="grid-3">
+
+      <!-- Card 1: Childhood Memories -->
+      <div class="a-card">
+        <div class="a-card-img">
+          <img src="https://newsela.imgix.net/article_media/2019/06/Zach-Eflin-overcame-tragedy-bf9f7b57.jpg" alt="Childhood Memories">
+          <div class="a-card-bookmark">
+            <svg width="12" height="14" viewBox="0 0 12 16" fill="none" stroke="#424147" stroke-width="1.5" stroke-linejoin="round"><path d="M1 1h10v14l-5-3.5L1 15V1z"/></svg>
+          </div>
+          <div class="a-card-chip">Text Set</div>
+        </div>
+        <div class="a-card-body">
+          <div class="a-card-meta">
+            <div class="a-card-date">Feb 28, 2026</div>
+            <div class="a-card-title">Childhood Memories</div>
+            <div class="a-card-levels">
+              <span>Maturity level: 6th-12th</span>
+              <span>Reading: 700-950L</span>
+            </div>
+          </div>
+          <div class="a-card-cta">
+            <button class="btn-muted">Add to assignment</button>
+            <button class="btn-muted">Assign</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Author Inspirations -->
+      <div class="a-card">
+        <div class="a-card-img">
+          <img src="https://newsela.imgix.net/article_media/2019/11/ela-african-women-writers-5c46f6d7.png" alt="Author Inspirations and Perspectives">
+          <div class="a-card-bookmark">
+            <svg width="12" height="14" viewBox="0 0 12 16" fill="none" stroke="#424147" stroke-width="1.5" stroke-linejoin="round"><path d="M1 1h10v14l-5-3.5L1 15V1z"/></svg>
+          </div>
+          <div class="a-card-chip">Text Set</div>
+        </div>
+        <div class="a-card-body">
+          <div class="a-card-meta">
+            <div class="a-card-date">Feb 20, 2026</div>
+            <div class="a-card-title">Author Inspirations and Perspectives</div>
+            <div class="a-card-levels">
+              <span>Maturity level: 6th-12th</span>
+              <span>Reading: 750-1000L</span>
+            </div>
+          </div>
+          <div class="a-card-cta">
+            <button class="btn-muted">Add to assignment</button>
+            <button class="btn-muted">Assign</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Memoirs -->
+      <div class="a-card">
+        <div class="a-card-img">
+          <img src="https://newsela.imgix.net/article_media/2019/07/primary-source-great-depression-stories-4cbb9d8c.jpg" alt="Memoirs and First Person Narratives">
+          <div class="a-card-bookmark">
+            <svg width="12" height="14" viewBox="0 0 12 16" fill="none" stroke="#424147" stroke-width="1.5" stroke-linejoin="round"><path d="M1 1h10v14l-5-3.5L1 15V1z"/></svg>
+          </div>
+          <div class="a-card-chip">Text Set</div>
+        </div>
+        <div class="a-card-body">
+          <div class="a-card-meta">
+            <div class="a-card-date">Feb 14, 2026</div>
+            <div class="a-card-title">Memoirs and First Person Narratives</div>
+            <div class="a-card-levels">
+              <span>Maturity level: 6th-12th</span>
+              <span>Reading: 750-1000L</span>
+            </div>
+          </div>
+          <div class="a-card-cta">
+            <button class="btn-muted">Add to assignment</button>
+            <button class="btn-muted">Assign</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+
+  <!-- ============ 4-COL GRID #2: More from Grade 8 ============ -->
+  <section class="grid-section" style="padding-bottom:48px;">
+    <h3 class="grid-heading">More from Grade 8</h3>
+    <div class="grid-4">
+
+      <!-- Childhood Memories -->
+      <div class="a-card">
+        <div class="a-card-img">
+          <img src="https://newsela.imgix.net/article_media/2019/06/Zach-Eflin-overcame-tragedy-bf9f7b57.jpg" alt="Childhood Memories">
+          <div class="a-card-bookmark">
+            <svg width="12" height="14" viewBox="0 0 12 16" fill="none" stroke="#424147" stroke-width="1.5" stroke-linejoin="round"><path d="M1 1h10v14l-5-3.5L1 15V1z"/></svg>
+          </div>
+          <div class="a-card-chip">Text Set</div>
+        </div>
+        <div class="a-card-body">
+          <div class="a-card-meta">
+            <div class="a-card-date">Feb 28, 2026</div>
+            <div class="a-card-title">Childhood Memories</div>
+            <div class="a-card-levels">
+              <span>Maturity level: 6th-12th</span>
+              <span>Reading: 700-950L</span>
+            </div>
+          </div>
+          <div class="a-card-cta">
+            <button class="btn-muted">Add to assign...</button>
+            <button class="btn-muted">Assign</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Author Inspirations -->
+      <div class="a-card">
+        <div class="a-card-img">
+          <img src="https://newsela.imgix.net/article_media/2019/11/ela-african-women-writers-5c46f6d7.png" alt="Author Inspirations">
+          <div class="a-card-bookmark">
+            <svg width="12" height="14" viewBox="0 0 12 16" fill="none" stroke="#424147" stroke-width="1.5" stroke-linejoin="round"><path d="M1 1h10v14l-5-3.5L1 15V1z"/></svg>
+          </div>
+          <div class="a-card-chip">Text Set</div>
+        </div>
+        <div class="a-card-body">
+          <div class="a-card-meta">
+            <div class="a-card-date">Feb 20, 2026</div>
+            <div class="a-card-title">Author Inspirations and Perspectives</div>
+            <div class="a-card-levels">
+              <span>Maturity level: 6th-12th</span>
+              <span>Reading: 750-1000L</span>
+            </div>
+          </div>
+          <div class="a-card-cta">
+            <button class="btn-muted">Add to assign...</button>
+            <button class="btn-muted">Assign</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Abolition Movement -->
+      <div class="a-card">
+        <div class="a-card-img">
+          <img src="https://newsela.imgix.net/article_media/2019/09/lib-antebellum-reform-728015a4.png" alt="Abolition Movement">
+          <div class="a-card-bookmark">
+            <svg width="12" height="14" viewBox="0 0 12 16" fill="none" stroke="#424147" stroke-width="1.5" stroke-linejoin="round"><path d="M1 1h10v14l-5-3.5L1 15V1z"/></svg>
+          </div>
+          <div class="a-card-chip">Text Set</div>
+        </div>
+        <div class="a-card-body">
+          <div class="a-card-meta">
+            <div class="a-card-date">Mar 02, 2026</div>
+            <div class="a-card-title">Abolition Movement</div>
+            <div class="a-card-levels">
+              <span>Maturity level: 6th-12th</span>
+              <span>Reading: 750-1050L</span>
+            </div>
+          </div>
+          <div class="a-card-cta">
+            <button class="btn-muted">Add to assign...</button>
+            <button class="btn-muted">Assign</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Memoirs -->
+      <div class="a-card">
+        <div class="a-card-img">
+          <img src="https://newsela.imgix.net/article_media/2019/07/primary-source-great-depression-stories-4cbb9d8c.jpg" alt="Memoirs">
+          <div class="a-card-bookmark">
+            <svg width="12" height="14" viewBox="0 0 12 16" fill="none" stroke="#424147" stroke-width="1.5" stroke-linejoin="round"><path d="M1 1h10v14l-5-3.5L1 15V1z"/></svg>
+          </div>
+          <div class="a-card-chip">Text Set</div>
+        </div>
+        <div class="a-card-body">
+          <div class="a-card-meta">
+            <div class="a-card-date">Feb 14, 2026</div>
+            <div class="a-card-title">Memoirs and First Person Narratives</div>
+            <div class="a-card-levels">
+              <span>Maturity level: 6th-12th</span>
+              <span>Reading: 750-1000L</span>
+            </div>
+          </div>
+          <div class="a-card-cta">
+            <button class="btn-muted">Add to assign...</button>
+            <button class="btn-muted">Assign</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>
