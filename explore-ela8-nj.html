@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1440" />
+  <title>Explore — 8th Grade ELA · New Jersey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family: 'Circular Std';
+      src: url('fonts/CircularStd-Book.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Circular Std';
+      src: url('fonts/CircularStd-Medium.ttf') format('truetype');
+      font-weight: 500;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Circular Std';
+      src: url('fonts/CircularStd-Bold.ttf') format('truetype');
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f7f7;
+      --white: #ffffff;
+      --blue: #0A6EFA;
+      --blue-dark: #082c88;
+      --blue-light: #CCE1FF;
+      --purple: #8B1EA4;
+      --green: #008c5a;
+      --green-bg: #d3fbf2;
+      --neutral-700: #1D1D1D;
+      --neutral-600: #424147;
+      --neutral-500: #5B5A61;
+      --neutral-400: #77767A;
+      --neutral-200: #A8AAB0;
+      --neutral-100: #E1E3E5;
+      --neutral-50: #F0F1F2;
+      --sans: 'Circular Std', -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --serif: 'Noto Serif', Georgia, serif;
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--neutral-700);
+      min-width: 1200px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* ─── NAV ─── */
+    .nav {
+      background: var(--blue);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-left { display: flex; align-items: center; gap: 12px; }
+    .nav-logo {
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none;
+    }
+    .nav-logo-mark {
+      width: 36px; height: 36px;
+      background: white;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .nav-logo-mark svg { width: 22px; height: 22px; }
+    .nav-logo-text {
+      font-size: 17px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -0.3px;
+    }
+    .nav-divider-v { width: 1px; height: 24px; background: rgba(255,255,255,0.3); margin: 0 4px; }
+    .nav-links { display: flex; align-items: center; gap: 2px; }
+    .nav-link {
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+      font-weight: 400;
+      padding: 6px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: color 0.15s, background 0.15s;
+    }
+    .nav-link:hover { color: white; background: rgba(255,255,255,0.1); }
+    .nav-link.active { color: white; font-weight: 600; background: rgba(255,255,255,0.15); }
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+    .nav-search-bar {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 24px;
+      padding: 7px 16px;
+      width: 340px;
+      cursor: text;
+      transition: background 0.15s;
+    }
+    .nav-search-bar:hover { background: rgba(255,255,255,0.2); }
+    .nav-search-bar svg { width: 16px; height: 16px; color: rgba(255,255,255,0.7); flex-shrink: 0; }
+    .nav-search-bar span { font-size: 14px; color: rgba(255,255,255,0.6); }
+    .nav-profile {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 30px;
+      padding: 4px 10px 4px 4px;
+      cursor: pointer;
+    }
+    .nav-avatar {
+      width: 28px; height: 28px;
+      background: var(--blue-light);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; color: var(--blue-dark);
+    }
+    .nav-profile span { font-size: 13px; color: white; font-weight: 500; }
+
+    /* ─── PAGE HEADER ─── */
+    .page-header {
+      background: var(--white);
+      border-bottom: 1px solid var(--neutral-100);
+      padding: 20px 32px 0;
+    }
+    .page-header-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .page-title-group { display: flex; flex-direction: column; gap: 4px; }
+    .page-eyebrow {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--blue);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .page-title {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--neutral-700);
+      line-height: 1.2;
+    }
+    .page-subtitle {
+      font-size: 14px;
+      color: var(--neutral-500);
+      margin-top: 2px;
+    }
+    .filter-pills {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .filter-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 400;
+      cursor: pointer;
+      border: 1.5px solid var(--neutral-100);
+      background: var(--white);
+      color: var(--neutral-600);
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .filter-pill:hover { border-color: var(--blue); color: var(--blue); }
+    .filter-pill.active {
+      background: var(--blue-light);
+      border-color: var(--blue);
+      color: var(--blue-dark);
+      font-weight: 600;
+    }
+    .filter-pill svg { width: 14px; height: 14px; }
+
+    /* ─── CONTENT TABS ─── */
+    .content-tabs {
+      display: flex;
+      align-items: flex-end;
+      gap: 0;
+      margin-top: 8px;
+    }
+    .content-tab {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--neutral-500);
+      padding: 10px 16px 12px;
+      cursor: pointer;
+      position: relative;
+      border: none;
+      background: none;
+      transition: color 0.15s;
+      white-space: nowrap;
+    }
+    .content-tab:first-child { padding-left: 0; }
+    .content-tab:hover { color: var(--neutral-700); }
+    .content-tab.active {
+      color: var(--blue);
+      font-weight: 700;
+    }
+    .content-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 2px;
+      background: var(--blue);
+      border-radius: 2px 2px 0 0;
+    }
+    .content-tab:first-child.active::after { left: 0; }
+    .tab-count {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--neutral-50);
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--neutral-500);
+      padding: 1px 7px;
+      margin-left: 4px;
+    }
+    .content-tab.active .tab-count {
+      background: var(--blue-light);
+      color: var(--blue-dark);
+    }
+
+    /* ─── LAYOUT ─── */
+    .page-body {
+      display: flex;
+      gap: 24px;
+      padding: 24px 32px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    /* ─── SIDEBAR ─── */
+    .sidebar {
+      width: 240px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .sidebar-section { margin-bottom: 8px; }
+    .sidebar-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--neutral-400);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 8px 12px 6px;
+    }
+    .sidebar-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      color: var(--neutral-600);
+      transition: background 0.1s, color 0.1s;
+      text-decoration: none;
+    }
+    .sidebar-item:hover { background: var(--neutral-50); color: var(--neutral-700); }
+    .sidebar-item.active {
+      background: var(--blue-light);
+      color: var(--blue-dark);
+      font-weight: 600;
+    }
+    .sidebar-item-left { display: flex; align-items: center; gap: 8px; }
+    .sidebar-item-left svg { width: 15px; height: 15px; flex-shrink: 0; }
+    .sidebar-badge {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--neutral-400);
+      background: var(--neutral-50);
+      border-radius: 8px;
+      padding: 1px 6px;
+    }
+    .sidebar-item.active .sidebar-badge {
+      background: rgba(10,110,250,0.15);
+      color: var(--blue-dark);
+    }
+    .sidebar-divider { height: 1px; background: var(--neutral-100); margin: 4px 0; }
+
+    /* Standards quick ref */
+    .standards-box {
+      background: var(--white);
+      border: 1px solid var(--neutral-100);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 12px;
+    }
+    .standards-box-header {
+      background: #f0f4ff;
+      padding: 10px 14px;
+      display: flex; align-items: center; gap: 8px;
+      border-bottom: 1px solid #d8e4ff;
+    }
+    .standards-box-header svg { width: 16px; height: 16px; color: var(--blue); }
+    .standards-box-header span {
+      font-size: 12px; font-weight: 700; color: var(--blue-dark);
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .standards-list { padding: 8px 0; }
+    .std-item {
+      padding: 7px 14px;
+      cursor: pointer;
+      transition: background 0.1s;
+      display: flex; align-items: flex-start; gap: 8px;
+    }
+    .std-item:hover { background: var(--neutral-50); }
+    .std-code {
+      font-size: 11px; font-weight: 700;
+      color: var(--blue);
+      background: var(--blue-light);
+      border-radius: 4px;
+      padding: 1px 5px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .std-desc { font-size: 12px; color: var(--neutral-600); line-height: 1.4; }
+
+    /* ─── MAIN CONTENT ─── */
+    .main-content { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 32px; }
+
+    /* ─── SECTION ─── */
+    .content-section { display: flex; flex-direction: column; gap: 14px; }
+    .section-header {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .section-title-group { display: flex; flex-direction: column; gap: 2px; }
+    .section-title {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--neutral-700);
+    }
+    .section-subtitle { font-size: 13px; color: var(--neutral-500); }
+    .section-cta {
+      font-size: 13px; font-weight: 600; color: var(--blue);
+      background: none; border: none; cursor: pointer;
+      padding: 4px 0;
+      text-decoration: none;
+      display: flex; align-items: center; gap: 4px;
+      transition: opacity 0.15s;
+    }
+    .section-cta:hover { opacity: 0.75; }
+    .section-cta svg { width: 14px; height: 14px; }
+
+    /* ─── FEATURED BANNER ─── */
+    .featured-banner {
+      background: linear-gradient(135deg, #082c88 0%, #1a52c4 50%, #0A6EFA 100%);
+      border-radius: 16px;
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .featured-banner::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 200px; height: 200px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+    }
+    .featured-banner::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; right: 120px;
+      width: 150px; height: 150px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+    }
+    .featured-text { z-index: 1; }
+    .featured-eyebrow {
+      font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.7);
+      text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .featured-title {
+      font-family: var(--serif);
+      font-size: 22px; font-weight: 500; color: white;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .featured-desc { font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.6; max-width: 520px; }
+    .featured-meta {
+      display: flex; align-items: center; gap: 12px;
+      margin-top: 14px;
+    }
+    .featured-tag {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 4px 10px;
+      font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.9);
+    }
+    .featured-actions { display: flex; gap: 10px; z-index: 1; flex-shrink: 0; }
+    .btn-white {
+      background: white; color: var(--blue-dark);
+      border: none; border-radius: 8px;
+      font-size: 14px; font-weight: 700;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: opacity 0.15s;
+      white-space: nowrap;
+    }
+    .btn-white:hover { opacity: 0.9; }
+    .btn-ghost-white {
+      background: rgba(255,255,255,0.15);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      color: white;
+      border-radius: 8px;
+      font-size: 14px; font-weight: 600;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+    .btn-ghost-white:hover { background: rgba(255,255,255,0.25); }
+
+    /* ─── CONTENT CARDS ─── */
+    .cards-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .cards-row-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .content-card {
+      background: var(--white);
+      border: 1px solid var(--neutral-100);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: box-shadow 0.15s, border-color 0.15s, transform 0.15s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .content-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      border-color: var(--neutral-200);
+      transform: translateY(-2px);
+    }
+
+    .card-thumb {
+      width: 100%;
+      height: 140px;
+      display: block;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .card-thumb-bg {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 40px;
+      position: relative;
+    }
+    .card-thumb-badge {
+      position: absolute;
+      top: 10px; left: 10px;
+      background: rgba(0,0,0,0.65);
+      color: white;
+      font-size: 10px; font-weight: 700;
+      padding: 3px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .card-thumb-bookmark {
+      position: absolute;
+      top: 8px; right: 8px;
+      width: 28px; height: 28px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+    }
+    .card-thumb-bookmark svg { width: 14px; height: 14px; }
+
+    .card-body {
+      padding: 14px;
+      display: flex; flex-direction: column; gap: 6px;
+      flex: 1;
+    }
+    .card-type-row {
+      display: flex; align-items: center; gap: 6px;
+    }
+    .card-type {
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--neutral-400);
+    }
+    .card-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--neutral-200); flex-shrink: 0; }
+    .card-grade-tag {
+      font-size: 11px; font-weight: 600;
+      color: var(--blue-dark);
+      background: var(--blue-light);
+      padding: 1px 6px; border-radius: 4px;
+    }
+    .card-title {
+      font-family: var(--serif);
+      font-size: 14px; font-weight: 500;
+      color: var(--neutral-700);
+      line-height: 1.4;
+    }
+    .card-author { font-size: 12px; color: var(--neutral-500); }
+    .card-footer {
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 1px solid var(--neutral-50);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .card-standards {
+      display: flex; align-items: center; gap: 4px; flex-wrap: wrap;
+    }
+    .std-chip {
+      font-size: 10px; font-weight: 700;
+      color: var(--blue);
+      background: var(--blue-light);
+      border-radius: 4px;
+      padding: 2px 5px;
+    }
+    .std-chip.purple {
+      color: var(--purple);
+      background: #f3e8ff;
+    }
+    .std-chip.green {
+      color: var(--green);
+      background: var(--green-bg);
+    }
+    .card-lexile {
+      font-size: 11px; font-weight: 600; color: var(--neutral-400);
+      background: var(--neutral-50); border-radius: 4px; padding: 2px 6px;
+    }
+
+    /* ─── UNIT CARD (wider) ─── */
+    .unit-card {
+      background: var(--white);
+      border: 1px solid var(--neutral-100);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      cursor: pointer;
+      transition: box-shadow 0.15s, border-color 0.15s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .unit-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      border-color: var(--neutral-200);
+    }
+    .unit-card-stripe {
+      width: 6px;
+      flex-shrink: 0;
+    }
+    .unit-card-body {
+      padding: 16px 16px 16px 14px;
+      display: flex; flex-direction: column; gap: 6px;
+      flex: 1;
+    }
+    .unit-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+    .unit-card-title {
+      font-family: var(--serif);
+      font-size: 15px; font-weight: 500; color: var(--neutral-700); line-height: 1.35;
+    }
+    .unit-card-meta { font-size: 12px; color: var(--neutral-500); }
+    .unit-card-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 2px; }
+    .unit-badge {
+      font-size: 11px; font-weight: 500;
+      padding: 2px 8px; border-radius: 10px;
+      background: var(--neutral-50); color: var(--neutral-600);
+    }
+    .unit-badge.blue { background: var(--blue-light); color: var(--blue-dark); }
+    .unit-badge.purple { background: #f3e8ff; color: #6b0f83; }
+    .unit-badge.green { background: var(--green-bg); color: #00563a; }
+    .unit-badge.orange { background: #fff3e0; color: #b45309; }
+    .unit-card-progress { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+    .progress-bar { flex: 1; height: 4px; background: var(--neutral-100); border-radius: 4px; overflow: hidden; }
+    .progress-fill { height: 100%; border-radius: 4px; }
+    .progress-label { font-size: 11px; color: var(--neutral-400); font-weight: 500; }
+
+    /* ─── ASSESSMENT CARD ─── */
+    .assess-card {
+      background: var(--white);
+      border: 1px solid var(--neutral-100);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column; gap: 10px;
+      cursor: pointer;
+      transition: box-shadow 0.15s, border-color 0.15s;
+    }
+    .assess-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); border-color: var(--neutral-200); }
+    .assess-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .assess-title {
+      font-family: var(--serif);
+      font-size: 15px; font-weight: 500; color: var(--neutral-700); line-height: 1.3;
+    }
+    .assess-meta { font-size: 12px; color: var(--neutral-500); }
+    .assess-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+
+    /* ─── SCROLLABLE CAROUSEL ─── */
+    .cards-carousel {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--neutral-100) transparent;
+    }
+    .cards-carousel::-webkit-scrollbar { height: 4px; }
+    .cards-carousel::-webkit-scrollbar-track { background: transparent; }
+    .cards-carousel::-webkit-scrollbar-thumb { background: var(--neutral-100); border-radius: 4px; }
+    .carousel-card { flex: 0 0 220px; }
+
+    /* ─── INFO BANNER ─── */
+    .info-banner {
+      background: #fff8e6;
+      border: 1px solid #ffe09a;
+      border-radius: 10px;
+      padding: 12px 16px;
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 13px; color: #7a4f00;
+    }
+    .info-banner svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════ NAV ═══════════════════ -->
+<nav class="nav">
+  <div class="nav-left">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-mark">
+        <svg viewBox="0 0 22 22" fill="none"><path d="M3 5h16M3 11h10M3 17h13" stroke="#0A6EFA" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </div>
+      <span class="nav-logo-text">Newsela</span>
+    </a>
+    <div class="nav-divider-v"></div>
+    <div class="nav-links">
+      <a href="#" class="nav-link">Courses</a>
+      <a href="#" class="nav-link active">Explore</a>
+      <a href="#" class="nav-link">Assignments</a>
+      <a href="#" class="nav-link">Reporting</a>
+    </div>
+  </div>
+  <div class="nav-right">
+    <div class="nav-search-bar">
+      <svg viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M11 11l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <span>Search texts, units, skills…</span>
+    </div>
+    <div class="nav-profile">
+      <div class="nav-avatar">SC</div>
+      <span>Ms. Carter</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════ PAGE HEADER ═══════════════════ -->
+<div class="page-header">
+  <div class="page-header-top">
+    <div class="page-title-group">
+      <div class="page-eyebrow">New Jersey · Grade 8 · ELA</div>
+      <h1 class="page-title">Explore Content</h1>
+      <p class="page-subtitle">Texts, units &amp; assessments aligned to NJSLS-ELA Grade 8</p>
+    </div>
+    <div class="filter-pills">
+      <div class="filter-pill active">
+        <svg viewBox="0 0 14 14" fill="none"><path d="M7 1l1.8 3.6L13 5.3l-3 2.9.7 4.1L7 10.1l-3.7 2.2.7-4.1L1 5.3l4.2-.7z" fill="currentColor"/></svg>
+        Grade 8
+      </div>
+      <div class="filter-pill active">ELA / Literacy</div>
+      <div class="filter-pill">
+        <svg viewBox="0 0 14 14" fill="none"><path d="M2 4h10M4 7h6M6 10h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        All Standards
+      </div>
+      <div class="filter-pill">Text Level (Lexile)</div>
+      <div class="filter-pill">
+        <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M7 4v3l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Time of Year
+      </div>
+      <div class="filter-pill" style="color:var(--blue);border-color:var(--blue);font-weight:600;">
+        <svg viewBox="0 0 14 14" fill="none"><path d="M1 4h3M1 7h5M1 10h4M7 2v10M10 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        More Filters
+      </div>
+    </div>
+  </div>
+
+  <div class="content-tabs">
+    <button class="content-tab active">All <span class="tab-count">248</span></button>
+    <button class="content-tab">Units <span class="tab-count">14</span></button>
+    <button class="content-tab">Texts &amp; Articles <span class="tab-count">127</span></button>
+    <button class="content-tab">Assessments <span class="tab-count">31</span></button>
+    <button class="content-tab">Lesson Guides <span class="tab-count">76</span></button>
+    <button class="content-tab">Saved <span class="tab-count">18</span></button>
+  </div>
+</div>
+
+<!-- ═══════════════════ BODY ═══════════════════ -->
+<div class="page-body">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Browse by Writing Type</div>
+      <a href="#" class="sidebar-item active">
+        <div class="sidebar-item-left">
+          <svg viewBox="0 0 15 15" fill="none"><path d="M2 2h11v11H2z" stroke="currentColor" stroke-width="1.4" rx="2"/><path d="M5 6h5M5 9h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          All Content
+        </div>
+        <span class="sidebar-badge">248</span>
+      </a>
+      <a href="#" class="sidebar-item">
+        <div class="sidebar-item-left">
+          <svg viewBox="0 0 15 15" fill="none"><path d="M3 13l1-4 7-7 3 3-7 7-4 1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          Argumentative
+        </div>
+      </a>
+      <a href="#" class="sidebar-item">
+        <div class="sidebar-item-left">
+          <svg viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.4"/><path d="M7.5 4v4l2.5 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          Informative / Explanatory
+        </div>
+      </a>
+      <a href="#" class="sidebar-item">
+        <div class="sidebar-item-left">
+          <svg viewBox="0 0 15 15" fill="none"><path d="M3 12l4-9 4 9M5 9h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Narrative
+        </div>
+      </a>
+      <a href="#" class="sidebar-item">
+        <div class="sidebar-item-left">
+          <svg viewBox="0 0 15 15" fill="none"><path d="M4 7h7M4 4h7M4 10h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          Research-Based
+        </div>
+      </a>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">NJ-Specific Requirements</div>
+      <a href="#" class="sidebar-item">
+        <div class="sidebar-item-left">✊ Amistad Act</div>
+      </a>
+      <a href="#" class="sidebar-item">
+        <div class="sidebar-item-left">✡ Holocaust Curriculum</div>
+      </a>
+      <a href="#" class="sidebar-item">
+        <div class="sidebar-item-left">🌈 Inclusive Rep.</div>
+      </a>
+      <a href="#" class="sidebar-item">
+        <div class="sidebar-item-left">🌱 Climate Literacy</div>
+      </a>
+    </div>
+
+    <!-- Standards Quick Ref -->
+    <div class="standards-box">
+      <div class="standards-box-header">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 2h10a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V3a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5"/><path d="M5 6h6M5 9h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span>NJSLS Grade 8</span>
+      </div>
+      <div class="standards-list">
+        <div class="std-item">
+          <span class="std-code">RL.8.1</span>
+          <span class="std-desc">Cite textual evidence &amp; make inferences</span>
+        </div>
+        <div class="std-item">
+          <span class="std-code">RL.8.2</span>
+          <span class="std-desc">Determine theme; summarize text</span>
+        </div>
+        <div class="std-item">
+          <span class="std-code">RL.8.3</span>
+          <span class="std-desc">Analyze how dialogue/incidents propel action</span>
+        </div>
+        <div class="std-item">
+          <span class="std-code">RI.8.6</span>
+          <span class="std-desc">Determine author's point of view &amp; purpose</span>
+        </div>
+        <div class="std-item">
+          <span class="std-code">RI.8.8</span>
+          <span class="std-desc">Delineate &amp; evaluate an argument</span>
+        </div>
+        <div class="std-item">
+          <span class="std-code">W.8.1</span>
+          <span class="std-desc">Write arguments with relevant evidence</span>
+        </div>
+        <div class="std-item">
+          <span class="std-code">W.8.9</span>
+          <span class="std-desc">Draw evidence from literary/info texts</span>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main class="main-content">
+
+    <!-- NJ Requirement Banner -->
+    <div class="info-banner">
+      <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 7v4M8 5.5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <div><strong>New Jersey requirement reminder:</strong> Amistad Act texts must be incorporated throughout your ELA curriculum. We've flagged compliant materials with the ✊ badge.</div>
+    </div>
+
+    <!-- ── FEATURED ── -->
+    <div class="featured-banner">
+      <div class="featured-text">
+        <div class="featured-eyebrow">⭐ Recommended for Q3 · April 2026</div>
+        <div class="featured-title">Coming of Age in America:<br>Identity, Belonging &amp; Voice</div>
+        <div class="featured-desc">A 5-week unit pairing <em>The Outsiders</em> with contemporary nonfiction on teen identity. Covers RL.8.1–8.3, RI.8.6, W.8.1, and meets NJ Amistad Act requirements with paired informational texts on social justice.</div>
+        <div class="featured-meta">
+          <span class="featured-tag">📚 5 Weeks</span>
+          <span class="featured-tag">🎯 RL.8 · RI.8 · W.8.1</span>
+          <span class="featured-tag">📖 Lexile 750–970L</span>
+          <span class="featured-tag">✊ Amistad</span>
+        </div>
+      </div>
+      <div class="featured-actions">
+        <button class="btn-white">Preview Unit</button>
+        <button class="btn-ghost-white">Add to Course</button>
+      </div>
+    </div>
+
+    <!-- ── CURRENT UNITS ── -->
+    <section class="content-section">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="section-title">Units for Grade 8 ELA</div>
+          <div class="section-subtitle">Complete, standards-aligned units with texts, lessons &amp; assessments</div>
+        </div>
+        <a href="#" class="section-cta">View all 14 units <svg viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="unit-card">
+          <div class="unit-card-stripe" style="background:#0A6EFA;"></div>
+          <div class="unit-card-body">
+            <div class="unit-card-header">
+              <div>
+                <div class="unit-card-title">The Outsiders: Identity, Class &amp; Belonging</div>
+                <div class="unit-card-meta">S.E. Hinton · Novel study + nonfiction pairing · 5 weeks</div>
+              </div>
+              <div style="flex-shrink:0;font-size:22px;">📖</div>
+            </div>
+            <div class="unit-card-tags">
+              <span class="unit-badge blue">RL.8.1</span>
+              <span class="unit-badge blue">RL.8.2</span>
+              <span class="unit-badge blue">RL.8.3</span>
+              <span class="unit-badge purple">W.8.1 Arg.</span>
+              <span class="unit-badge green">✊ Amistad</span>
+              <span class="unit-badge">750–970L</span>
+            </div>
+            <div class="unit-card-progress">
+              <div class="progress-bar"><div class="progress-fill" style="width:35%;background:#0A6EFA;"></div></div>
+              <div class="progress-label">3/14 lessons complete</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="unit-card">
+          <div class="unit-card-stripe" style="background:#8B1EA4;"></div>
+          <div class="unit-card-body">
+            <div class="unit-card-header">
+              <div>
+                <div class="unit-card-title">Argumentative Writing: Should Social Media Have Age Limits?</div>
+                <div class="unit-card-meta">Informational texts + debate · Writing unit · 4 weeks</div>
+              </div>
+              <div style="flex-shrink:0;font-size:22px;">✍️</div>
+            </div>
+            <div class="unit-card-tags">
+              <span class="unit-badge blue">RI.8.6</span>
+              <span class="unit-badge blue">RI.8.8</span>
+              <span class="unit-badge purple">W.8.1</span>
+              <span class="unit-badge purple">W.8.9</span>
+              <span class="unit-badge">SL.8.4</span>
+            </div>
+            <div class="unit-card-progress">
+              <div class="progress-bar"><div class="progress-fill" style="width:0%;background:#8B1EA4;"></div></div>
+              <div class="progress-label">Not started</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="unit-card">
+          <div class="unit-card-stripe" style="background:#008c5a;"></div>
+          <div class="unit-card-body">
+            <div class="unit-card-header">
+              <div>
+                <div class="unit-card-title">Bearing Witness: The Holocaust in Literature &amp; History</div>
+                <div class="unit-card-meta"><em>Night</em> (Wiesel) + primary source documents · 6 weeks</div>
+              </div>
+              <div style="flex-shrink:0;font-size:22px;">✡️</div>
+            </div>
+            <div class="unit-card-tags">
+              <span class="unit-badge blue">RL.8.4</span>
+              <span class="unit-badge blue">RI.8.3</span>
+              <span class="unit-badge blue">RI.8.9</span>
+              <span class="unit-badge orange">✡ NJ Req.</span>
+              <span class="unit-badge">800–1050L</span>
+            </div>
+            <div class="unit-card-progress">
+              <div class="progress-bar"><div class="progress-fill" style="width:0%;"></div></div>
+              <div class="progress-label">Not started</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="unit-card">
+          <div class="unit-card-stripe" style="background:#e58a00;"></div>
+          <div class="unit-card-body">
+            <div class="unit-card-header">
+              <div>
+                <div class="unit-card-title">Romeo &amp; Juliet: Drama, Rhetoric &amp; Figurative Language</div>
+                <div class="unit-card-meta">Shakespeare + modern adaptations · 5 weeks</div>
+              </div>
+              <div style="flex-shrink:0;font-size:22px;">🎭</div>
+            </div>
+            <div class="unit-card-tags">
+              <span class="unit-badge blue">RL.8.4</span>
+              <span class="unit-badge blue">RL.8.6</span>
+              <span class="unit-badge">L.8.5a</span>
+              <span class="unit-badge">SL.8.6</span>
+              <span class="unit-badge">700–900L</span>
+            </div>
+            <div class="unit-card-progress">
+              <div class="progress-bar"><div class="progress-fill" style="width:0%;"></div></div>
+              <div class="progress-label">Not started</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── READING: LITERATURE ── -->
+    <section class="content-section">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="section-title">Reading: Literature · RL.8</div>
+          <div class="section-subtitle">Fiction, poetry &amp; drama texts with close-reading supports</div>
+        </div>
+        <a href="#" class="section-cta">See all <svg viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="cards-row">
+
+        <a href="#" class="content-card">
+          <div class="card-thumb">
+            <div class="card-thumb-bg" style="background:linear-gradient(135deg,#1a1a2e,#16213e);color:#e5c84a;">🌙</div>
+            <span class="card-thumb-badge">Novel Excerpt</span>
+            <div class="card-thumb-bookmark"><svg viewBox="0 0 14 14" fill="none"><path d="M3 2h8v10l-4-2.5L3 12V2z" stroke="#5B5A61" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+          </div>
+          <div class="card-body">
+            <div class="card-type-row"><span class="card-type">Literary Text</span><div class="card-dot"></div><span class="card-grade-tag">Gr. 8</span></div>
+            <div class="card-title">"The Outsiders" — Ch. 1–3: Meet the Greasers</div>
+            <div class="card-author">S.E. Hinton · 1967</div>
+            <div class="card-footer">
+              <div class="card-standards">
+                <span class="std-chip">RL.8.1</span>
+                <span class="std-chip">RL.8.3</span>
+              </div>
+              <span class="card-lexile">750L</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="content-card">
+          <div class="card-thumb">
+            <div class="card-thumb-bg" style="background:linear-gradient(135deg,#3a1060,#6b21a8);">🎭</div>
+            <span class="card-thumb-badge">Drama</span>
+            <div class="card-thumb-bookmark"><svg viewBox="0 0 14 14" fill="none"><path d="M3 2h8v10l-4-2.5L3 12V2z" stroke="#5B5A61" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+          </div>
+          <div class="card-body">
+            <div class="card-type-row"><span class="card-type">Drama</span><div class="card-dot"></div><span class="card-grade-tag">Gr. 8</span></div>
+            <div class="card-title">Romeo &amp; Juliet, Act II, Scene ii — "The Balcony Scene"</div>
+            <div class="card-author">William Shakespeare</div>
+            <div class="card-footer">
+              <div class="card-standards">
+                <span class="std-chip">RL.8.4</span>
+                <span class="std-chip">L.8.5a</span>
+              </div>
+              <span class="card-lexile">NP</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="content-card">
+          <div class="card-thumb">
+            <div class="card-thumb-bg" style="background:linear-gradient(135deg,#1e3a5f,#0A6EFA);">🌊</div>
+            <span class="card-thumb-badge">Short Story</span>
+            <div class="card-thumb-bookmark"><svg viewBox="0 0 14 14" fill="none"><path d="M3 2h8v10l-4-2.5L3 12V2z" stroke="#5B5A61" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+          </div>
+          <div class="card-body">
+            <div class="card-type-row"><span class="card-type">Short Story</span><div class="card-dot"></div><span class="card-grade-tag">Gr. 8</span></div>
+            <div class="card-title">"Thank You, Ma'am" — Langston Hughes</div>
+            <div class="card-author">Langston Hughes · 1958</div>
+            <div class="card-footer">
+              <div class="card-standards">
+                <span class="std-chip">RL.8.2</span>
+                <span class="std-chip green">✊</span>
+              </div>
+              <span class="card-lexile">590L</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="content-card">
+          <div class="card-thumb">
+            <div class="card-thumb-bg" style="background:linear-gradient(135deg,#0d3b2b,#006b3c);">🍃</div>
+            <span class="card-thumb-badge">Poetry</span>
+            <div class="card-thumb-bookmark"><svg viewBox="0 0 14 14" fill="none"><path d="M3 2h8v10l-4-2.5L3 12V2z" stroke="#5B5A61" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+          </div>
+          <div class="card-body">
+            <div class="card-type-row"><span class="card-type">Poetry</span><div class="card-dot"></div><span class="card-grade-tag">Gr. 8</span></div>
+            <div class="card-title">"Dream Deferred" &amp; "I, Too, Sing America"</div>
+            <div class="card-author">Langston Hughes · 1951 &amp; 1926</div>
+            <div class="card-footer">
+              <div class="card-standards">
+                <span class="std-chip">RL.8.4</span>
+                <span class="std-chip">RL.8.9</span>
+                <span class="std-chip green">✊</span>
+              </div>
+              <span class="card-lexile">NP</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ── READING: INFO TEXT ── -->
+    <section class="content-section">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="section-title">Reading: Informational Text · RI.8</div>
+          <div class="section-subtitle">Arguments, primary sources &amp; nonfiction at 3 Lexile levels</div>
+        </div>
+        <a href="#" class="section-cta">See all <svg viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="cards-row">
+
+        <a href="#" class="content-card">
+          <div class="card-thumb">
+            <div class="card-thumb-bg" style="background:linear-gradient(135deg,#1a1a1a,#444);">📰</div>
+            <span class="card-thumb-badge">Argument</span>
+            <div class="card-thumb-bookmark"><svg viewBox="0 0 14 14" fill="none"><path d="M3 2h8v10l-4-2.5L3 12V2z" stroke="#5B5A61" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+          </div>
+          <div class="card-body">
+            <div class="card-type-row"><span class="card-type">Informational</span><div class="card-dot"></div><span class="card-grade-tag">Gr. 8</span></div>
+            <div class="card-title">Is Social Media Making Teens More Anxious?</div>
+            <div class="card-author">Newsela Staff · 2024</div>
+            <div class="card-footer">
+              <div class="card-standards">
+                <span class="std-chip">RI.8.6</span>
+                <span class="std-chip">RI.8.8</span>
+              </div>
+              <span class="card-lexile">860L</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="content-card">
+          <div class="card-thumb">
+            <div class="card-thumb-bg" style="background:linear-gradient(135deg,#5c0a0a,#991b1b);">🗺️</div>
+            <span class="card-thumb-badge">Primary Source</span>
+            <div class="card-thumb-bookmark"><svg viewBox="0 0 14 14" fill="none"><path d="M3 2h8v10l-4-2.5L3 12V2z" stroke="#5B5A61" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+          </div>
+          <div class="card-body">
+            <div class="card-type-row"><span class="card-type">Primary Source</span><div class="card-dot"></div><span class="card-grade-tag">Gr. 8</span></div>
+            <div class="card-title">Letter from Birmingham Jail (Excerpts)</div>
+            <div class="card-author">Rev. Dr. Martin Luther King Jr. · 1963</div>
+            <div class="card-footer">
+              <div class="card-standards">
+                <span class="std-chip">RI.8.6</span>
+                <span class="std-chip">RI.8.9</span>
+                <span class="std-chip green">✊</span>
+              </div>
+              <span class="card-lexile">1060L</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="content-card">
+          <div class="card-thumb">
+            <div class="card-thumb-bg" style="background:linear-gradient(135deg,#0c2a4a,#1e5fa0);">🌍</div>
+            <span class="card-thumb-badge">News Article</span>
+            <div class="card-thumb-bookmark"><svg viewBox="0 0 14 14" fill="none"><path d="M3 2h8v10l-4-2.5L3 12V2z" stroke="#5B5A61" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+          </div>
+          <div class="card-body">
+            <div class="card-type-row"><span class="card-type">Informational</span><div class="card-dot"></div><span class="card-grade-tag">Gr. 8</span></div>
+            <div class="card-title">Climate Change Is Already Reshaping New Jersey's Coast</div>
+            <div class="card-author">NJ Spotlight News · 2023</div>
+            <div class="card-footer">
+              <div class="card-standards">
+                <span class="std-chip">RI.8.3</span>
+                <span class="std-chip">W.8.2</span>
+              </div>
+              <span class="card-lexile">780L</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="content-card">
+          <div class="card-thumb">
+            <div class="card-thumb-bg" style="background:linear-gradient(135deg,#1a0533,#5a189a);">💻</div>
+            <span class="card-thumb-badge">Paired Texts</span>
+            <div class="card-thumb-bookmark"><svg viewBox="0 0 14 14" fill="none"><path d="M3 2h8v10l-4-2.5L3 12V2z" stroke="#5B5A61" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+          </div>
+          <div class="card-body">
+            <div class="card-type-row"><span class="card-type">Paired Texts</span><div class="card-dot"></div><span class="card-grade-tag">Gr. 8</span></div>
+            <div class="card-title">Should Schools Ban Smartphones? (Pro/Con Set)</div>
+            <div class="card-author">Newsela · 2024</div>
+            <div class="card-footer">
+              <div class="card-standards">
+                <span class="std-chip">RI.8.8</span>
+                <span class="std-chip purple">W.8.1</span>
+              </div>
+              <span class="card-lexile">720–900L</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ── WRITING SUPPORTS ── -->
+    <section class="content-section">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="section-title">Writing Standards · W.8</div>
+          <div class="section-subtitle">Mentor texts, graphic organizers &amp; scored exemplars</div>
+        </div>
+        <a href="#" class="section-cta">See all <svg viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="cards-row-3">
+
+        <div class="assess-card">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="assess-icon" style="background:#e8f0ff;">📝</div>
+            <div>
+              <div class="assess-title">Argumentative Essay: Should the Voting Age Be Lowered to 16?</div>
+              <div class="assess-meta">W.8.1 · 4-point rubric · Anchor papers included</div>
+            </div>
+          </div>
+          <div class="assess-tags">
+            <span class="unit-badge purple">W.8.1a–e</span>
+            <span class="unit-badge blue">RI.8.6</span>
+            <span class="unit-badge">SL.8.4</span>
+            <span class="unit-badge orange">PARCC Aligned</span>
+          </div>
+        </div>
+
+        <div class="assess-card">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="assess-icon" style="background:#f0faf0;">🔬</div>
+            <div>
+              <div class="assess-title">Research Report: Informative Writing Process Guide</div>
+              <div class="assess-meta">W.8.2 &amp; W.8.7 · MLA format · 5-step scaffold</div>
+            </div>
+          </div>
+          <div class="assess-tags">
+            <span class="unit-badge purple">W.8.2</span>
+            <span class="unit-badge purple">W.8.7</span>
+            <span class="unit-badge purple">W.8.8</span>
+            <span class="unit-badge">Citation Guide</span>
+          </div>
+        </div>
+
+        <div class="assess-card">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="assess-icon" style="background:#fff0f9;">📖</div>
+            <div>
+              <div class="assess-title">Personal Narrative: A Moment That Changed Me</div>
+              <div class="assess-meta">W.8.3 · Mentor text set · Peer review checklist</div>
+            </div>
+          </div>
+          <div class="assess-tags">
+            <span class="unit-badge purple">W.8.3a–e</span>
+            <span class="unit-badge">L.8.3</span>
+            <span class="unit-badge">Mentor Texts</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── ASSESSMENTS ── -->
+    <section class="content-section">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="section-title">Assessments &amp; Performance Tasks</div>
+          <div class="section-subtitle">NJ PARCC-aligned formative &amp; summative assessments</div>
+        </div>
+        <a href="#" class="section-cta">See all 31 <svg viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="cards-row-3">
+
+        <div class="assess-card">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="assess-icon" style="background:#fff8e6;">📊</div>
+            <div>
+              <div class="assess-title">Literary Analysis: Theme &amp; Character Change</div>
+              <div class="assess-meta">End-of-unit · 45 min · Multiple choice + short response</div>
+            </div>
+          </div>
+          <div class="assess-tags">
+            <span class="unit-badge blue">RL.8.1</span>
+            <span class="unit-badge blue">RL.8.2</span>
+            <span class="unit-badge blue">RL.8.3</span>
+            <span class="unit-badge orange">NJSLA Aligned</span>
+          </div>
+        </div>
+
+        <div class="assess-card">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="assess-icon" style="background:#f0faf0;">✅</div>
+            <div>
+              <div class="assess-title">Close Reading Check: Analyzing Author's Argument</div>
+              <div class="assess-meta">Formative · 20 min · Text-based questions</div>
+            </div>
+          </div>
+          <div class="assess-tags">
+            <span class="unit-badge blue">RI.8.6</span>
+            <span class="unit-badge blue">RI.8.8</span>
+            <span class="unit-badge">Quick Check</span>
+          </div>
+        </div>
+
+        <div class="assess-card">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="assess-icon" style="background:#f3e8ff;">🗣️</div>
+            <div>
+              <div class="assess-title">Socratic Seminar: Debate on Teen Civic Engagement</div>
+              <div class="assess-meta">Speaking &amp; Listening · Rubric + self-assessment</div>
+            </div>
+          </div>
+          <div class="assess-tags">
+            <span class="unit-badge">SL.8.1</span>
+            <span class="unit-badge">SL.8.4</span>
+            <span class="unit-badge">SL.8.6</span>
+            <span class="unit-badge purple">Discussion</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── LANGUAGE SKILLS ── -->
+    <section class="content-section">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="section-title">Language &amp; Vocabulary · L.8</div>
+          <div class="section-subtitle">Grammar, figurative language &amp; academic vocabulary</div>
+        </div>
+        <a href="#" class="section-cta">See all <svg viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="cards-carousel">
+
+        <a href="#" class="content-card carousel-card">
+          <div class="card-thumb">
+            <div class="card-thumb-bg" style="background:linear-gradient(135deg,#0c3547,#0a6eab);font-size:32px;">💬</div>
+          </div>
+          <div class="card-body">
+            <div class="card-type-row"><span class="card-type">Vocabulary</span></div>
+            <div class="card-title">Academic Word List: Tier 2 Words for Argument</div>
+            <div class="card-footer"><div class="card-standards"><span class="std-chip">L.8.6</span></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="content-card carousel-card">
+          <div class="card-thumb">
+            <div class="card-thumb-bg" style="background:linear-gradient(135deg,#2d0245,#7c3aed);font-size:32px;">🔤</div>
+          </div>
+          <div class="card-body">
+            <div class="card-type-row"><span class="card-type">Grammar</span></div>
+            <div class="card-title">Verbals: Gerunds, Participles &amp; Infinitives</div>
+            <div class="card-footer"><div class="card-standards"><span class="std-chip">L.8.1a</span></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="content-card carousel-card">
+          <div class="card-thumb">
+            <div class="card-thumb-bg" style="background:linear-gradient(135deg,#0a2e1a,#15803d);font-size:32px;">🌟</div>
+          </div>
+          <div class="card-body">
+            <div class="card-type-row"><span class="card-type">Figurative Language</span></div>
+            <div class="card-title">Allusion, Irony &amp; Analogy in 8th Grade Texts</div>
+            <div class="card-footer"><div class="card-standards"><span class="std-chip">L.8.5</span><span class="std-chip">RL.8.4</span></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="content-card carousel-card">
+          <div class="card-thumb">
+            <div class="card-thumb-bg" style="background:linear-gradient(135deg,#451a03,#b45309);font-size:32px;">📚</div>
+          </div>
+          <div class="card-body">
+            <div class="card-type-row"><span class="card-type">Vocabulary</span></div>
+            <div class="card-title">Greek &amp; Latin Roots: Context Clue Strategies</div>
+            <div class="card-footer"><div class="card-standards"><span class="std-chip">L.8.4b</span><span class="std-chip">L.8.4c</span></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="content-card carousel-card">
+          <div class="card-thumb">
+            <div class="card-thumb-bg" style="background:linear-gradient(135deg,#1e1a30,#4338ca);font-size:32px;">🖊️</div>
+          </div>
+          <div class="card-body">
+            <div class="card-type-row"><span class="card-type">Grammar</span></div>
+            <div class="card-title">Active vs. Passive Voice: Style &amp; Effect</div>
+            <div class="card-footer"><div class="card-standards"><span class="std-chip">L.8.3a</span></div></div>
+          </div>
+        </a>
+
+        <a href="#" class="content-card carousel-card">
+          <div class="card-thumb">
+            <div class="card-thumb-bg" style="background:linear-gradient(135deg,#1a0a00,#92400e);font-size:32px;">🔑</div>
+          </div>
+          <div class="card-body">
+            <div class="card-type-row"><span class="card-type">Vocabulary</span></div>
+            <div class="card-title">Domain-Specific Vocab: Argument &amp; Rhetoric</div>
+            <div class="card-footer"><div class="card-standards"><span class="std-chip">L.8.6</span><span class="std-chip">RI.8.6</span></div></div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+</div>
+
+<script>
+  document.querySelectorAll('.content-tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.content-tab').forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  document.querySelectorAll('.sidebar-item').forEach(item => {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  document.querySelectorAll('.filter-pill').forEach(pill => {
+    pill.addEventListener('click', function() {
+      this.classList.toggle('active');
+    });
+  });
+
+  document.querySelectorAll('.card-thumb-bookmark').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const svg = this.querySelector('svg path');
+      if (this.dataset.saved === 'true') {
+        svg.setAttribute('fill', 'none');
+        this.dataset.saved = 'false';
+      } else {
+        svg.setAttribute('fill', '#0A6EFA');
+        svg.setAttribute('stroke', '#0A6EFA');
+        this.dataset.saved = 'true';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
