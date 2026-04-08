@@ -5,19 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Newsela – Homepage (Figma Faithful)</title>
   <style>
+    :root {
+      --color-core-500: #0A6EFA;
+      --color-core-700: #082C88;
+      --color-neutral-25: #F7F8F8;
+      --color-neutral-50: #F0F1F2;
+      --color-neutral-100: #E1E3E5;
+      --color-neutral-200: #A8AAB0;
+      --color-neutral-300: #8D8D96;
+      --color-neutral-400: #77767A;
+      --color-neutral-500: #5B5A61;
+      --color-neutral-600: #424147;
+      --color-neutral-700: #1D1D1D;
+      --color-green-50: #D3FBF2;
+      --color-blue-50: #CCE1FF;
+      --color-beige-100: #FDE7C7;
+      --color-red-50: #FFE2E2;
+      --color-purple-25: #F2EDFA;
+      --color-success-600: #17786C;
+      --color-teal-600: #31AFCB;
+      --color-warning-600: #BC8100;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
       background: #ffffff;
-      color: #1d1d1d;
-      min-width: 1440px;
+      color: var(--color-neutral-700);
       -webkit-font-smoothing: antialiased;
     }
 
     /* ===================== NAV ===================== */
     .nav {
-      background: #0a6efa;
+      background: var(--color-core-500);
       height: 72px;
       display: flex;
       align-items: center;
@@ -69,7 +90,7 @@
     .nav-search {
       width: 100%;
       height: 40px;
-      background: #f7f8f8;
+      background: var(--color-neutral-25);
       border-radius: 24px;
       border: none;
       padding: 0 16px 0 40px;
@@ -91,7 +112,8 @@
       padding: 0 11px;
       border-radius: 8px;
       color: white;
-      font-size: 14px;
+      font-size: 1rem;
+      line-height: 1rem;
       font-weight: 500;
       display: flex;
       align-items: center;
@@ -122,7 +144,7 @@
     }
     .nav-profile {
       height: 36px;
-      background: #cce1ff;
+      background: var(--color-blue-50);
       border-radius: 24px;
       padding: 0 12px 0 6px;
       display: flex;
@@ -134,7 +156,7 @@
       width: 26px;
       height: 26px;
       border-radius: 50%;
-      background: #082c88;
+      background: var(--color-core-700);
       color: white;
       font-size: 10px;
       font-weight: 700;
@@ -144,7 +166,7 @@
       letter-spacing: 0.5px;
     }
     .nav-profile-name {
-      color: #082c88;
+      color: var(--color-core-700);
       font-size: 13px;
       font-weight: 700;
     }
@@ -162,8 +184,8 @@
 
     /* ===================== HERO SECTION ===================== */
     .hero-section {
-      background: #f7f7f7;
-      padding: 32px 64px 24px;
+      background: var(--color-neutral-25);
+      padding: 32px 40px 24px;
     }
     .hero-row {
       display: flex;
@@ -173,17 +195,17 @@
 
     /* ===================== FEATURED CARD ===================== */
     .featured-col {
-      width: 863px;
-      flex-shrink: 0;
+      flex: 1 1 0;
+      min-width: 0;
       display: flex;
       flex-direction: column;
       gap: 24px;
     }
     .section-heading {
-      font-size: 24px;
+      font-size: 1.5rem;
       font-weight: 700;
-      color: #1d1d1d;
-      line-height: 1.33;
+      color: var(--color-neutral-700);
+      line-height: 2rem;
     }
     .featured-card {
       background: white;
@@ -220,7 +242,7 @@
       position: absolute;
       left: 0;
       bottom: 96px;
-      background: #1d1d1d;
+      background: var(--color-neutral-700);
       color: white;
       font-size: 14px;
       font-weight: 700;
@@ -231,15 +253,15 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 863px;
+      width: 100%;
       background: linear-gradient(90deg, #008cbd 0%, #12a7da 50%, rgba(49,198,255,0.30) 100%);
       padding: 16px 20px;
     }
     .featured-title-band p {
-      font-size: 32px;
+      font-size: 2rem;
       font-weight: 700;
       color: white;
-      line-height: 1.25;
+      line-height: 2.5rem;
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
@@ -259,9 +281,9 @@
       height: 16px;
     }
     .card-date {
-      font-size: 12px;
-      color: #424147;
-      line-height: 1.33;
+      font-size: 0.75rem;
+      color: var(--color-neutral-600);
+      line-height: 1rem;
       font-weight: 400;
     }
     .card-icons-row {
@@ -277,9 +299,9 @@
       justify-content: center;
     }
     .card-body-text {
-      font-size: 16px;
-      color: #424147;
-      line-height: 1.5;
+      font-size: 1rem;
+      color: var(--color-neutral-600);
+      line-height: 1.5rem;
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
@@ -297,52 +319,49 @@
       padding: 4px 8px;
       border-radius: 12px;
       font-size: 12px;
-      color: #1d1d1d;
+      color: var(--color-neutral-700);
       line-height: 1.33;
       white-space: nowrap;
     }
-    .badge-green { background: #d3fbf2; }
-    .badge-blue  { background: #deecff; }
+    .badge-green { background: var(--color-green-50); }
+    .badge-blue  { background: var(--color-blue-50); }
 
     .cta-row {
       display: flex;
       gap: 16px;
       height: 48px;
     }
-    .btn {
-      height: 48px;
-      border-radius: 8px;
-      padding: 0 20px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: inherit;
-      transition: background 0.12s, opacity 0.12s;
-      border: none;
-    }
-    .btn-secondary {
-      background: white;
-      color: #0a6efa;
-      border: 1.5px solid #0a6efa;
-      flex: 1;
-    }
-    .btn-secondary:hover { background: #f0f6ff; }
-    .btn-primary {
-      background: #0a6efa;
-      color: white;
-    }
-    .btn-primary:hover { background: #0860d8; }
+
+    /* ===================== ANGELOU BUTTONS ===================== */
+    /* Large 48 */
+    .btn-large { height: 48px; padding: 0 24px; border-radius: 6px; font-size: 1rem; line-height: 1; font-weight: 400; display: flex; align-items: center; justify-content: center; cursor: pointer; font-family: inherit; border: none; white-space: nowrap; }
+    .btn-primary-large { background: var(--color-core-700); color: #fff; }
+    .btn-primary-large:hover { opacity: 0.9; }
+    .btn-secondary-large { background: transparent; color: var(--color-core-700); border: 1.5px solid var(--color-neutral-100); }
+    .btn-secondary-large:hover { background: var(--color-neutral-25); }
+
+    /* Medium 32 */
+    .btn-medium { height: 32px; padding: 0 16px; border-radius: 6px; font-size: 0.875rem; line-height: 1; font-weight: 400; display: flex; align-items: center; justify-content: center; cursor: pointer; font-family: inherit; border: none; white-space: nowrap; }
+    .btn-muted-medium { background: var(--color-neutral-25); color: var(--color-core-700); border: 1px solid var(--color-neutral-100); }
+    .btn-muted-medium:hover { background: var(--color-neutral-50); }
+    .btn-primary-medium { background: var(--color-core-700); color: #fff; }
+    .btn-primary-medium:hover { opacity: 0.9; }
+
+    /* Start New pill */
+    .btn-start-new { height: 32px; padding: 0 16px; border-radius: 20px; background: var(--color-core-500); color: #fff; font-size: 0.875rem; font-weight: 700; border: none; cursor: pointer; font-family: inherit; }
+    .btn-start-new:hover { opacity: 0.9; }
+
+    /* View All ghost */
+    .btn-view-all { background: var(--color-neutral-25); color: var(--color-core-700); border: 1px solid var(--color-neutral-100); height: 28px; padding: 0 12px; border-radius: 6px; font-size: 0.8125rem; font-weight: 600; cursor: pointer; font-family: inherit; }
+    .btn-view-all:hover { background: var(--color-neutral-50); }
 
     /* ===================== SIDE PANEL ===================== */
     .side-panel {
-      flex: 1;
+      width: 425px;
+      flex-shrink: 0;
       display: flex;
       flex-direction: column;
       gap: 12px;
-      min-width: 0;
     }
     .panel-card {
       background: white;
@@ -356,32 +375,22 @@
       margin-bottom: 12px;
     }
     .panel-title {
-      font-size: 16px;
+      font-size: 1rem;
+      line-height: 1.5rem;
       font-weight: 700;
-      color: #1d1d1d;
+      color: var(--color-neutral-700);
       display: flex;
       align-items: center;
       gap: 7px;
     }
-    .view-all {
-      background: #eef2ff;
-      color: #0a6efa;
-      border: none;
-      border-radius: 20px;
-      padding: 4px 12px;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: inherit;
-    }
-    .view-all:hover { background: #ddeaff; }
+    /* .view-all replaced by .btn-view-all */
 
     .horiz-article {
       display: flex;
       gap: 12px;
       align-items: center;
       padding: 9px 0;
-      border-bottom: 1px solid #f2f2f4;
+      border-bottom: 1px solid var(--color-neutral-50);
     }
     .horiz-article:first-of-type { padding-top: 0; }
     .horiz-article:last-of-type { border-bottom: none; padding-bottom: 0; }
@@ -392,7 +401,7 @@
       border-radius: 16px;
       overflow: hidden;
       flex-shrink: 0;
-      background: #e5e7ea;
+      background: var(--color-neutral-100);
     }
     .article-thumb img {
       width: 100%;
@@ -427,19 +436,19 @@
       height: 7px;
       border-radius: 50%;
     }
-    .s-done        { color: #17786c; }
-    .s-done .status-dot { background: #17786c; }
-    .s-progress    { color: #31afcb; }
-    .s-progress .status-dot { background: #31afcb; }
-    .s-draft       { color: #bc8100; }
-    .s-draft .status-dot { background: #bc8100; }
-    .s-submitted   { color: #17786c; }
-    .s-submitted .status-dot { background: #17786c; }
+    .s-done        { color: var(--color-success-600); }
+    .s-done .status-dot { background: var(--color-success-600); }
+    .s-progress    { color: var(--color-teal-600); }
+    .s-progress .status-dot { background: var(--color-teal-600); }
+    .s-draft       { color: var(--color-warning-600); }
+    .s-draft .status-dot { background: var(--color-warning-600); }
+    .s-submitted   { color: var(--color-success-600); }
+    .s-submitted .status-dot { background: var(--color-success-600); }
 
     .article-title-text {
-      font-size: 14px;
-      color: #333;
-      line-height: 1.4;
+      font-size: 0.875rem;
+      color: var(--color-neutral-700);
+      line-height: 1.5rem;
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
@@ -465,26 +474,13 @@
       align-items: center;
       gap: 8px;
     }
-    .start-new-btn {
-      height: 32px;
-      border-radius: 20px;
-      padding: 0 14px;
-      background: #0a6efa;
-      color: white;
-      border: none;
-      font-size: 13px;
-      font-weight: 700;
-      cursor: pointer;
-      font-family: inherit;
-      flex-shrink: 0;
-    }
-    .start-new-btn:hover { background: #0860d8; }
+    /* .start-new-btn replaced by .btn-start-new */
 
     /* ===================== STANDARDS ROW ===================== */
     .standards-section {
       background: white;
-      padding: 24px 64px;
-      border-top: 1px solid #f0f0f2;
+      padding: 24px 40px;
+      border-top: 1px solid var(--color-neutral-50);
     }
     .standards-row {
       display: flex;
@@ -496,19 +492,19 @@
       padding: 20px 38px;
       font-size: 24px;
       font-weight: 700;
-      color: #1d1d1d;
+      color: var(--color-neutral-700);
       cursor: pointer;
       white-space: nowrap;
       transition: opacity 0.12s;
     }
     .std-pill:hover { opacity: 0.82; }
-    .std-green { background: #d3fbf2; }
-    .std-blue  { background: #deecff; }
+    .std-green { background: var(--color-green-50); }
+    .std-blue  { background: var(--color-blue-50); }
 
     /* ===================== QUICK LINKS ===================== */
     .quicklinks-section {
       background: white;
-      padding: 0 64px 28px;
+      padding: 0 40px 28px;
     }
     .quicklinks-row {
       display: flex;
@@ -520,7 +516,7 @@
       padding: 18px 28px;
       font-size: 18px;
       font-weight: 600;
-      color: #1d1d1d;
+      color: var(--color-neutral-700);
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -529,32 +525,32 @@
       transition: opacity 0.12s;
     }
     .ql-pill:hover { opacity: 0.82; }
-    .ql-green    { background: #d3fbf2; }
-    .ql-orange   { background: #fde7c7; }
-    .ql-blue     { background: #deecff; }
-    .ql-pink     { background: #ffe2e2; }
-    .ql-lavender { background: #f2edfa; }
+    .ql-green    { background: var(--color-green-50); }
+    .ql-orange   { background: var(--color-beige-100); }
+    .ql-blue     { background: var(--color-blue-50); }
+    .ql-pink     { background: var(--color-red-50); }
+    .ql-lavender { background: var(--color-purple-25); }
 
     .ql-icon svg { display: block; }
 
     /* ===================== CARD GRID SECTIONS ===================== */
     .grid-section {
       background: white;
-      padding: 32px 64px;
+      padding: 32px 40px;
     }
     .grid-section + .grid-section {
       padding-top: 8px;
     }
     .grid-heading {
-      font-size: 24px;
+      font-size: 1.5rem;
       font-weight: 700;
-      color: #1d1d1d;
+      color: var(--color-neutral-700);
       margin-bottom: 20px;
-      line-height: 1.33;
+      line-height: 2rem;
     }
     .grid-4 {
       display: grid;
-      grid-template-columns: repeat(4, 316px);
+      grid-template-columns: repeat(4, 1fr);
       gap: 16px;
     }
     .grid-3 {
@@ -567,7 +563,7 @@
     .a-card {
       background: white;
       border-radius: 8px;
-      border: 1px solid #e1e3e5;
+      border: 1px solid var(--color-neutral-100);
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -575,9 +571,9 @@
     .a-card-img {
       position: relative;
       width: 100%;
-      aspect-ratio: 400 / 225;
+      aspect-ratio: 16 / 9;
       overflow: hidden;
-      background: #e5e8ec;
+      background: var(--color-neutral-100);
     }
     .a-card-img img {
       width: 100%;
@@ -603,7 +599,7 @@
       position: absolute;
       bottom: 7.5px;
       left: 8px;
-      background: #1d1d1d;
+      background: var(--color-neutral-700);
       color: white;
       font-size: 14px;
       font-weight: 400;
@@ -627,15 +623,15 @@
       gap: 8px;
     }
     .a-card-date {
-      font-size: 12px;
-      color: #424147;
-      line-height: 1.33;
+      font-size: 0.75rem;
+      color: var(--color-neutral-600);
+      line-height: 1rem;
     }
     .a-card-title {
-      font-size: 20px;
+      font-size: 1.25rem;
       font-weight: 700;
-      color: #1d1d1d;
-      line-height: 1.2;
+      color: var(--color-neutral-700);
+      line-height: 1.5rem;
       height: 48px;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -644,36 +640,18 @@
       -webkit-box-orient: vertical;
     }
     .a-card-levels {
-      font-size: 12px;
-      color: #5b5a61;
-      line-height: 1.33;
+      font-size: 0.75rem;
+      color: var(--color-neutral-500);
+      line-height: 1rem;
       display: flex;
       gap: 8px;
       white-space: nowrap;
     }
     .a-card-cta {
       display: flex;
-      gap: 16px;
-      height: 48px;
+      gap: 8px;
       margin-top: auto;
     }
-    .btn-muted {
-      flex: 1;
-      height: 48px;
-      border-radius: 8px;
-      border: 1.5px solid #e1e3e5;
-      background: transparent;
-      color: #424147;
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      font-family: inherit;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      padding: 0 8px;
-    }
-    .btn-muted:hover { background: #f7f8f8; }
 
     /* Placeholder image gradients */
     .ph-dogs      { background: linear-gradient(160deg, #b8924a 0%, #e4c988 60%, #c8a96e 100%); }
@@ -685,8 +663,8 @@
 
     .section-divider {
       border: none;
-      border-top: 1px solid #f0f0f2;
-      margin: 0 64px;
+      border-top: 1px solid var(--color-neutral-50);
+      margin: 0;
     }
   </style>
 </head>
@@ -733,7 +711,7 @@
       <div class="nav-profile">
         <div class="nav-avatar">NM</div>
         <span class="nav-profile-name">NM</span>
-        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style="margin-left:2px"><path d="M1 1l4 4 4-4" stroke="#082c88" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style="margin-left:2px"><path d="M1 1l4 4 4-4" stroke="var(--color-core-700)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
       <div class="nav-icon-btn">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round">
@@ -813,8 +791,8 @@
 
             <!-- CTA buttons -->
             <div class="cta-row">
-              <button class="btn btn-secondary">Share</button>
-              <button class="btn btn-secondary">Assign This Unit</button>
+              <button class="btn-large btn-secondary-large">Share</button>
+              <button class="btn-large btn-primary-large">Assign This Unit</button>
             </div>
           </div>
         </div>
@@ -833,7 +811,7 @@
               </svg>
               Recent Assignments
             </div>
-            <button class="view-all">View all</button>
+            <button class="btn-view-all">View all</button>
           </div>
 
           <div class="horiz-article">
@@ -883,7 +861,7 @@
               <span class="panel-title">Newsela Writing</span>
               <span class="luna-tag">LUNA ✦</span>
             </div>
-            <button class="start-new-btn">Start New</button>
+            <button class="btn-start-new">Start New</button>
           </div>
 
           <div class="horiz-article">
@@ -972,8 +950,8 @@
             </div>
           </div>
           <div class="a-card-cta">
-            <button class="btn-muted">Add to assign...</button>
-            <button class="btn-muted">Assign</button>
+            <button class="btn-medium btn-muted-medium">Add to assign...</button>
+            <button class="btn-medium btn-muted-medium">Assign</button>
           </div>
         </div>
       </div>
@@ -997,8 +975,8 @@
             </div>
           </div>
           <div class="a-card-cta">
-            <button class="btn-muted">Add to assign...</button>
-            <button class="btn-muted">Assign</button>
+            <button class="btn-medium btn-muted-medium">Add to assign...</button>
+            <button class="btn-medium btn-muted-medium">Assign</button>
           </div>
         </div>
       </div>
@@ -1022,8 +1000,8 @@
             </div>
           </div>
           <div class="a-card-cta">
-            <button class="btn-muted">Add to assign...</button>
-            <button class="btn-muted">Assign</button>
+            <button class="btn-medium btn-muted-medium">Add to assign...</button>
+            <button class="btn-medium btn-muted-medium">Assign</button>
           </div>
         </div>
       </div>
@@ -1047,8 +1025,8 @@
             </div>
           </div>
           <div class="a-card-cta">
-            <button class="btn-muted">Add to assign...</button>
-            <button class="btn-muted">Assign</button>
+            <button class="btn-medium btn-muted-medium">Add to assign...</button>
+            <button class="btn-medium btn-muted-medium">Assign</button>
           </div>
         </div>
       </div>
@@ -1083,8 +1061,8 @@
             </div>
           </div>
           <div class="a-card-cta">
-            <button class="btn-muted">Add to assignment</button>
-            <button class="btn-muted">Assign</button>
+            <button class="btn-medium btn-muted-medium">Add to assignment</button>
+            <button class="btn-medium btn-muted-medium">Assign</button>
           </div>
         </div>
       </div>
@@ -1108,8 +1086,8 @@
             </div>
           </div>
           <div class="a-card-cta">
-            <button class="btn-muted">Add to assignment</button>
-            <button class="btn-muted">Assign</button>
+            <button class="btn-medium btn-muted-medium">Add to assignment</button>
+            <button class="btn-medium btn-muted-medium">Assign</button>
           </div>
         </div>
       </div>
@@ -1133,8 +1111,8 @@
             </div>
           </div>
           <div class="a-card-cta">
-            <button class="btn-muted">Add to assignment</button>
-            <button class="btn-muted">Assign</button>
+            <button class="btn-medium btn-muted-medium">Add to assignment</button>
+            <button class="btn-medium btn-muted-medium">Assign</button>
           </div>
         </div>
       </div>
@@ -1169,8 +1147,8 @@
             </div>
           </div>
           <div class="a-card-cta">
-            <button class="btn-muted">Add to assign...</button>
-            <button class="btn-muted">Assign</button>
+            <button class="btn-medium btn-muted-medium">Add to assign...</button>
+            <button class="btn-medium btn-muted-medium">Assign</button>
           </div>
         </div>
       </div>
@@ -1194,8 +1172,8 @@
             </div>
           </div>
           <div class="a-card-cta">
-            <button class="btn-muted">Add to assign...</button>
-            <button class="btn-muted">Assign</button>
+            <button class="btn-medium btn-muted-medium">Add to assign...</button>
+            <button class="btn-medium btn-muted-medium">Assign</button>
           </div>
         </div>
       </div>
@@ -1219,8 +1197,8 @@
             </div>
           </div>
           <div class="a-card-cta">
-            <button class="btn-muted">Add to assign...</button>
-            <button class="btn-muted">Assign</button>
+            <button class="btn-medium btn-muted-medium">Add to assign...</button>
+            <button class="btn-medium btn-muted-medium">Assign</button>
           </div>
         </div>
       </div>
@@ -1244,8 +1222,8 @@
             </div>
           </div>
           <div class="a-card-cta">
-            <button class="btn-muted">Add to assign...</button>
-            <button class="btn-muted">Assign</button>
+            <button class="btn-medium btn-muted-medium">Add to assign...</button>
+            <button class="btn-medium btn-muted-medium">Assign</button>
           </div>
         </div>
       </div>
