@@ -1,1578 +1,1314 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=1440" />
-  <title>Newsela — Grade 8 ELA · New Jersey</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsela – Homepage (Figma Faithful)</title>
   <style>
-    @font-face {
-      font-family: 'Circular';
-      src: url('fonts/CircularStd-Book.ttf') format('truetype');
-      font-weight: 400;
-    }
-    @font-face {
-      font-family: 'Circular';
-      src: url('fonts/CircularStd-Medium.ttf') format('truetype');
-      font-weight: 500;
-    }
-    @font-face {
-      font-family: 'Circular';
-      src: url('fonts/CircularStd-Bold.ttf') format('truetype');
-      font-weight: 700;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --blue:       #0a6efa;
-      --blue-dark:  #082c88;
-      --blue-mid:   #1a52c4;
-      --blue-light: #cce1ff;
-      --blue-pale:  #deecff;
-      --red:        #dc2626;
-      --red-bg:     #fef2f2;
-      --red-border: #fca5a5;
-      --amber:      #d97706;
-      --amber-bg:   #fffbeb;
-      --amber-border:#fcd34d;
-      --green:      #059669;
-      --green-bg:   #d3fbf2;
-      --purple:     #7c3aed;
-      --purple-bg:  #f3e8ff;
-      --orange-bg:  #fde7c7;
-      --n900: #1d1d1d;
-      --n700: #424147;
-      --n500: #5b5a61;
-      --n400: #77767a;
-      --n200: #a8aab0;
-      --n100: #e1e3e5;
-      --n50:  #f0f1f2;
-      --bg:   #f7f7f7;
-      --white:#ffffff;
-      --sans: 'Circular', -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --color-core-500: #0A6EFA;
+      --color-core-700: #082C88;
+      --color-neutral-25: #F7F8F8;
+      --color-neutral-50: #F0F1F2;
+      --color-neutral-100: #E1E3E5;
+      --color-neutral-200: #A8AAB0;
+      --color-neutral-300: #8D8D96;
+      --color-neutral-400: #77767A;
+      --color-neutral-500: #5B5A61;
+      --color-neutral-600: #424147;
+      --color-neutral-700: #1D1D1D;
+      --color-green-50: #D3FBF2;
+      --color-blue-50: #CCE1FF;
+      --color-beige-100: #FDE7C7;
+      --color-red-50: #FFE2E2;
+      --color-purple-25: #F2EDFA;
+      --color-success-600: #17786C;
+      --color-teal-600: #31AFCB;
+      --color-warning-600: #BC8100;
     }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: var(--sans);
-      background: var(--bg);
-      color: var(--n900);
-      min-width: 1200px;
-      font-size: 14px;
-      line-height: 1.5;
+      font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+      background: #ffffff;
+      color: var(--color-neutral-700);
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* ── NAV ── */
+    /* ===================== NAV ===================== */
     .nav {
-      background: var(--blue);
+      background: var(--color-core-500);
       height: 72px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 8px 30px 8px 34px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 0 24px;
+      gap: 12px;
       position: sticky;
       top: 0;
-      z-index: 200;
+      z-index: 100;
     }
-    .nav-left { display: flex; align-items: center; gap: 8px; }
-    .nav-logo-wrap { display: flex; align-items: center; gap: 0; cursor: pointer; }
-    .nav-hamburger { width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:8px;cursor:pointer; }
-    .nav-n-logo { width:48px;height:48px;display:flex;align-items:center;justify-content:center; }
-    .nav-search {
-      background: #f7f8f8; border-radius: 24px;
-      padding: 8px 16px; width: 421px;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .nav-search svg { color: #424147; flex-shrink:0; }
-    .nav-search span { font-size:16px; color:#424147; font-weight:400; white-space:nowrap; }
-    .nav-right { display:flex; align-items:center; gap:6px; }
-    .nav-pill {
-      display: flex; align-items: center; gap: 4px;
-      color: rgba(255,255,255,0.88);
-      font-size: 14px; font-weight: 400;
-      padding: 4px 8px; border-radius: 6px;
-      cursor: pointer; white-space: nowrap;
-      background: none; border: none; font-family: var(--sans);
-      transition: background 0.12s;
-    }
-    .nav-pill:hover { background: rgba(255,255,255,0.12); }
-    .nav-pill.active { font-weight: 700; color: white; }
-    .nav-pill svg { width:14px; height:14px; }
-    .nav-profile {
-      display:flex; align-items:center;
-      background: var(--blue-light); border-radius:30px;
-      height:28px; cursor:pointer; margin-left:4px;
-    }
-    .nav-avatar { width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--blue-dark);background:var(--blue-light); }
-    .nav-chevron { width:12px;height:12px;margin-right:8px;color:var(--blue-dark); }
 
-    /* ── NJSLA ALERT BANNER ── */
-    .njsla-alert {
-      background: linear-gradient(90deg, #7f1d1d 0%, #b91c1c 50%, #dc2626 100%);
-      padding: 0 34px;
-      height: 44px;
+    .nav-waffle {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      grid-template-columns: repeat(3, 7px);
+      grid-template-rows: repeat(3, 7px);
+      gap: 2.5px;
+      flex-shrink: 0;
+    }
+    .nav-waffle span {
+      background: rgba(255,255,255,0.8);
+      border-radius: 1px;
+    }
+
+    .nav-logo {
+      width: 34px;
+      height: 34px;
+      background: white;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-right: 8px;
+    }
+
+    .nav-search-wrap {
+      position: relative;
+      width: 300px;
+      flex-shrink: 0;
+    }
+    .nav-search-wrap svg {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+    .nav-search {
+      width: 100%;
+      height: 40px;
+      background: var(--color-neutral-25);
+      border-radius: 24px;
+      border: none;
+      padding: 0 16px 0 40px;
+      font-size: 14px;
+      color: #333;
+      outline: none;
+      font-family: inherit;
+    }
+    .nav-search::placeholder { color: #9b9aa0; }
+
+    .nav-tabs {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      margin-left: 4px;
+    }
+    .nav-tab {
+      height: 36px;
+      padding: 0 11px;
+      border-radius: 8px;
+      color: white;
+      font-size: 1rem;
+      line-height: 1rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-tab:hover { background: rgba(255,255,255,0.14); }
+    .nav-tab.active {
+      background: rgba(255,255,255,0.18);
+      font-weight: 700;
+    }
+    .chevron-down {
+      width: 0; height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 5px solid rgba(255,255,255,0.75);
+      margin-top: 1px;
+    }
+
+    .nav-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-profile {
+      height: 36px;
+      background: var(--color-blue-50);
+      border-radius: 24px;
+      padding: 0 12px 0 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+    .nav-avatar {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--color-core-700);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 0.5px;
+    }
+    .nav-profile-name {
+      color: var(--color-core-700);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .nav-icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0.85;
+    }
+    .nav-icon-btn:hover { background: rgba(255,255,255,0.15); opacity: 1; }
+
+    /* ===================== HERO SECTION ===================== */
+    .hero-section {
+      background: var(--color-neutral-25);
+      padding: 32px 40px 24px;
+    }
+    .hero-row {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    /* ===================== FEATURED CARD ===================== */
+    .featured-col {
+      flex: 1 1 0;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .section-heading {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-neutral-700);
+      line-height: 2rem;
+    }
+    .featured-card {
+      background: white;
+      border-radius: 32px;
+      overflow: hidden;
+    }
+    .featured-card-img-wrap {
+      position: relative;
+      height: 400px;
+      overflow: hidden;
+    }
+    .featured-card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 32px 32px 0 0;
+      display: block;
+    }
+    .featured-bookmark-btn {
+      position: absolute;
+      top: 14px;
+      right: 13px;
+      width: 32px;
+      height: 32px;
+      background: rgba(255,255,255,0.92);
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.14);
+    }
+    .featured-chip {
+      position: absolute;
+      left: 0;
+      bottom: 96px;
+      background: var(--color-neutral-700);
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.14;
+      padding: 6px 8px;
+    }
+    .featured-title-band {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #008cbd 0%, #12a7da 50%, rgba(49,198,255,0.30) 100%);
+      padding: 16px 20px;
+    }
+    .featured-title-band p {
+      font-size: 2rem;
+      font-weight: 700;
+      color: white;
+      line-height: 2.5rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    .featured-lower {
+      padding: 16px 16px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .card-meta-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      height: 16px;
     }
-    .njsla-alert-left { display:flex; align-items:center; gap: 12px; }
-    .njsla-countdown {
-      background: white;
-      color: var(--red);
-      font-size: 12px; font-weight: 700;
-      padding: 3px 10px; border-radius: 20px;
-      white-space: nowrap;
-      letter-spacing: 0.3px;
+    .card-date {
+      font-size: 0.75rem;
+      color: var(--color-neutral-600);
+      line-height: 1rem;
+      font-weight: 400;
     }
-    .njsla-alert span {
-      font-size: 14px; font-weight: 600; color: white;
-    }
-    .njsla-alert-right { display:flex; align-items:center; gap:10px; }
-    .njsla-btn {
-      background: white; color: #b91c1c;
-      font-size: 13px; font-weight: 700;
-      border: none; border-radius: 6px;
-      padding: 6px 14px; cursor: pointer;
-      white-space: nowrap; font-family: var(--sans);
-    }
-    .njsla-btn:hover { opacity: 0.9; }
-    .njsla-btn-ghost {
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.4);
-      color: white;
-      font-size: 13px; font-weight: 500;
-      border-radius: 6px;
-      padding: 6px 14px; cursor: pointer;
-      white-space: nowrap; font-family: var(--sans);
-    }
-
-    /* ── PAGE BODY ── */
-    .page-body {
+    .card-icons-row {
       display: flex;
-      gap: 0;
-      min-height: calc(100vh - 116px);
+      align-items: center;
+      gap: 4px;
     }
-
-    /* ── SIDEBAR ── */
-    .sidebar {
-      width: 220px;
-      flex-shrink: 0;
-      background: var(--white);
-      border-right: 1px solid var(--n100);
-      padding: 20px 0 40px;
-      display: flex; flex-direction: column;
-      position: sticky;
-      top: 116px;
-      height: calc(100vh - 116px);
-      overflow-y: auto;
+    .icon-16 {
+      width: 16px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .sidebar-label {
-      font-size: 10px; font-weight: 700;
-      color: var(--n400); text-transform: uppercase;
-      letter-spacing: 0.8px; padding: 8px 20px 4px;
-    }
-    .sidebar-link {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 8px 20px; font-size: 13px; color: var(--n700);
-      cursor: pointer; text-decoration: none;
-      transition: background 0.1s;
-      border-left: 3px solid transparent;
-    }
-    .sidebar-link:hover { background: var(--n50); }
-    .sidebar-link.active {
-      background: var(--blue-pale);
-      color: var(--blue-dark);
-      font-weight: 600;
-      border-left-color: var(--blue);
-    }
-    .sidebar-link-left { display:flex; align-items:center; gap:8px; }
-    .sidebar-link-left svg { width:14px;height:14px;flex-shrink:0; }
-    .sidebar-count {
-      font-size: 10px; font-weight: 700;
-      background: var(--n50); color: var(--n400);
-      border-radius: 8px; padding: 1px 6px;
-    }
-    .sidebar-link.active .sidebar-count {
-      background: rgba(10,110,250,0.12); color: var(--blue-dark);
-    }
-    .sidebar-divider { height:1px; background: var(--n100); margin: 8px 0; }
-    .sidebar-domain {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 7px 20px; font-size: 12px; color: var(--n700);
-      cursor: pointer; border-left: 3px solid transparent;
-    }
-    .sidebar-domain:hover { background: var(--n50); }
-    .sidebar-domain.open { font-weight: 600; color: var(--n900); }
-    .sidebar-domain-code {
-      font-size: 10px; font-weight: 700;
-      color: var(--blue); background: var(--blue-light);
-      border-radius: 4px; padding: 1px 5px;
-    }
-
-    /* ── MAIN ── */
-    .main {
-      flex: 1; min-width: 0;
-      padding: 24px 32px 64px;
-      display: flex; flex-direction: column; gap: 28px;
-    }
-
-    /* ── THIS WEEK WIDGET + FEATURED ROW ── */
-    .top-row {
-      display: flex; gap: 20px; align-items: flex-start;
-    }
-    .featured-col { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
-    .week-col { width: 280px; flex-shrink: 0; display: flex; flex-direction: column; gap: 12px; }
-
-    /* Featured hero card (matches Figma) */
-    .hero-card {
-      background: var(--white);
-      border-radius: 20px;
+    .card-body-text {
+      font-size: 1rem;
+      color: var(--color-neutral-600);
+      line-height: 1.5rem;
       overflow: hidden;
-      border: 1px solid var(--n100);
-      cursor: pointer;
-      transition: box-shadow 0.15s;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
     }
-    .hero-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-    .hero-image {
-      height: 220px; position: relative; overflow: hidden;
+    .badge-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
     }
-    .hero-image-bg {
-      position: absolute; inset: 0;
-      background-size: cover; background-position: center;
-    }
-    .hero-chip {
-      position: absolute; bottom: 52px; left: 0;
-      background: var(--n900); color: white;
-      font-size: 13px; font-weight: 700;
-      padding: 5px 10px;
-    }
-    .hero-bm {
-      position: absolute; top: 12px; right: 12px;
-      width: 32px; height: 32px;
-      background: rgba(247,248,248,0.92); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; border: none;
-    }
-    .hero-title-bar {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      background: linear-gradient(to right, #008cbd, #12a7da, rgba(49,198,255,0.25));
-      padding: 10px 16px;
-    }
-    .hero-title-bar h2 { font-size: 20px; font-weight: 700; color: white; line-height: 1.25; }
-    .hero-lower {
-      padding: 14px 16px 18px;
-      display: flex; flex-direction: column; gap: 12px;
-    }
-    .hero-date { font-size: 12px; color: var(--n700); }
-    .hero-desc {
-      font-size: 14px; color: var(--n700); line-height: 1.55;
-      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
-    }
-    .hero-tags { display:flex; gap:6px; flex-wrap:wrap; }
-    .hero-tag {
-      padding: 3px 8px; border-radius: 10px;
-      font-size: 11px; font-weight: 500; color: var(--n900);
-    }
-    .tag-green { background: var(--green-bg); }
-    .tag-blue  { background: var(--blue-light); }
-    .tag-grey  { background: var(--n100); }
-    .hero-actions { display:flex; gap:10px; }
-    .btn-outline {
-      flex:1; border: 1.5px solid var(--blue-dark);
-      background: var(--white); color: var(--blue-dark);
-      font-size: 14px; font-weight: 400;
-      border-radius: 8px; cursor: pointer; padding: 9px 16px;
-      transition: background 0.12s; font-family: var(--sans);
-    }
-    .btn-outline:hover { background: #f0f5ff; }
-    .btn-filled {
-      flex:1; border: 1.5px solid var(--blue);
-      background: var(--blue); color: white;
-      font-size: 14px; font-weight: 700;
-      border-radius: 8px; cursor: pointer; padding: 9px 16px;
-      transition: background 0.12s; font-family: var(--sans);
-    }
-    .btn-filled:hover { background: #0057d4; border-color: #0057d4; }
-
-    /* Quick-access pills (Figma style) */
-    .quick-pills {
-      display: flex; gap: 12px; flex-wrap: nowrap; overflow-x: auto;
-      padding-bottom: 2px;
-    }
-    .quick-pill {
-      display: flex; align-items: center; gap: 8px;
-      padding: 12px 20px; border-radius: 48px;
-      font-size: 15px; font-weight: 700; color: var(--n900);
-      cursor: pointer; flex-shrink: 0;
-      transition: transform 0.12s, opacity 0.12s;
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      color: var(--color-neutral-700);
+      line-height: 1.33;
       white-space: nowrap;
     }
-    .quick-pill:hover { transform: translateY(-2px); opacity: 0.88; }
-    .quick-pill .pill-icon { font-size: 18px; }
+    .badge-green { background: var(--color-green-50); }
+    .badge-blue  { background: var(--color-blue-50); }
 
-    /* ── THIS WEEK WIDGET ── */
-    .week-widget {
-      background: var(--white);
-      border: 1px solid var(--n100);
-      border-radius: 14px;
+    .cta-row {
+      display: flex;
+      gap: 16px;
+      height: 48px;
+    }
+
+    /* ===================== ANGELOU BUTTONS ===================== */
+    /* Large 48 */
+    .btn-large { height: 48px; padding: 0 24px; border-radius: 6px; font-size: 1rem; line-height: 1; font-weight: 400; display: flex; align-items: center; justify-content: center; cursor: pointer; font-family: inherit; border: none; white-space: nowrap; }
+    .btn-primary-large { background: var(--color-core-700); color: #fff; }
+    .btn-primary-large:hover { opacity: 0.9; }
+    .btn-secondary-large { background: transparent; color: var(--color-core-700); border: 1.5px solid var(--color-neutral-100); }
+    .btn-secondary-large:hover { background: var(--color-neutral-25); }
+
+    /* Medium 32 */
+    .btn-medium { height: 32px; padding: 0 16px; border-radius: 6px; font-size: 0.875rem; line-height: 1; font-weight: 400; display: flex; align-items: center; justify-content: center; cursor: pointer; font-family: inherit; border: none; white-space: nowrap; }
+    .btn-muted-medium { background: var(--color-neutral-25); color: var(--color-core-700); border: 1px solid var(--color-neutral-100); }
+    .btn-muted-medium:hover { background: var(--color-neutral-50); }
+    .btn-primary-medium { background: var(--color-core-700); color: #fff; }
+    .btn-primary-medium:hover { opacity: 0.9; }
+
+    /* Start New pill */
+    .btn-start-new { height: 32px; padding: 0 16px; border-radius: 20px; background: var(--color-core-500); color: #fff; font-size: 0.875rem; font-weight: 700; border: none; cursor: pointer; font-family: inherit; }
+    .btn-start-new:hover { opacity: 0.9; }
+
+    /* View All ghost */
+    .btn-view-all { background: var(--color-neutral-25); color: var(--color-core-700); border: 1px solid var(--color-neutral-100); height: 28px; padding: 0 12px; border-radius: 6px; font-size: 0.8125rem; font-weight: 600; cursor: pointer; font-family: inherit; }
+    .btn-view-all:hover { background: var(--color-neutral-50); }
+
+    /* ===================== SIDE PANEL ===================== */
+    .side-panel {
+      width: 425px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 24px; /* matches featured-col gap so heading + cards align */
+    }
+    .side-panel-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .panel-card {
+      background: white;
+      border-radius: 16px;
+      padding: 16px;
+    }
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .panel-title {
+      font-size: 1rem;
+      line-height: 1.5rem;
+      font-weight: 700;
+      color: var(--color-neutral-700);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    /* .view-all replaced by .btn-view-all */
+
+    .horiz-article {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--color-neutral-50);
+    }
+    .horiz-article:first-of-type { padding-top: 0; }
+    .horiz-article:last-of-type { border-bottom: none; padding-bottom: 0; }
+
+    .article-thumb {
+      width: 89px;
+      height: 62px;
+      border-radius: 16px;
       overflow: hidden;
+      flex-shrink: 0;
+      background: var(--color-neutral-100);
     }
-    .week-header {
-      background: var(--blue-dark);
-      padding: 12px 16px;
-      display: flex; align-items: center; justify-content: space-between;
+    .article-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
-    .week-header-title {
-      font-size: 13px; font-weight: 700; color: white;
-      display: flex; align-items: center; gap: 6px;
+    .article-info {
+      flex: 1;
+      min-width: 0;
     }
-    .week-header-date { font-size: 11px; color: rgba(255,255,255,0.65); }
-    .week-body { padding: 8px 0; }
-    .week-item {
-      padding: 10px 16px;
-      display: flex; align-items: flex-start; gap: 10px;
+    .article-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 3px;
+    }
+    .article-assigned {
+      font-size: 11px;
+      color: #767676;
+      line-height: 1.33;
+    }
+    .article-status {
+      font-size: 11px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+    .s-done        { color: var(--color-success-600); }
+    .s-done .status-dot { background: var(--color-success-600); }
+    .s-progress    { color: var(--color-teal-600); }
+    .s-progress .status-dot { background: var(--color-teal-600); }
+    .s-draft       { color: var(--color-warning-600); }
+    .s-draft .status-dot { background: var(--color-warning-600); }
+    .s-submitted   { color: var(--color-success-600); }
+    .s-submitted .status-dot { background: var(--color-success-600); }
+
+    .article-title-text {
+      font-size: 0.875rem;
+      color: var(--color-neutral-700);
+      line-height: 1.5rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    /* Luna tag */
+    .luna-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      background: linear-gradient(-62.56deg, #691c9c 4.6%, #1f3cd7 66.6%, #1088eb 100%);
+      border-radius: 20px;
+      padding: 3px 10px;
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+    }
+    .writing-header-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    /* .start-new-btn replaced by .btn-start-new */
+
+    /* ===================== STANDARDS ROW ===================== */
+    .standards-section {
+      background: white;
+      padding: 20px 40px 24px;
+      border-top: 1px solid var(--color-neutral-50);
+    }
+    .standards-section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-neutral-400);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .standards-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .std-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border-radius: 20px;
+      padding: 6px 10px 6px 12px;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--color-neutral-700);
       cursor: pointer;
-      transition: background 0.1s;
+      white-space: nowrap;
+      transition: filter 0.12s, box-shadow 0.12s;
+      text-decoration: none;
     }
-    .week-item:hover { background: var(--n50); }
-    .week-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      flex-shrink: 0; margin-top: 5px;
+    .std-pill:hover {
+      filter: brightness(0.95);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.10);
     }
-    .week-item-text { flex: 1; }
-    .week-item-label { font-size: 12px; font-weight: 600; color: var(--n900); line-height: 1.4; }
-    .week-item-sub { font-size: 11px; color: var(--n400); margin-top: 1px; }
-    .week-divider { height:1px; background: var(--n100); margin: 4px 0; }
+    .std-pill svg { flex-shrink: 0; opacity: 0.55; }
+    .std-pill:hover svg { opacity: 0.85; }
 
-    /* ── PACING STRIP ── */
-    .pacing-strip {
-      background: var(--white);
-      border: 1px solid var(--n100);
-      border-radius: 14px;
-      padding: 14px 16px;
-    }
-    .pacing-title {
-      font-size: 12px; font-weight: 700; color: var(--n700);
-      text-transform: uppercase; letter-spacing: 0.5px;
-      margin-bottom: 10px;
-    }
-    .pacing-bar {
-      height: 8px; background: var(--n100);
-      border-radius: 8px; overflow: hidden; position: relative;
-    }
-    .pacing-fill { height:100%; border-radius:8px; background: var(--blue); }
-    .pacing-marker {
-      position: absolute; top: -2px; width: 12px; height: 12px;
-      background: var(--red); border: 2px solid white;
-      border-radius: 50%; transform: translateX(-50%);
-    }
-    .pacing-labels {
-      display:flex; justify-content: space-between;
-      margin-top: 6px; font-size: 10px; color: var(--n400); font-weight: 600;
-    }
-    .pacing-legend {
-      display: flex; gap: 12px; margin-top: 10px;
-    }
-    .pacing-legend-item {
-      display: flex; align-items: center; gap: 5px;
-      font-size: 11px; color: var(--n700);
-    }
-    .pacing-legend-dot { width:8px;height:8px;border-radius:50%;flex-shrink:0; }
+    /* strand colour variants */
+    .std-rl  { background: var(--color-green-50); }
+    .std-ri  { background: var(--color-blue-50); }
+    .std-w   { background: var(--color-beige-100); }
+    .std-sl  { background: #E9FCFF; }
+    .std-l   { background: var(--color-purple-25); }
 
-    /* ── SECTION HEADING ── */
-    .section { display:flex; flex-direction:column; gap:14px; }
-    .sec-head {
-      display:flex; align-items:center; justify-content: space-between;
+    /* ===================== QUICK LINKS ===================== */
+    .quicklinks-section {
+      background: white;
+      padding: 0 40px 28px;
     }
-    .sec-title { font-size:20px; font-weight:700; color:var(--n900); line-height:1.2; }
-    .sec-sub { font-size:13px; color:var(--n500); margin-top:2px; }
-    .sec-cta {
-      font-size:13px; font-weight:600; color:var(--blue);
-      background:none; border:none; cursor:pointer; padding:4px 0;
-      font-family:var(--sans); display:flex; align-items:center; gap:4px;
-      text-decoration:none;
+    .quicklinks-row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
     }
-    .sec-cta:hover { opacity:0.75; }
-    .sec-cta svg { width:13px;height:13px; }
+    .ql-pill {
+      border-radius: 64px;
+      padding: 18px 28px;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-neutral-700);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+      transition: opacity 0.12s;
+    }
+    .ql-pill:hover { opacity: 0.82; }
+    .ql-green    { background: var(--color-green-50); }
+    .ql-orange   { background: var(--color-beige-100); }
+    .ql-blue     { background: var(--color-blue-50); }
+    .ql-pink     { background: var(--color-red-50); }
+    .ql-lavender { background: var(--color-purple-25); }
 
-    /* ── DOMAIN CARDS ── */
-    .domain-grid {
+    .ql-icon svg { display: block; }
+
+    /* ===================== CARD GRID SECTIONS ===================== */
+    .grid-section {
+      background: white;
+      padding: 32px 40px;
+    }
+    .grid-section + .grid-section {
+      padding-top: 8px;
+    }
+    .grid-heading {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-neutral-700);
+      margin-bottom: 20px;
+      line-height: 2rem;
+    }
+    .grid-4 {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
+      gap: 16px;
     }
-    .domain-card {
-      background: var(--white);
-      border: 1px solid var(--n100);
-      border-radius: 14px;
-      padding: 18px;
-      cursor: pointer;
-      transition: box-shadow 0.15s, transform 0.12s, border-color 0.15s;
-      display: flex; flex-direction: column; gap: 10px;
-    }
-    .domain-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); transform: translateY(-2px); border-color: var(--n200); }
-    .domain-icon-row { display:flex; align-items:center; justify-content: space-between; }
-    .domain-icon {
-      width: 44px; height: 44px; border-radius: 12px;
-      display:flex; align-items:center; justify-content:center; font-size: 20px;
-    }
-    .domain-std-code {
-      font-size: 11px; font-weight: 700;
-      color: var(--blue); background: var(--blue-light);
-      border-radius: 4px; padding: 2px 6px;
-    }
-    .domain-name { font-size: 16px; font-weight: 700; color: var(--n900); }
-    .domain-focus { font-size: 12px; color: var(--n500); line-height: 1.5; }
-    .domain-skills { display:flex; gap:4px; flex-wrap:wrap; margin-top:2px; }
-    .domain-skill {
-      font-size: 10px; font-weight: 500;
-      padding: 2px 7px; border-radius: 8px;
-      background: var(--n50); color: var(--n700);
-    }
-    .domain-count {
-      font-size: 12px; font-weight: 600; color: var(--n400);
-      display:flex; align-items:center; gap:4px; margin-top:auto;
-    }
-
-    /* ── CARDS GRID ── */
-    .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
-    .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
-
-    /* Standard content card (Figma style) */
-    .c-card {
-      background: var(--white);
-      border: 1px solid var(--n100);
-      border-radius: 10px;
-      overflow: hidden;
-      display: flex; flex-direction: column;
-      cursor: pointer;
-      transition: box-shadow 0.15s, border-color 0.15s;
-    }
-    .c-card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.09); border-color: var(--n200); }
-    .c-card-img {
-      height: 150px; position: relative; overflow: hidden; flex-shrink:0;
-    }
-    .c-card-img-bg { position:absolute;inset:0;background-size:cover;background-position:center; }
-    .c-chip {
-      position:absolute; bottom:8px; left:9px;
-      background: var(--n900); color:white;
-      font-size:11px; font-weight:700;
-      padding: 3px 8px; border-radius:2px;
-    }
-    .c-chip-info   { background:#1d3e7a; }
-    .c-chip-poem   { background:#4c1d95; }
-    .c-chip-news   { background:#1d1d1d; }
-    .c-chip-arg    { background:#7c2d12; }
-    .c-chip-res    { background:#14532d; }
-    .c-bm {
-      position:absolute; top:8px; right:8px;
-      width:28px;height:28px; background:rgba(247,248,248,0.9);
-      border-radius:50%; display:flex;align-items:center;justify-content:center;
-      cursor:pointer; border:none;
-    }
-    .c-bm svg { width:13px;height:13px; }
-    .c-card-body { padding:14px; display:flex;flex-direction:column;gap:6px;flex:1; }
-    .c-date { font-size:11px; color:var(--n700); }
-    .c-title { font-size:14px; font-weight:700; color:var(--n900); line-height:1.45;
-      display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; }
-    .c-meta { font-size:11px; color:var(--n500); }
-    .c-footer {
-      margin-top:auto; padding-top:10px;
-      border-top: 1px solid var(--n50);
-      display:flex; align-items:center; justify-content:space-between;
-    }
-    .c-stds { display:flex;gap:4px;flex-wrap:wrap; }
-    .std-tag {
-      font-size:10px;font-weight:700;
-      padding:2px 5px; border-radius:4px;
-      color:var(--blue);background:var(--blue-light);
-    }
-    .std-tag.green { color:var(--green);background:var(--green-bg); }
-    .std-tag.purple { color:var(--purple);background:var(--purple-bg); }
-    .c-lexile {
-      font-size:10px;font-weight:600;color:var(--n400);
-      background:var(--n50);border-radius:4px;padding:2px 6px;
-    }
-    .c-card-actions { display:flex;gap:6px;margin-top:6px; }
-    .btn-sm {
-      flex:1; border:1px solid var(--n100); background:var(--white);
-      color:var(--n900); font-size:12px; font-weight:400;
-      border-radius:6px; cursor:pointer; padding:6px 8px;
-      transition:background 0.12s; font-family:var(--sans); white-space:nowrap;
-    }
-    .btn-sm:hover { background:var(--n50); border-color:var(--n200); }
-    .btn-sm-primary {
-      flex:1; border:1px solid var(--blue); background:var(--blue);
-      color:white; font-size:12px; font-weight:700;
-      border-radius:6px; cursor:pointer; padding:6px 8px;
-      transition:background 0.12s; font-family:var(--sans);
-    }
-    .btn-sm-primary:hover { background:#0057d4; }
-
-    /* ── ARGUMENT WRITING SECTION ── */
-    .writing-grid {
+    .grid-3 {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 14px;
-    }
-    .writing-scaffold {
-      background: var(--white);
-      border: 1px solid var(--n100);
-      border-radius: 12px;
-      padding: 18px;
-      display: flex; flex-direction: column; gap: 10px;
-      cursor: pointer;
-      transition: box-shadow 0.15s, border-color 0.15s;
-    }
-    .writing-scaffold:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.08); border-color: var(--n200); }
-    .ws-icon {
-      width: 40px; height: 40px; border-radius: 10px;
-      display:flex;align-items:center;justify-content:center; font-size:18px;
-    }
-    .ws-title { font-size:15px; font-weight:700; color:var(--n900); line-height:1.3; }
-    .ws-desc { font-size:12px; color:var(--n500); line-height:1.5; }
-    .ws-tags { display:flex;gap:5px;flex-wrap:wrap; }
-    .ws-tag {
-      font-size:10px; font-weight:600;
-      padding:2px 7px; border-radius:8px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
 
-    /* ── PAIRED TEXTS ── */
-    .paired-card {
-      background: var(--white);
-      border: 1px solid var(--n100);
-      border-radius: 12px;
+    /* ===================== ARTICLE CARD ===================== */
+    .a-card {
+      background: white;
+      border-radius: 8px;
+      border: 1px solid var(--color-neutral-100);
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .a-card-img {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: var(--color-neutral-100);
+    }
+    .a-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .a-card-bookmark {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 32px;
+      height: 32px;
+      background: rgba(255,255,255,0.92);
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      transition: box-shadow 0.15s, border-color 0.15s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.14);
     }
-    .paired-card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.08); border-color: var(--n200); }
-    .paired-header {
-      padding: 14px 16px 12px;
-      display: flex; align-items: flex-start; justify-content: space-between;
+    .a-card-chip {
+      position: absolute;
+      bottom: 7.5px;
+      left: 8px;
+      background: var(--color-neutral-700);
+      color: white;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.71;
+      padding: 0 8px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      border-radius: 2px;
     }
-    .paired-label {
-      font-size: 10px; font-weight: 700; color: var(--n400);
-      text-transform: uppercase; letter-spacing: 0.5px;
+    .a-card-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      flex: 1;
     }
-    .paired-title { font-size: 15px; font-weight: 700; color: var(--n900); line-height: 1.35; margin-top:3px; }
-    .paired-texts { padding: 0 16px 14px; display:flex; flex-direction:column; gap:6px; }
-    .paired-text-item {
-      display:flex; align-items:center; gap:8px;
-      padding: 8px 10px; border-radius: 8px;
-      background: var(--n50);
+    .a-card-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
-    .pt-icon { font-size:14px; flex-shrink:0; }
-    .pt-text { flex:1; }
-    .pt-label { font-size:11px; font-weight:700; color:var(--n900); }
-    .pt-meta { font-size:10px; color:var(--n500); }
-    .pt-lexile {
-      font-size:10px; font-weight:600; color:var(--n400);
-      background:var(--white); border: 1px solid var(--n100);
-      border-radius:4px; padding:1px 5px; flex-shrink:0;
+    .a-card-date {
+      font-size: 0.75rem;
+      color: var(--color-neutral-600);
+      line-height: 1rem;
     }
-    .paired-footer {
-      border-top: 1px solid var(--n100); padding:10px 16px;
-      display:flex; align-items:center; gap:6px;
+    .a-card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-neutral-700);
+      line-height: 1.5rem;
+      height: 48px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
-
-    /* ── GRAMMAR MINI-LESSON ── */
-    .grammar-row {
-      display: grid;
-      grid-template-columns: repeat(4,1fr);
-      gap: 12px;
+    .a-card-levels {
+      font-size: 0.75rem;
+      color: var(--color-neutral-500);
+      line-height: 1rem;
+      display: flex;
+      gap: 8px;
+      white-space: nowrap;
     }
-    .grammar-card {
-      background: var(--white);
-      border: 1px solid var(--n100);
-      border-radius: 10px;
-      padding: 14px;
-      display:flex; flex-direction:column; gap:8px;
-      cursor:pointer;
-      transition: box-shadow 0.15s, border-color 0.15s;
-    }
-    .grammar-card:hover { box-shadow: 0 3px 12px rgba(0,0,0,0.08); border-color: var(--n200); }
-    .grammar-icon { font-size:22px; }
-    .grammar-std {
-      font-size:10px; font-weight:700;
-      color:var(--purple); background:var(--purple-bg);
-      border-radius:4px; padding:2px 6px; width:fit-content;
-    }
-    .grammar-title { font-size:13px; font-weight:700; color:var(--n900); line-height:1.35; }
-    .grammar-desc { font-size:11px; color:var(--n500); line-height:1.5; }
-    .grammar-duration {
-      font-size:10px; color:var(--n400); font-weight:500;
-      margin-top:auto;
-    }
-
-    /* ── NJSLA PREP SECTION ── */
-    .prep-banner {
-      background: linear-gradient(130deg, #fef2f2 0%, #fff1f1 100%);
-      border: 1.5px solid var(--red-border);
-      border-radius: 14px;
-      padding: 20px 24px;
-      display: flex; align-items: center; justify-content: space-between; gap: 20px;
-    }
-    .prep-left { display:flex;align-items:center;gap:16px; }
-    .prep-icon-wrap {
-      width:48px;height:48px; border-radius:12px;
-      background:var(--red); display:flex;align-items:center;justify-content:center;
-      font-size:22px; flex-shrink:0;
-    }
-    .prep-title { font-size:18px;font-weight:700;color:var(--n900);line-height:1.2; }
-    .prep-desc { font-size:13px;color:var(--n700);margin-top:3px; }
-    .prep-actions { display:flex;gap:8px;flex-shrink:0; }
-    .btn-red {
-      background:var(--red); color:white; border:none;
-      font-size:14px;font-weight:700; border-radius:8px;
-      padding:10px 20px; cursor:pointer; font-family:var(--sans);
-      white-space:nowrap; transition:opacity 0.12s;
-    }
-    .btn-red:hover { opacity:0.88; }
-    .btn-red-outline {
-      background:white; color:var(--red);
-      border:1.5px solid var(--red);
-      font-size:14px;font-weight:600; border-radius:8px;
-      padding:10px 20px; cursor:pointer; font-family:var(--sans);
-      white-space:nowrap;
+    .a-card-cta {
+      display: flex;
+      gap: 8px;
+      margin-top: auto;
     }
 
-    /* ── NJSLA PREP CARDS ── */
-    .prep-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
-    .prep-card {
-      background:var(--white); border:1.5px solid var(--red-border);
-      border-radius:10px; padding:16px;
-      display:flex;flex-direction:column;gap:8px;
-      cursor:pointer; transition:box-shadow 0.15s;
-    }
-    .prep-card:hover { box-shadow: 0 4px 14px rgba(220,38,38,0.12); }
-    .prep-card-icon { font-size:20px; }
-    .prep-card-title { font-size:14px;font-weight:700;color:var(--n900); }
-    .prep-card-desc { font-size:12px;color:var(--n500);line-height:1.5; }
-    .prep-card-tags { display:flex;gap:5px;flex-wrap:wrap;margin-top:auto; }
-    .prep-tag {
-      font-size:10px;font-weight:700;
-      padding:2px 6px;border-radius:4px;
-      color:var(--red);background:var(--red-bg);
-    }
+    /* Placeholder image gradients */
+    .ph-dogs      { background: linear-gradient(160deg, #b8924a 0%, #e4c988 60%, #c8a96e 100%); }
+    .ph-butterfly { background: linear-gradient(160deg, #1d6b38 0%, #3caa60 50%, #a2d96f 100%); }
+    .ph-kayak     { background: linear-gradient(160deg, #1a3d5c 0%, #1a6fa0 60%, #6ec1e8 100%); }
+    .ph-credit    { background: linear-gradient(160deg, #a01818 0%, #c83030 60%, #e88080 100%); }
+    .ph-soccer    { background: linear-gradient(160deg, #c05a10 0%, #e07a30 60%, #f0b060 100%); }
+    .ph-wind      { background: linear-gradient(160deg, #e06010 0%, #f08820 50%, #1a3050 100%); }
 
-    /* ── VOCAB / TOOLS CARDS ── */
-    .tools-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
-    .tool-card {
-      background: var(--white);
-      border: 1px solid var(--n100);
-      border-radius: 10px;
-      padding: 14px;
-      display:flex;flex-direction:column;gap:8px;
-      cursor:pointer;
-      transition: box-shadow 0.15s, border-color 0.15s;
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--color-neutral-50);
+      margin: 0;
     }
-    .tool-card:hover { box-shadow: 0 3px 12px rgba(0,0,0,0.08); border-color: var(--n200); }
-    .tool-icon-row { display:flex;align-items:center;gap:8px; }
-    .tool-icon {
-      width:36px;height:36px;border-radius:9px;
-      display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;
-    }
-    .tool-title { font-size:13px;font-weight:700;color:var(--n900); }
-    .tool-desc { font-size:11px;color:var(--n500);line-height:1.5; }
-
-    /* horizontal scrollable carousel */
-    .h-scroll {
-      display:flex;gap:12px;overflow-x:auto;padding-bottom:4px;
-      scrollbar-width:thin;scrollbar-color:var(--n100) transparent;
-    }
-    .h-scroll::-webkit-scrollbar{height:4px;}
-    .h-scroll::-webkit-scrollbar-thumb{background:var(--n100);border-radius:4px;}
-    .h-card-sm { flex:0 0 200px; }
   </style>
 </head>
 <body>
 
-<!-- ════════ NAV ════════ -->
-<nav class="nav">
-  <div class="nav-left">
-    <div class="nav-hamburger">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
+  <!-- ============ NAV ============ -->
+  <nav class="nav">
+    <!-- Waffle + Logo -->
+    <div class="nav-waffle">
+      <span></span><span></span><span></span>
+      <span></span><span></span><span></span>
+      <span></span><span></span><span></span>
     </div>
-    <div class="nav-n-logo">
-      <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-        <rect width="44" height="44" rx="4" fill="rgba(255,255,255,0.15)"/>
-        <path d="M10 22L18 14L26 22L34 14" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M10 30L18 22L26 30L34 22" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>
+    <div class="nav-logo">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M12 3L3 8.5V15.5L12 21L21 15.5V8.5L12 3Z" fill="#0a6efa"/>
+        <path d="M12 3L21 8.5L12 14L3 8.5L12 3Z" fill="#4d9fff"/>
       </svg>
     </div>
-    <div class="nav-search">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#424147" stroke-width="1.8"/><path d="M16.5 16.5L21 21" stroke="#424147" stroke-width="1.8" stroke-linecap="round"/></svg>
-      <span>Search for texts and more</span>
-    </div>
-  </div>
-  <div class="nav-right">
-    <button class="nav-pill active">
-      <svg viewBox="0 0 14 14" fill="white"><path d="M7 1l1.4 2.9 3.1.5-2.3 2.2.5 3.1L7 8.2l-2.7 1.5.5-3.1L2.5 4.4l3.1-.5z"/></svg>
-      ELA
-    </button>
-    <button class="nav-pill">Social Studies</button>
-    <button class="nav-pill">Science</button>
-    <button class="nav-pill">
-      Content library
-      <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-    <button class="nav-pill">
-      Classes
-      <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-    <button class="nav-pill">Assignments</button>
-    <div class="nav-profile">
-      <div class="nav-avatar">SC</div>
-      <svg class="nav-chevron" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </div>
-  </div>
-</nav>
 
-<!-- ════════ NJSLA ALERT ════════ -->
-<div class="njsla-alert">
-  <div class="njsla-alert-left">
-    <span class="njsla-countdown">⚠️ 20 DAYS</span>
-    <span><strong>NJSLA ELA Assessment</strong> opens April 28 — test prep resources available now</span>
-  </div>
-  <div class="njsla-alert-right">
-    <button class="njsla-btn">Open Practice Passages</button>
-    <button class="njsla-btn-ghost">View NJSLA Prep Hub →</button>
-  </div>
-</div>
-
-<!-- ════════ BODY ════════ -->
-<div class="page-body">
-
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="sidebar-label">Navigation</div>
-    <a href="#" class="sidebar-link active">
-      <div class="sidebar-link-left">
-        <svg viewBox="0 0 14 14" fill="none"><rect x="1.5" y="1.5" width="11" height="11" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M4 5h6M4 7.5h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-        Home
-      </div>
-    </a>
-    <a href="explore-ela8-nj.html" class="sidebar-link">
-      <div class="sidebar-link-left">
-        <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.4"/><path d="M7 4v6M4 7h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-        Explore Content
-      </div>
-      <span class="sidebar-count">248</span>
-    </a>
-    <a href="#" class="sidebar-link">
-      <div class="sidebar-link-left">
-        <svg viewBox="0 0 14 14" fill="none"><rect x="2" y="2" width="10" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M5 5h4M5 7.5h2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-        Assignments
-      </div>
-    </a>
-    <a href="#" class="sidebar-link">
-      <div class="sidebar-link-left">
-        <svg viewBox="0 0 14 14" fill="none"><path d="M2 11V3M5 11V6M8 11V4M11 11V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-        Reporting
-      </div>
-    </a>
-
-    <div class="sidebar-divider"></div>
-
-    <div class="sidebar-label">Standards · NJSLS-ELA</div>
-
-    <div class="sidebar-domain open">
-      <div class="sidebar-link-left" style="font-size:12px;font-weight:600;color:var(--n900);">
-        📖 Reading
-      </div>
-      <span class="sidebar-domain-code">RL · RI</span>
-    </div>
-    <a href="#" class="sidebar-link" style="padding-left:32px;font-size:12px;">
-      <div class="sidebar-link-left">Literary Text (RL.8)</div>
-      <span class="sidebar-count">52</span>
-    </a>
-    <a href="#" class="sidebar-link" style="padding-left:32px;font-size:12px;">
-      <div class="sidebar-link-left">Info Text (RI.8)</div>
-      <span class="sidebar-count">61</span>
-    </a>
-
-    <div class="sidebar-domain">
-      <div class="sidebar-link-left" style="font-size:12px;font-weight:600;color:var(--n900);">
-        ✍️ Writing
-      </div>
-      <span class="sidebar-domain-code">W.8</span>
-    </div>
-    <div class="sidebar-domain">
-      <div class="sidebar-link-left" style="font-size:12px;font-weight:600;color:var(--n900);">
-        🗣️ Speaking &amp; Listening
-      </div>
-      <span class="sidebar-domain-code">SL.8</span>
-    </div>
-    <div class="sidebar-domain">
-      <div class="sidebar-link-left" style="font-size:12px;font-weight:600;color:var(--n900);">
-        🔤 Language
-      </div>
-      <span class="sidebar-domain-code">L.8</span>
+    <!-- Search -->
+    <div class="nav-search-wrap">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M6.5 11a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zm4.293-.207 2.914 2.914a1 1 0 0 1-1.414 1.414L9.38 12.207A5.5 5.5 0 1 1 10.793 10.793z" fill="#9b9aa0"/>
+      </svg>
+      <input class="nav-search" type="text" placeholder="Search for texts and more">
     </div>
 
-    <div class="sidebar-divider"></div>
+    <!-- Tabs -->
+    <div class="nav-tabs">
+      <a class="nav-tab active">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="1" y="1" width="11" height="11" rx="2" stroke="white" stroke-width="1.5"/><path d="M4 6.5h5M6.5 4v5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+        ELA
+      </a>
+      <a class="nav-tab">Social Studies</a>
+      <a class="nav-tab">Science</a>
+      <a class="nav-tab">Content library <div class="chevron-down"></div></a>
+      <a class="nav-tab">Classes <div class="chevron-down"></div></a>
+      <a class="nav-tab">Assignments</a>
+    </div>
 
-    <div class="sidebar-label">NJ Requirements</div>
-    <a href="#" class="sidebar-link">
-      <div class="sidebar-link-left">✊ Amistad Act</div>
-    </a>
-    <a href="#" class="sidebar-link">
-      <div class="sidebar-link-left">✡ Holocaust Ed.</div>
-    </a>
-    <a href="#" class="sidebar-link">
-      <div class="sidebar-link-left">🌈 Inclusive Rep.</div>
-    </a>
-    <a href="#" class="sidebar-link">
-      <div class="sidebar-link-left">🌱 Climate Literacy</div>
-    </a>
-  </aside>
+    <!-- Right: profile + settings -->
+    <div class="nav-right">
+      <div class="nav-profile">
+        <div class="nav-avatar">NM</div>
+        <span class="nav-profile-name">NM</span>
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style="margin-left:2px"><path d="M1 1l4 4 4-4" stroke="var(--color-core-700)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="nav-icon-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+      </div>
+    </div>
+  </nav>
 
-  <!-- MAIN CONTENT -->
-  <main class="main">
 
-    <!-- ── TOP ROW: FEATURED + THIS WEEK ── -->
-    <div class="top-row">
+  <!-- ============ HERO: Current Unit + Side Panel ============ -->
+  <section class="hero-section">
+    <div class="hero-row">
 
-      <!-- Left: Featured + quick pills -->
+      <!-- Featured Card Column -->
       <div class="featured-col">
+        <h2 class="section-heading">Current Unit</h2>
 
-        <!-- Greeting -->
-        <div style="display:flex;align-items:baseline;gap:8px;">
-          <span style="font-size:22px;font-weight:700;color:var(--n900);">Good morning, Ms. Carter 👋</span>
-          <span style="font-size:14px;color:var(--n500);">Grade 8 ELA · April 8, 2026</span>
-        </div>
-
-        <!-- Featured hero card -->
-        <div class="hero-card">
-          <div class="hero-image">
-            <div class="hero-image-bg" style="background:linear-gradient(160deg,#1a3a2a 0%,#0d5c38 45%,#166534 100%);"></div>
-            <!-- subtle texture overlay -->
-            <div style="position:absolute;inset:0;background:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22><path d=%22M0 20h40M20 0v40%22 stroke=%22rgba(255,255,255,0.04)%22 stroke-width=%221%22/></svg>');"></div>
-            <span class="hero-chip">Featured Unit</span>
-            <button class="hero-bm">
-              <svg viewBox="0 0 16 16" fill="none"><path d="M3 2h10v12l-5-3-5 3V2z" stroke="#5B5A61" stroke-width="1.5" stroke-linejoin="round"/></svg>
-            </button>
-            <div class="hero-title-bar">
-              <h2>Coming of Age: Identity, Belonging &amp; Voice</h2>
+        <div class="featured-card">
+          <!-- Image area -->
+          <div class="featured-card-img-wrap">
+            <img src="https://newsela.imgix.net/article_media/2017/06/lib-history-july-4th-d137a88b.jpg" alt="Liberty and Equality — All Men Are Created Equal">
+            <!-- Bookmark -->
+            <div class="featured-bookmark-btn">
+              <svg width="13" height="15" viewBox="0 0 13 17" fill="none" stroke="#424147" stroke-width="1.6" stroke-linejoin="round">
+                <path d="M1.5 1.5h10v14l-5-3.5-5 3.5V1.5z"/>
+              </svg>
+            </div>
+            <!-- Category chip -->
+            <div class="featured-chip">Amplify ELA · Grade 8</div>
+            <!-- Title gradient band -->
+            <div class="featured-title-band">
+              <p>Unit 8B: Liberty and Equality</p>
             </div>
           </div>
-          <div class="hero-lower">
-            <div class="hero-date">Recommended for Q3 · 5-week unit</div>
-            <p class="hero-desc">Pairing <em>The Outsiders</em> with contemporary nonfiction on teen identity and social inequality. Covers RL.8.1–8.3, RI.8.6, W.8.1 argument writing, and meets NJ Amistad Act requirements. Ideal for April — strong argument writing scaffold builds directly into NJSLA prep.</p>
-            <div class="hero-tags">
-              <span class="hero-tag tag-blue">RL.8 · RI.8 · W.8.1</span>
-              <span class="hero-tag tag-green">✊ Amistad</span>
-              <span class="hero-tag tag-grey">750–970L</span>
-              <span class="hero-tag tag-grey">5 weeks</span>
+
+          <!-- Lower card content -->
+          <div class="featured-lower">
+            <!-- Date + icons -->
+            <div>
+              <div class="card-meta-top" style="margin-bottom:8px;">
+                <span class="card-date">Mar 03, 2026</span>
+                <div class="card-icons-row">
+                  <!-- Power word icon -->
+                  <div class="icon-16">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="#d4a000">
+                      <path d="M8.5 1L5 8h3.5L7 15l7-9h-4.5L12 1H8.5z"/>
+                    </svg>
+                  </div>
+                  <!-- Formative check icon -->
+                  <div class="icon-16">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <circle cx="8" cy="8" r="6.5" fill="#35b89c" opacity="0.9"/>
+                      <path d="M5 8l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <!-- Spanish icon -->
+                  <div class="icon-16">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <rect x="1.5" y="2.5" width="13" height="11" rx="2" fill="#e03535" opacity="0.9"/>
+                      <text x="4" y="11.5" font-size="7" font-weight="700" fill="white" font-family="sans-serif">ES</text>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <p class="card-body-text">This unit examines the ways Americans have tried to live up to the foundational creed that "all men are created equal" — from the Declaration of Independence through the Abolition Movement and beyond. Students analyze primary sources, speeches, and arguments from key historical figures.</p>
             </div>
-            <div class="hero-actions">
-              <button class="btn-outline">Preview Unit</button>
-              <button class="btn-filled">Add to Course</button>
+
+            <!-- Tags -->
+            <div class="badge-row">
+              <span class="badge badge-green">Argument Writing</span>
+              <span class="badge badge-green">Primary Sources</span>
+              <span class="badge badge-blue">RI.8.6</span>
+              <span class="badge badge-blue">W.8.1</span>
+            </div>
+
+            <!-- CTA buttons -->
+            <div class="cta-row">
+              <button class="btn-large btn-secondary-large">Share</button>
+              <button class="btn-large btn-primary-large">Assign This Unit</button>
             </div>
           </div>
         </div>
-
-        <!-- Quick-access pills -->
-        <div class="quick-pills">
-          <div class="quick-pill" style="background:#d3fbf2;">
-            <span class="pill-icon">⚖️</span> Text Leveler
-          </div>
-          <div class="quick-pill" style="background:#fde7c7;">
-            <span class="pill-icon">📊</span> Reports
-          </div>
-          <div class="quick-pill" style="background:#deecff;">
-            <span class="pill-icon">🏫</span> District Promoted
-          </div>
-          <div class="quick-pill" style="background:#f3e8ff;">
-            <span class="pill-icon">📋</span> Assignments
-          </div>
-          <div class="quick-pill" style="background:#fef9c3;">
-            <span class="pill-icon">🔖</span> Saved
-          </div>
-        </div>
-
       </div>
 
-      <!-- Right: This Week + Pacing -->
-      <div class="week-col">
+      <!-- Side Panel -->
+      <div class="side-panel">
 
-        <!-- This Week Widget -->
-        <div class="week-widget">
-          <div class="week-header">
-            <div class="week-header-title">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="2.5" width="11" height="10" rx="1.5" stroke="white" stroke-width="1.3"/><path d="M4.5 1v3M9.5 1v3M1.5 6h11" stroke="white" stroke-width="1.3" stroke-linecap="round"/></svg>
-              This Week
+        <h2 class="section-heading">Recent activity</h2>
+
+        <div class="side-panel-cards">
+
+        <!-- Recent Assignments -->
+        <div class="panel-card">
+          <div class="panel-header">
+            <div class="panel-title">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <rect x="2" y="3" width="16" height="14" rx="2" fill="#0a6efa" opacity="0.15"/>
+                <path d="M5 7h10M5 10h8M5 13h6" stroke="#0a6efa" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              Recent Assignments
             </div>
-            <div class="week-header-date">Apr 8–12, 2026</div>
+            <button class="btn-view-all">View all</button>
           </div>
-          <div class="week-body">
-            <div class="week-item">
-              <div class="week-dot" style="background:#dc2626;"></div>
-              <div class="week-item-text">
-                <div class="week-item-label">NJSLA Prep — Argument Practice</div>
-                <div class="week-item-sub">Focus: citing textual evidence · RI.8.8</div>
-              </div>
+
+          <div class="horiz-article">
+            <div class="article-thumb">
+              <img src="https://newsela.imgix.net/article_media/2020/11/primary-source-narrative-of-frederick-douglass-9d8d8608.jpg" alt="">
             </div>
-            <div class="week-item">
-              <div class="week-dot" style="background:#0a6efa;"></div>
-              <div class="week-item-text">
-                <div class="week-item-label">Unit 4: Argumentative Essay Draft</div>
-                <div class="week-item-sub">W.8.1a–e · Peer review Thursday</div>
+            <div class="article-info">
+              <div class="article-meta-row">
+                <span class="article-assigned">Assigned 3/17/2026</span>
+                <span class="article-status s-done"><span class="status-dot"></span>Done</span>
               </div>
+              <div class="article-title-text">Narrative of the Life of Frederick Douglass</div>
             </div>
-            <div class="week-item">
-              <div class="week-dot" style="background:#7c3aed;"></div>
-              <div class="week-item-text">
-                <div class="week-item-label">Grammar Mini-lesson: Verbals</div>
-                <div class="week-item-sub">Gerunds &amp; participles · L.8.1a</div>
-              </div>
+          </div>
+
+          <div class="horiz-article">
+            <div class="article-thumb">
+              <img src="https://newsela.imgix.net/article_media/2019/10/lib-primary-source-civil-war-secession-diary-3eff55b7.jpg" alt="">
             </div>
-            <div class="week-divider"></div>
-            <div class="week-item">
-              <div class="week-dot" style="background:#d97706;"></div>
-              <div class="week-item-text">
-                <div class="week-item-label">Vocab Check — Context Clues</div>
-                <div class="week-item-sub">Tier 2 academic words · L.8.4</div>
+            <div class="article-info">
+              <div class="article-meta-row">
+                <span class="article-assigned">Assigned 3/15/2026</span>
+                <span class="article-status s-progress"><span class="status-dot"></span>In progress</span>
               </div>
+              <div class="article-title-text">First-person account: A secessionist housewife</div>
             </div>
-            <div class="week-item">
-              <div class="week-dot" style="background:#059669;"></div>
-              <div class="week-item-text">
-                <div class="week-item-label">Reading: Paired Text Discussion</div>
-                <div class="week-item-sub">Socratic seminar · SL.8.1</div>
+          </div>
+
+          <div class="horiz-article">
+            <div class="article-thumb">
+              <img src="https://newsela.imgix.net/article_media/2018/09/letters-from-a-mill-girl-2106aba5.jpg" alt="">
+            </div>
+            <div class="article-info">
+              <div class="article-meta-row">
+                <span class="article-assigned">Assigned 3/11/2026</span>
+                <span class="article-status s-draft"><span class="status-dot"></span>Draft</span>
               </div>
+              <div class="article-title-text">Dear Mama: Letters from a Mill Girl</div>
             </div>
           </div>
         </div>
 
-        <!-- Pacing Strip -->
-        <div class="pacing-strip">
-          <div class="pacing-title">📅 Year Pacing — Where You Are</div>
-          <div style="position:relative;">
-            <div class="pacing-bar">
-              <div class="pacing-fill" style="width:60%;"></div>
+        <!-- Newsela Writing / Luna -->
+        <div class="panel-card">
+          <div class="panel-header">
+            <div class="writing-header-left">
+              <span class="panel-title">Newsela Writing</span>
+              <span class="luna-tag">LUNA ✦</span>
             </div>
-            <div class="pacing-marker" style="left:60%;top:-2px;"></div>
-            <div class="pacing-marker" style="left:67%;top:-2px;background:var(--amber);border-color:white;"></div>
+            <button class="btn-start-new">Start New</button>
           </div>
-          <div class="pacing-labels">
-            <span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span><span style="color:var(--red);font-weight:700;">Apr</span><span>May</span><span>Jun</span>
-          </div>
-          <div class="pacing-legend">
-            <div class="pacing-legend-item">
-              <div class="pacing-legend-dot" style="background:var(--red);"></div>
-              Today (Apr 8)
-            </div>
-            <div class="pacing-legend-item">
-              <div class="pacing-legend-dot" style="background:var(--amber);"></div>
-              NJSLA (Apr 28)
-            </div>
-          </div>
-          <div style="font-size:11px;color:var(--n500);margin-top:8px;line-height:1.5;">
-            You're in <strong>Unit 4 of 5</strong>. On track for end-of-year completion. 7 weeks of instruction remaining.
-          </div>
-        </div>
 
-        <!-- Key Dates -->
-        <div style="background:var(--white);border:1px solid var(--n100);border-radius:12px;overflow:hidden;">
-          <div style="padding:10px 14px;background:var(--n50);border-bottom:1px solid var(--n100);font-size:11px;font-weight:700;color:var(--n700);text-transform:uppercase;letter-spacing:0.5px;">
-            Key Dates
+          <div class="horiz-article">
+            <div class="article-thumb">
+              <img src="https://newsela.imgix.net/article_media/2017/06/lib-history-july-4th-d137a88b.jpg" alt="">
+            </div>
+            <div class="article-info">
+              <div class="article-meta-row">
+                <span class="article-assigned">Assigned 3/17/2026</span>
+                <span class="article-status s-submitted"><span class="status-dot"></span>Submitted</span>
+              </div>
+              <div class="article-title-text">"All Men Are Created Equal" — Argument Essay</div>
+            </div>
           </div>
-          <div style="padding:6px 0;">
-            <div style="padding:8px 14px;display:flex;align-items:center;gap:8px;">
-              <span style="font-size:11px;font-weight:700;color:var(--red);background:var(--red-bg);border-radius:4px;padding:2px 7px;flex-shrink:0;">APR 28</span>
-              <span style="font-size:12px;color:var(--n900);">NJSLA ELA window opens</span>
+
+          <div class="horiz-article">
+            <div class="article-thumb">
+              <img src="https://newsela.imgix.net/article_media/2019/07/lib-frederick-douglass-causes-civil-war-5a7c467b.jpg" alt="">
             </div>
-            <div style="padding:8px 14px;display:flex;align-items:center;gap:8px;">
-              <span style="font-size:11px;font-weight:700;color:var(--amber);background:var(--amber-bg);border-radius:4px;padding:2px 7px;flex-shrink:0;">MAY 23</span>
-              <span style="font-size:12px;color:var(--n900);">NJSLA ELA window closes</span>
+            <div class="article-info">
+              <div class="article-meta-row">
+                <span class="article-assigned">Assigned 3/11/2026</span>
+                <span class="article-status s-submitted"><span class="status-dot"></span>Submitted</span>
+              </div>
+              <div class="article-title-text">Abolitionist Speeches — Rhetorical Analysis</div>
             </div>
-            <div style="padding:8px 14px;display:flex;align-items:center;gap:8px;">
-              <span style="font-size:11px;font-weight:700;color:var(--green);background:var(--green-bg);border-radius:4px;padding:2px 7px;flex-shrink:0;">JUN 13</span>
-              <span style="font-size:12px;color:var(--n900);">Last day of instruction</span>
+          </div>
+
+          <div class="horiz-article">
+            <div class="article-thumb">
+              <img src="https://newsela.imgix.net/article_media/2019/09/lib-antebellum-reform-728015a4.png" alt="">
             </div>
-            <div style="padding:8px 14px;display:flex;align-items:center;gap:8px;">
-              <span style="font-size:11px;font-weight:700;color:var(--blue);background:var(--blue-light);border-radius:4px;padding:2px 7px;flex-shrink:0;">JUN 20</span>
-              <span style="font-size:12px;color:var(--n900);">Final grades due</span>
+            <div class="article-info">
+              <div class="article-meta-row">
+                <span class="article-assigned">Assigned 3/5/2026</span>
+                <span class="article-status s-submitted"><span class="status-dot"></span>Submitted</span>
+              </div>
+              <div class="article-title-text">Abolition Movement — Compare & Contrast</div>
             </div>
           </div>
         </div>
 
-      </div>
+        </div><!-- end side-panel-cards -->
+
+      </div><!-- end side-panel -->
+    </div><!-- end hero-row -->
+  </section>
+
+
+  <!-- ============ STANDARDS PILLS ============ -->
+  <section class="standards-section">
+    <div class="standards-section-label">Standards for current unit</div>
+    <div class="standards-row">
+
+      <!-- Reading Informational (RI) — Unit 8B is primarily nonfiction/argument -->
+      <a class="std-pill std-ri" href="#">RI.8.1
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M6 1.5h3.5V5M9.5 1.5L4.5 6.5M2 3H1v7h7V8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="std-pill std-ri" href="#">RI.8.2
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M6 1.5h3.5V5M9.5 1.5L4.5 6.5M2 3H1v7h7V8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="std-pill std-ri" href="#">RI.8.6
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M6 1.5h3.5V5M9.5 1.5L4.5 6.5M2 3H1v7h7V8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="std-pill std-ri" href="#">RI.8.8
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M6 1.5h3.5V5M9.5 1.5L4.5 6.5M2 3H1v7h7V8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+
+      <!-- Reading Literature (RL) — narrative/perspective pieces in unit -->
+      <a class="std-pill std-rl" href="#">RL.8.1
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M6 1.5h3.5V5M9.5 1.5L4.5 6.5M2 3H1v7h7V8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="std-pill std-rl" href="#">RL.8.6
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M6 1.5h3.5V5M9.5 1.5L4.5 6.5M2 3H1v7h7V8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+
+      <!-- Writing (W) — argument writing focus -->
+      <a class="std-pill std-w" href="#">W.8.1
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M6 1.5h3.5V5M9.5 1.5L4.5 6.5M2 3H1v7h7V8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="std-pill std-w" href="#">W.8.4
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M6 1.5h3.5V5M9.5 1.5L4.5 6.5M2 3H1v7h7V8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="std-pill std-w" href="#">W.8.9
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M6 1.5h3.5V5M9.5 1.5L4.5 6.5M2 3H1v7h7V8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+
+      <!-- Speaking & Listening (SL) -->
+      <a class="std-pill std-sl" href="#">SL.8.1
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M6 1.5h3.5V5M9.5 1.5L4.5 6.5M2 3H1v7h7V8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="std-pill std-sl" href="#">SL.8.3
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M6 1.5h3.5V5M9.5 1.5L4.5 6.5M2 3H1v7h7V8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+
+      <!-- Language (L) -->
+      <a class="std-pill std-l" href="#">L.8.1
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M6 1.5h3.5V5M9.5 1.5L4.5 6.5M2 3H1v7h7V8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="std-pill std-l" href="#">L.8.4
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M6 1.5h3.5V5M9.5 1.5L4.5 6.5M2 3H1v7h7V8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+
     </div>
+  </section>
 
-    <!-- ── NJSLA PREP ── -->
-    <section class="section">
-      <div class="prep-banner">
-        <div class="prep-left">
-          <div class="prep-icon-wrap">📝</div>
-          <div>
-            <div class="prep-title">NJSLA Test Prep Hub — ELA Grade 8</div>
-            <div class="prep-desc">Practice passages, released items, and evidence-based writing prompts. Window opens April 28.</div>
+
+
+
+  <!-- ============ 4-COL GRID: Unit 8B Text Sets ============ -->
+  <section class="grid-section">
+    <h3 class="grid-heading">Unit 8B: Liberty and Equality</h3>
+    <div class="grid-4">
+
+      <!-- Card 1: All Men Are Created Equal -->
+      <div class="a-card">
+        <div class="a-card-img">
+          <img src="https://newsela.imgix.net/article_media/2017/06/lib-history-july-4th-d137a88b.jpg" alt="All Men Are Created Equal">
+          <div class="a-card-bookmark">
+            <svg width="12" height="14" viewBox="0 0 12 16" fill="none" stroke="#424147" stroke-width="1.5" stroke-linejoin="round">
+              <path d="M1 1h10v14l-5-3.5L1 15V1z"/>
+            </svg>
           </div>
+          <div class="a-card-chip">Text Set</div>
         </div>
-        <div class="prep-actions">
-          <button class="btn-red-outline">Released Items</button>
-          <button class="btn-red">Open Prep Hub →</button>
-        </div>
-      </div>
-      <div class="prep-grid">
-        <div class="prep-card">
-          <div class="prep-card-icon">📄</div>
-          <div class="prep-card-title">Practice Passages — Literary</div>
-          <div class="prep-card-desc">12 released passages with close-reading questions at 3 text complexity levels. Mirrors NJSLA format exactly.</div>
-          <div class="prep-card-tags">
-            <span class="prep-tag">RL.8.1</span>
-            <span class="prep-tag">RL.8.2</span>
-            <span class="prep-tag">RL.8.4</span>
+        <div class="a-card-body">
+          <div class="a-card-meta">
+            <div class="a-card-date">Mar 03, 2026</div>
+            <div class="a-card-title">"All Men Are Created Equal"</div>
+            <div class="a-card-levels">
+              <span>Maturity level: 6th-12th</span>
+              <span>Reading: 800-1100L</span>
+            </div>
           </div>
-        </div>
-        <div class="prep-card">
-          <div class="prep-card-icon">📰</div>
-          <div class="prep-card-title">Practice Passages — Informational</div>
-          <div class="prep-card-desc">10 nonfiction passages including paired-text sets. Evidence-based argument analysis included.</div>
-          <div class="prep-card-tags">
-            <span class="prep-tag">RI.8.6</span>
-            <span class="prep-tag">RI.8.8</span>
-            <span class="prep-tag">RI.8.9</span>
-          </div>
-        </div>
-        <div class="prep-card">
-          <div class="prep-card-icon">✍️</div>
-          <div class="prep-card-title">Evidence-Based Writing Prompts</div>
-          <div class="prep-card-desc">NJSLA-style extended writing tasks with scoring rubric. Argument and literary analysis formats.</div>
-          <div class="prep-card-tags">
-            <span class="prep-tag">W.8.1</span>
-            <span class="prep-tag">W.8.2</span>
-            <span class="prep-tag">W.8.9</span>
+          <div class="a-card-cta">
+            <button class="btn-medium btn-muted-medium">Add to assign...</button>
+            <button class="btn-medium btn-muted-medium">Assign</button>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- ── STANDARDS BY DOMAIN ── -->
-    <section class="section">
-      <div class="sec-head">
-        <div>
-          <div class="sec-title">Standards by Domain — NJSLS-ELA Grade 8</div>
-          <div class="sec-sub">Browse by domain · 1–2 clicks to aligned resources</div>
+      <!-- Card 2: Abolition Movement -->
+      <div class="a-card">
+        <div class="a-card-img">
+          <img src="https://newsela.imgix.net/article_media/2019/09/lib-antebellum-reform-728015a4.png" alt="Abolition Movement">
+          <div class="a-card-bookmark">
+            <svg width="12" height="14" viewBox="0 0 12 16" fill="none" stroke="#424147" stroke-width="1.5" stroke-linejoin="round"><path d="M1 1h10v14l-5-3.5L1 15V1z"/></svg>
+          </div>
+          <div class="a-card-chip">Text Set</div>
         </div>
-        <a href="#" class="sec-cta">View all standards
-          <svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M8 3.5l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-      <div class="domain-grid">
-
-        <div class="domain-card">
-          <div class="domain-icon-row">
-            <div class="domain-icon" style="background:#fff0f0;">📖</div>
-            <span class="domain-std-code">RL.8</span>
-          </div>
-          <div class="domain-name">Reading: Literature</div>
-          <div class="domain-focus">Textual evidence, theme, character development, author's craft, figurative language in literary texts</div>
-          <div class="domain-skills">
-            <span class="domain-skill">RL.8.1 Evidence</span>
-            <span class="domain-skill">RL.8.2 Theme</span>
-            <span class="domain-skill">RL.8.3 Character</span>
-            <span class="domain-skill">RL.8.4 Craft</span>
-          </div>
-          <div class="domain-count">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2h8v8H2z" stroke="currentColor" stroke-width="1.3" rx="1"/><path d="M4 5h4M4 7h2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-            52 texts available
-          </div>
-        </div>
-
-        <div class="domain-card">
-          <div class="domain-icon-row">
-            <div class="domain-icon" style="background:#f0f4ff;">📰</div>
-            <span class="domain-std-code">RI.8</span>
-          </div>
-          <div class="domain-name">Reading: Info Text</div>
-          <div class="domain-focus">Author's purpose, argument analysis, comparing texts, text structure, primary sources</div>
-          <div class="domain-skills">
-            <span class="domain-skill">RI.8.6 Purpose</span>
-            <span class="domain-skill">RI.8.8 Argument</span>
-            <span class="domain-skill">RI.8.9 Compare</span>
-          </div>
-          <div class="domain-count">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2h8v8H2z" stroke="currentColor" stroke-width="1.3" rx="1"/><path d="M4 5h4M4 7h2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-            61 texts available
-          </div>
-        </div>
-
-        <div class="domain-card">
-          <div class="domain-icon-row">
-            <div class="domain-icon" style="background:#f3e8ff;">✍️</div>
-            <span class="domain-std-code">W.8</span>
-          </div>
-          <div class="domain-name">Writing</div>
-          <div class="domain-focus">Argument, informative/explanatory, narrative. Claim → counterclaim → evidence → conclusion at grade 8</div>
-          <div class="domain-skills">
-            <span class="domain-skill">W.8.1 Argument</span>
-            <span class="domain-skill">W.8.2 Informative</span>
-            <span class="domain-skill">W.8.3 Narrative</span>
-            <span class="domain-skill">W.8.9 Research</span>
-          </div>
-          <div class="domain-count">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2h8v8H2z" stroke="currentColor" stroke-width="1.3" rx="1"/><path d="M4 5h4M4 7h2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-            34 scaffolds &amp; tools
-          </div>
-        </div>
-
-        <div class="domain-card">
-          <div class="domain-icon-row">
-            <div class="domain-icon" style="background:#d3fbf2;">🔤</div>
-            <span class="domain-std-code">L.8</span>
-          </div>
-          <div class="domain-name">Language</div>
-          <div class="domain-focus">Verbals, verb moods, active/passive voice, figurative language, connotation, allusions, vocabulary</div>
-          <div class="domain-skills">
-            <span class="domain-skill">L.8.1 Verbals</span>
-            <span class="domain-skill">L.8.3 Voice</span>
-            <span class="domain-skill">L.8.5 Figurative</span>
-            <span class="domain-skill">L.8.6 Vocab</span>
-          </div>
-          <div class="domain-count">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2h8v8H2z" stroke="currentColor" stroke-width="1.3" rx="1"/><path d="M4 5h4M4 7h2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-            28 mini-lessons
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ── ARGUMENT WRITING ── -->
-    <section class="section">
-      <div class="sec-head">
-        <div>
-          <div class="sec-title">Argument Writing — W.8.1</div>
-          <div class="sec-sub">The biggest instructional lift at Grade 8 · claim → counterclaim → evidence → conclusion</div>
-        </div>
-        <a href="#" class="sec-cta">See all writing tools
-          <svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M8 3.5l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-      <div class="writing-grid">
-
-        <div class="writing-scaffold">
-          <div class="ws-icon" style="background:#e8f0ff;">🏗️</div>
-          <div class="ws-title">Argument Writing Template — Full Scaffold</div>
-          <div class="ws-desc">Graphic organizer: claim → evidence (3 sources) → counterclaim → rebuttal → conclusion. NJSLA-aligned rubric included.</div>
-          <div class="ws-tags">
-            <span class="ws-tag" style="background:var(--blue-light);color:var(--blue-dark);">W.8.1a–e</span>
-            <span class="ws-tag" style="background:var(--n50);color:var(--n700);">4-point rubric</span>
-            <span class="ws-tag" style="background:var(--n50);color:var(--n700);">Anchor papers</span>
-          </div>
-        </div>
-
-        <div class="writing-scaffold">
-          <div class="ws-icon" style="background:#d3fbf2;">🗣️</div>
-          <div class="ws-title">Socratic Seminar: Should the Voting Age Be 16?</div>
-          <div class="ws-desc">Pro/con paired texts + discussion protocol. Builds oral argument skills that transfer directly to written argument and NJSLA performance tasks.</div>
-          <div class="ws-tags">
-            <span class="ws-tag" style="background:var(--blue-light);color:var(--blue-dark);">W.8.1</span>
-            <span class="ws-tag" style="background:var(--n50);color:var(--n700);">SL.8.1</span>
-            <span class="ws-tag" style="background:var(--n50);color:var(--n700);">SL.8.4</span>
-          </div>
-        </div>
-
-        <div class="writing-scaffold">
-          <div class="ws-icon" style="background:#fff3e0;">👥</div>
-          <div class="ws-title">Peer Review Checklist — Argumentative Essay</div>
-          <div class="ws-desc">Student-facing checklist tied to W.8.1a–e. Includes revision sentence starters and self-assessment component.</div>
-          <div class="ws-tags">
-            <span class="ws-tag" style="background:var(--blue-light);color:var(--blue-dark);">W.8.1</span>
-            <span class="ws-tag" style="background:var(--n50);color:var(--n700);">Peer Review</span>
-            <span class="ws-tag" style="background:var(--n50);color:var(--n700);">Self-Assessment</span>
-          </div>
-        </div>
-
-        <div class="writing-scaffold">
-          <div class="ws-icon" style="background:#fde7c7;">📚</div>
-          <div class="ws-title">Research Report: Informative Writing Guide</div>
-          <div class="ws-desc">W.8.2 &amp; W.8.7 scaffold. 5-step research process with MLA citation guide and source evaluation checklist.</div>
-          <div class="ws-tags">
-            <span class="ws-tag" style="background:var(--purple-bg);color:var(--purple);">W.8.2</span>
-            <span class="ws-tag" style="background:var(--purple-bg);color:var(--purple);">W.8.7</span>
-            <span class="ws-tag" style="background:var(--n50);color:var(--n700);">MLA Format</span>
-          </div>
-        </div>
-
-        <div class="writing-scaffold">
-          <div class="ws-icon" style="background:#f3e8ff;">🎭</div>
-          <div class="ws-title">Personal Narrative: A Moment That Changed Me</div>
-          <div class="ws-desc">W.8.3 mentor text set with annotation guides. Student exemplars at 3 score levels with conferencing notes.</div>
-          <div class="ws-tags">
-            <span class="ws-tag" style="background:var(--purple-bg);color:var(--purple);">W.8.3a–e</span>
-            <span class="ws-tag" style="background:var(--n50);color:var(--n700);">L.8.3</span>
-            <span class="ws-tag" style="background:var(--n50);color:var(--n700);">Mentor Texts</span>
-          </div>
-        </div>
-
-        <div class="writing-scaffold">
-          <div class="ws-icon" style="background:#d3fbf2;">📊</div>
-          <div class="ws-title">Literary Analysis: Theme &amp; Character Assessment</div>
-          <div class="ws-desc">End-of-unit assessment: multiple choice + short response + extended writing task. NJSLA format with full scoring guide.</div>
-          <div class="ws-tags">
-            <span class="ws-tag" style="background:var(--blue-light);color:var(--blue-dark);">RL.8.1–8.3</span>
-            <span class="ws-tag" style="background:var(--purple-bg);color:var(--purple);">W.8.9</span>
-            <span class="ws-tag" style="background:#fff0ee;color:var(--red);">NJSLA Aligned</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ── PAIRED TEXTS ── -->
-    <section class="section">
-      <div class="sec-head">
-        <div>
-          <div class="sec-title">Paired Text Sets</div>
-          <div class="sec-sub">Literary + informational on the same topic — key for NJSLA comparison tasks</div>
-        </div>
-        <a href="#" class="sec-cta">See all paired sets
-          <svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M8 3.5l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-      <div class="grid-3">
-
-        <div class="paired-card">
-          <div class="paired-header">
-            <div>
-              <div class="paired-label">Paired Set · Identity &amp; Belonging</div>
-              <div class="paired-title">Who Are the Outsiders? Class, Identity &amp; Social Division</div>
-            </div>
-            <span style="font-size:11px;font-weight:600;color:var(--blue);background:var(--blue-light);border-radius:4px;padding:2px 6px;flex-shrink:0;margin-left:8px;">✊</span>
-          </div>
-          <div class="paired-texts">
-            <div class="paired-text-item">
-              <span class="pt-icon">📖</span>
-              <div class="pt-text">
-                <div class="pt-label">The Outsiders — Ch. 1–3</div>
-                <div class="pt-meta">S.E. Hinton · Fiction · RL.8.1, RL.8.3</div>
-              </div>
-              <span class="pt-lexile">750L</span>
-            </div>
-            <div class="paired-text-item">
-              <span class="pt-icon">📰</span>
-              <div class="pt-text">
-                <div class="pt-label">The Science of Us vs. Them</div>
-                <div class="pt-meta">Informational · RI.8.6, RI.8.9</div>
-              </div>
-              <span class="pt-lexile">820L</span>
+        <div class="a-card-body">
+          <div class="a-card-meta">
+            <div class="a-card-date">Mar 02, 2026</div>
+            <div class="a-card-title">Abolition Movement</div>
+            <div class="a-card-levels">
+              <span>Maturity level: 6th-12th</span>
+              <span>Reading: 750-1050L</span>
             </div>
           </div>
-          <div class="paired-footer">
-            <span style="font-size:10px;font-weight:600;color:var(--n400);">RL.8 · RI.8 · W.8.9</span>
-            <button class="btn-sm-primary" style="flex:0;padding:5px 12px;font-size:12px;">Assign Set</button>
+          <div class="a-card-cta">
+            <button class="btn-medium btn-muted-medium">Add to assign...</button>
+            <button class="btn-medium btn-muted-medium">Assign</button>
           </div>
-        </div>
-
-        <div class="paired-card">
-          <div class="paired-header">
-            <div>
-              <div class="paired-label">Paired Set · Civic Action</div>
-              <div class="paired-title">Speaking Up: Argument &amp; Rhetoric in Action</div>
-            </div>
-            <span style="font-size:11px;font-weight:600;color:var(--blue);background:var(--blue-light);border-radius:4px;padding:2px 6px;flex-shrink:0;margin-left:8px;">✊</span>
-          </div>
-          <div class="paired-texts">
-            <div class="paired-text-item">
-              <span class="pt-icon">📜</span>
-              <div class="pt-text">
-                <div class="pt-label">Letter from Birmingham Jail (excerpt)</div>
-                <div class="pt-meta">MLK Jr. · Primary Source · RI.8.6</div>
-              </div>
-              <span class="pt-lexile">1060L</span>
-            </div>
-            <div class="paired-text-item">
-              <span class="pt-icon">📰</span>
-              <div class="pt-text">
-                <div class="pt-label">Is Civil Disobedience Still Effective?</div>
-                <div class="pt-meta">Argument · RI.8.8, RI.8.9</div>
-              </div>
-              <span class="pt-lexile">880L</span>
-            </div>
-          </div>
-          <div class="paired-footer">
-            <span style="font-size:10px;font-weight:600;color:var(--n400);">RI.8 · W.8.1 · SL.8.4</span>
-            <button class="btn-sm-primary" style="flex:0;padding:5px 12px;font-size:12px;">Assign Set</button>
-          </div>
-        </div>
-
-        <div class="paired-card">
-          <div class="paired-header">
-            <div>
-              <div class="paired-label">Paired Set · Modern Issues</div>
-              <div class="paired-title">Should Schools Ban Smartphones? A Pro/Con Analysis</div>
-            </div>
-          </div>
-          <div class="paired-texts">
-            <div class="paired-text-item">
-              <span class="pt-icon">📱</span>
-              <div class="pt-text">
-                <div class="pt-label">The Case Against School Phones</div>
-                <div class="pt-meta">Argument · RI.8.6, RI.8.8</div>
-              </div>
-              <span class="pt-lexile">810L</span>
-            </div>
-            <div class="paired-text-item">
-              <span class="pt-icon">📱</span>
-              <div class="pt-text">
-                <div class="pt-label">Why Banning Phones Is the Wrong Move</div>
-                <div class="pt-meta">Counter-argument · RI.8.8, RI.8.9</div>
-              </div>
-              <span class="pt-lexile">760L</span>
-            </div>
-          </div>
-          <div class="paired-footer">
-            <span style="font-size:10px;font-weight:600;color:var(--n400);">RI.8.8 · RI.8.9 · W.8.1</span>
-            <button class="btn-sm-primary" style="flex:0;padding:5px 12px;font-size:12px;">Assign Set</button>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ── GRAMMAR MINI-LESSONS ── -->
-    <section class="section">
-      <div class="sec-head">
-        <div>
-          <div class="sec-title">Grammar Mini-Lessons — L.8</div>
-          <div class="sec-sub">Grade 8–specific: verbals, verb moods, figurative language, connotation &amp; allusion</div>
-        </div>
-        <a href="#" class="sec-cta">See all 28
-          <svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M8 3.5l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-      <div class="grammar-row">
-
-        <div class="grammar-card">
-          <div class="grammar-icon">🔀</div>
-          <span class="grammar-std">L.8.1a</span>
-          <div class="grammar-title">Verbals: Gerunds, Participles &amp; Infinitives</div>
-          <div class="grammar-desc">Identify and use all three verbal types. Common 8th grade weak spot — high NJSLA yield.</div>
-          <div class="grammar-duration">⏱ 20-min lesson · Practice worksheet</div>
-        </div>
-
-        <div class="grammar-card">
-          <div class="grammar-icon">🎭</div>
-          <span class="grammar-std">L.8.1c</span>
-          <div class="grammar-title">Verb Moods: Indicative, Imperative, Conditional, Subjunctive</div>
-          <div class="grammar-desc">All four moods with examples drawn from grade 8 anchor texts.</div>
-          <div class="grammar-duration">⏱ 25-min lesson · Exit ticket</div>
-        </div>
-
-        <div class="grammar-card">
-          <div class="grammar-icon">🔄</div>
-          <span class="grammar-std">L.8.3a</span>
-          <div class="grammar-title">Active vs. Passive Voice: When &amp; Why It Matters</div>
-          <div class="grammar-desc">Stylistic effect of voice in argument writing. Tied directly to W.8.1 revision work.</div>
-          <div class="grammar-duration">⏱ 15-min mini-lesson</div>
-        </div>
-
-        <div class="grammar-card">
-          <div class="grammar-icon">🌀</div>
-          <span class="grammar-std">L.8.5a</span>
-          <div class="grammar-title">Figurative Language: Irony, Puns, Allusion &amp; Connotation</div>
-          <div class="grammar-desc">Verbal irony vs. dramatic irony. Connotation vs. denotation. Allusions in literary texts.</div>
-          <div class="grammar-duration">⏱ 30-min lesson · Text examples</div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ── VOCABULARY TOOLS ── -->
-    <section class="section">
-      <div class="sec-head">
-        <div>
-          <div class="sec-title">Vocabulary Instruction Tools</div>
-          <div class="sec-sub">L.8.4 &amp; L.8.6 · Greek/Latin roots, context clues, Tier 2 academic words</div>
         </div>
       </div>
-      <div class="tools-grid">
 
-        <div class="tool-card">
-          <div class="tool-icon-row">
-            <div class="tool-icon" style="background:#e8f0ff;">🌿</div>
+      <!-- Card 3: Speeches from Abolitionists -->
+      <div class="a-card">
+        <div class="a-card-img">
+          <img src="https://newsela.imgix.net/article_media/2019/07/lib-frederick-douglass-causes-civil-war-5a7c467b.jpg" alt="Speeches from Abolitionists">
+          <div class="a-card-bookmark">
+            <svg width="12" height="14" viewBox="0 0 12 16" fill="none" stroke="#424147" stroke-width="1.5" stroke-linejoin="round"><path d="M1 1h10v14l-5-3.5L1 15V1z"/></svg>
           </div>
-          <div class="tool-title">Greek &amp; Latin Roots Bank</div>
-          <div class="tool-desc">60 high-frequency roots with examples from grade 8 texts. Context clue strategy guide included.</div>
-          <span style="font-size:10px;font-weight:600;color:var(--blue);background:var(--blue-light);border-radius:4px;padding:2px 6px;width:fit-content;">L.8.4b · L.8.4c</span>
+          <div class="a-card-chip">Text Set</div>
         </div>
-
-        <div class="tool-card">
-          <div class="tool-icon-row">
-            <div class="tool-icon" style="background:#d3fbf2;">📋</div>
+        <div class="a-card-body">
+          <div class="a-card-meta">
+            <div class="a-card-date">Mar 03, 2026</div>
+            <div class="a-card-title">Speeches from Abolitionists</div>
+            <div class="a-card-levels">
+              <span>Maturity level: 6th-12th</span>
+              <span>Reading: 800-1100L</span>
+            </div>
           </div>
-          <div class="tool-title">Academic Word List — Tier 2</div>
-          <div class="tool-desc">Domain-neutral academic vocabulary for argument and analysis writing. Includes sentence frames.</div>
-          <span style="font-size:10px;font-weight:600;color:var(--blue);background:var(--blue-light);border-radius:4px;padding:2px 6px;width:fit-content;">L.8.6</span>
-        </div>
-
-        <div class="tool-card">
-          <div class="tool-icon-row">
-            <div class="tool-icon" style="background:#fde7c7;">⚖️</div>
+          <div class="a-card-cta">
+            <button class="btn-medium btn-muted-medium">Add to assign...</button>
+            <button class="btn-medium btn-muted-medium">Assign</button>
           </div>
-          <div class="tool-title">Text Leveler</div>
-          <div class="tool-desc">Adjust any Newsela article to 5 Lexile levels. View side-by-side with annotations for differentiation.</div>
-          <span style="font-size:10px;font-weight:600;color:var(--green);background:var(--green-bg);border-radius:4px;padding:2px 6px;width:fit-content;">All Lexile Levels</span>
         </div>
-
-        <div class="tool-card">
-          <div class="tool-icon-row">
-            <div class="tool-icon" style="background:#f3e8ff;">🎯</div>
-          </div>
-          <div class="tool-title">Connotation &amp; Denotation</div>
-          <div class="tool-desc">Word choice analysis mini-lesson using texts from current units. Pairs with author's craft discussion guides.</div>
-          <span style="font-size:10px;font-weight:600;color:var(--purple);background:var(--purple-bg);border-radius:4px;padding:2px 6px;width:fit-content;">L.8.5c</span>
-        </div>
-
       </div>
-    </section>
 
-    <!-- ── BASED ON YOUR ASSIGNMENTS ── -->
-    <section class="section">
-      <div class="sec-head">
-        <div>
-          <div class="sec-title">Based on Your Assignments</div>
-          <div class="sec-sub">Texts related to what your students are reading now</div>
+      <!-- Card 4: Arguments and Claims -->
+      <div class="a-card">
+        <div class="a-card-img">
+          <img src="https://newsela.imgix.net/article_media/2016/08/overview-voting-rights-4f9c1969.jpg" alt="Arguments and Claims">
+          <div class="a-card-bookmark">
+            <svg width="12" height="14" viewBox="0 0 12 16" fill="none" stroke="#424147" stroke-width="1.5" stroke-linejoin="round"><path d="M1 1h10v14l-5-3.5L1 15V1z"/></svg>
+          </div>
+          <div class="a-card-chip">Text Set</div>
         </div>
-        <button class="sec-cta" style="border:none;background:none;cursor:pointer;">Customize
-          <svg viewBox="0 0 13 13" fill="none"><path d="M2 4h1.5M2 7h3.5M2 10h2M5.5 4h5.5M7.5 7h4.5M6 10h5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-        </button>
+        <div class="a-card-body">
+          <div class="a-card-meta">
+            <div class="a-card-date">Mar 02, 2026</div>
+            <div class="a-card-title">Arguments and Claims</div>
+            <div class="a-card-levels">
+              <span>Maturity level: 6th-12th</span>
+              <span>Reading: 750-1050L</span>
+            </div>
+          </div>
+          <div class="a-card-cta">
+            <button class="btn-medium btn-muted-medium">Add to assign...</button>
+            <button class="btn-medium btn-muted-medium">Assign</button>
+          </div>
+        </div>
       </div>
-      <div class="grid-4">
 
-        <div class="c-card">
-          <div class="c-card-img">
-            <div class="c-card-img-bg" style="background:linear-gradient(135deg,#1a1a2e,#3b4f8c);"></div>
-            <span class="c-chip c-chip-info">Information</span>
-            <button class="c-bm"><svg viewBox="0 0 16 16" fill="none"><path d="M3 2h10v12l-5-3-5 3V2z" stroke="#5B5A61" stroke-width="1.5" stroke-linejoin="round"/></svg></button>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+
+  <!-- ============ 3-COL GRID: Unit 8A ============ -->
+  <section class="grid-section">
+    <h3 class="grid-heading">Unit 8A: Perspectives and Narratives</h3>
+    <div class="grid-3">
+
+      <!-- Card 1: Childhood Memories -->
+      <div class="a-card">
+        <div class="a-card-img">
+          <img src="https://newsela.imgix.net/article_media/2019/06/Zach-Eflin-overcame-tragedy-bf9f7b57.jpg" alt="Childhood Memories">
+          <div class="a-card-bookmark">
+            <svg width="12" height="14" viewBox="0 0 12 16" fill="none" stroke="#424147" stroke-width="1.5" stroke-linejoin="round"><path d="M1 1h10v14l-5-3.5L1 15V1z"/></svg>
           </div>
-          <div class="c-card-body">
-            <span class="c-date">Oct 15, 2024</span>
-            <span class="c-title">The Equal Credit Opportunity Act and Financial Justice</span>
-            <span class="c-meta">Maturity: 6th–10th · 700–900L</span>
-            <div class="c-footer">
-              <div class="c-stds"><span class="std-tag">RI.8.6</span><span class="std-tag green">✊</span></div>
-              <span class="c-lexile">860L</span>
+          <div class="a-card-chip">Text Set</div>
+        </div>
+        <div class="a-card-body">
+          <div class="a-card-meta">
+            <div class="a-card-date">Feb 28, 2026</div>
+            <div class="a-card-title">Childhood Memories</div>
+            <div class="a-card-levels">
+              <span>Maturity level: 6th-12th</span>
+              <span>Reading: 700-950L</span>
             </div>
-            <div class="c-card-actions">
-              <button class="btn-sm">Add to assignment</button>
-              <button class="btn-sm-primary">Assign</button>
-            </div>
+          </div>
+          <div class="a-card-cta">
+            <button class="btn-medium btn-muted-medium">Add to assignment</button>
+            <button class="btn-medium btn-muted-medium">Assign</button>
           </div>
         </div>
-
-        <div class="c-card">
-          <div class="c-card-img">
-            <div class="c-card-img-bg" style="background:linear-gradient(135deg,#1e3a10,#3b6e1a);"></div>
-            <span class="c-chip c-chip-news">News</span>
-            <button class="c-bm"><svg viewBox="0 0 16 16" fill="none"><path d="M3 2h10v12l-5-3-5 3V2z" stroke="#5B5A61" stroke-width="1.5" stroke-linejoin="round"/></svg></button>
-          </div>
-          <div class="c-card-body">
-            <span class="c-date">Oct 8, 2024</span>
-            <span class="c-title">NJ soccer player journeys to elite club so she can reach her goals</span>
-            <span class="c-meta">Maturity: 6th–9th · 700–900L</span>
-            <div class="c-footer">
-              <div class="c-stds"><span class="std-tag">RI.8.3</span></div>
-              <span class="c-lexile">720L</span>
-            </div>
-            <div class="c-card-actions">
-              <button class="btn-sm">Add to assignment</button>
-              <button class="btn-sm-primary">Assign</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="c-card">
-          <div class="c-card-img">
-            <div class="c-card-img-bg" style="background:linear-gradient(135deg,#0c2a4a,#1e5fa0);"></div>
-            <span class="c-chip c-chip-res">Research</span>
-            <button class="c-bm"><svg viewBox="0 0 16 16" fill="none"><path d="M3 2h10v12l-5-3-5 3V2z" stroke="#5B5A61" stroke-width="1.5" stroke-linejoin="round"/></svg></button>
-          </div>
-          <div class="c-card-body">
-            <span class="c-date">Mar 25, 2026</span>
-            <span class="c-title">Climate Change Is Reshaping New Jersey's Coastline</span>
-            <span class="c-meta">Maturity: 6th–9th · 700–900L</span>
-            <div class="c-footer">
-              <div class="c-stds"><span class="std-tag">RI.8.3</span><span class="std-tag purple">W.8.2</span></div>
-              <span class="c-lexile">780L</span>
-            </div>
-            <div class="c-card-actions">
-              <button class="btn-sm">Add to assignment</button>
-              <button class="btn-sm-primary">Assign</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="c-card">
-          <div class="c-card-img">
-            <div class="c-card-img-bg" style="background:linear-gradient(135deg,#3a1060,#6b21a8);"></div>
-            <span class="c-chip c-chip-poem">Poem</span>
-            <button class="c-bm"><svg viewBox="0 0 16 16" fill="none"><path d="M3 2h10v12l-5-3-5 3V2z" stroke="#5B5A61" stroke-width="1.5" stroke-linejoin="round"/></svg></button>
-          </div>
-          <div class="c-card-body">
-            <span class="c-date">Mar 28, 2026</span>
-            <span class="c-title">"Dream Deferred" — Langston Hughes &amp; the Harlem Renaissance ✊</span>
-            <span class="c-meta">Maturity: 6th–10th · NP</span>
-            <div class="c-footer">
-              <div class="c-stds"><span class="std-tag">RL.8.4</span><span class="std-tag green">✊</span></div>
-              <span class="c-lexile">NP</span>
-            </div>
-            <div class="c-card-actions">
-              <button class="btn-sm">Add to assignment</button>
-              <button class="btn-sm-primary">Assign</button>
-            </div>
-          </div>
-        </div>
-
       </div>
-    </section>
 
-  </main>
-</div>
+      <!-- Card 2: Author Inspirations -->
+      <div class="a-card">
+        <div class="a-card-img">
+          <img src="https://newsela.imgix.net/article_media/2019/11/ela-african-women-writers-5c46f6d7.png" alt="Author Inspirations and Perspectives">
+          <div class="a-card-bookmark">
+            <svg width="12" height="14" viewBox="0 0 12 16" fill="none" stroke="#424147" stroke-width="1.5" stroke-linejoin="round"><path d="M1 1h10v14l-5-3.5L1 15V1z"/></svg>
+          </div>
+          <div class="a-card-chip">Text Set</div>
+        </div>
+        <div class="a-card-body">
+          <div class="a-card-meta">
+            <div class="a-card-date">Feb 20, 2026</div>
+            <div class="a-card-title">Author Inspirations and Perspectives</div>
+            <div class="a-card-levels">
+              <span>Maturity level: 6th-12th</span>
+              <span>Reading: 750-1000L</span>
+            </div>
+          </div>
+          <div class="a-card-cta">
+            <button class="btn-medium btn-muted-medium">Add to assignment</button>
+            <button class="btn-medium btn-muted-medium">Assign</button>
+          </div>
+        </div>
+      </div>
 
-<script>
-  // Sidebar active link
-  document.querySelectorAll('.sidebar-link').forEach(link => {
-    link.addEventListener('click', function(e) {
-      if (!this.href || this.href === '#' || this.href.endsWith('#')) e.preventDefault();
-      document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
-      this.classList.add('active');
-    });
-  });
+      <!-- Card 3: Memoirs -->
+      <div class="a-card">
+        <div class="a-card-img">
+          <img src="https://newsela.imgix.net/article_media/2019/07/primary-source-great-depression-stories-4cbb9d8c.jpg" alt="Memoirs and First Person Narratives">
+          <div class="a-card-bookmark">
+            <svg width="12" height="14" viewBox="0 0 12 16" fill="none" stroke="#424147" stroke-width="1.5" stroke-linejoin="round"><path d="M1 1h10v14l-5-3.5L1 15V1z"/></svg>
+          </div>
+          <div class="a-card-chip">Text Set</div>
+        </div>
+        <div class="a-card-body">
+          <div class="a-card-meta">
+            <div class="a-card-date">Feb 14, 2026</div>
+            <div class="a-card-title">Memoirs and First Person Narratives</div>
+            <div class="a-card-levels">
+              <span>Maturity level: 6th-12th</span>
+              <span>Reading: 750-1000L</span>
+            </div>
+          </div>
+          <div class="a-card-cta">
+            <button class="btn-medium btn-muted-medium">Add to assignment</button>
+            <button class="btn-medium btn-muted-medium">Assign</button>
+          </div>
+        </div>
+      </div>
 
-  // Bookmark toggle
-  document.querySelectorAll('.hero-bm, .c-bm').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-      e.preventDefault(); e.stopPropagation();
-      const path = this.querySelector('path');
-      if (!path) return;
-      const saved = this.dataset.saved === 'true';
-      path.setAttribute('fill', saved ? 'none' : '#0a6efa');
-      path.setAttribute('stroke', saved ? '#5B5A61' : '#0a6efa');
-      this.dataset.saved = saved ? 'false' : 'true';
-    });
-  });
+    </div>
+  </section>
 
-  // Quick pills toggle
-  document.querySelectorAll('.quick-pill').forEach(pill => {
-    pill.addEventListener('click', function() {
-      this.style.outline = this.style.outline ? '' : '2.5px solid #0a6efa';
-    });
-  });
+  <hr class="section-divider">
 
-  // Countdown live update
-  const njslaDate = new Date('2026-04-28');
-  const today = new Date();
-  const diff = Math.ceil((njslaDate - today) / (1000*60*60*24));
-  const countdownEl = document.querySelector('.njsla-countdown');
-  if (countdownEl && diff > 0) countdownEl.textContent = `⚠️ ${diff} DAYS`;
-</script>
+
+  <!-- ============ 4-COL GRID #2: Unit 8C Creators ============ -->
+  <section class="grid-section" style="padding-bottom:48px;">
+    <h3 class="grid-heading">Unit 8C: Creators</h3>
+    <div class="grid-4">
+
+      <!-- Garrett Morgan -->
+      <div class="a-card">
+        <div class="a-card-img">
+          <img src="https://newsela.imgix.net/published/prod/43248724/25747/2b630b8b-4f39-4b40-8754-2adef01e9faa/b91ac032-e500-418a-8569-0a4dfde5ce8b/assets/images/d469f0b4-1506-470f-91d0-917ddfbd040a.jpg" alt="Garrett Morgan">
+          <div class="a-card-bookmark">
+            <svg width="12" height="14" viewBox="0 0 12 16" fill="none" stroke="#424147" stroke-width="1.5" stroke-linejoin="round"><path d="M1 1h10v14l-5-3.5L1 15V1z"/></svg>
+          </div>
+          <div class="a-card-chip">Biography</div>
+        </div>
+        <div class="a-card-body">
+          <div class="a-card-meta">
+            <div class="a-card-date">Mar 03, 2026</div>
+            <div class="a-card-title">Garrett Morgan: socially-conscious inventor</div>
+            <div class="a-card-levels">
+              <span>Maturity level: 6th-12th</span>
+              <span>Reading: 750-1000L</span>
+            </div>
+          </div>
+          <div class="a-card-cta">
+            <button class="btn-medium btn-muted-medium">Add to assign...</button>
+            <button class="btn-medium btn-muted-medium">Assign</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Margaret Cavendish -->
+      <div class="a-card">
+        <div class="a-card-img">
+          <img src="https://newsela.imgix.net/article_media/2019/04/lib-margaret-cavendish-fca43f15.JPG" alt="Margaret Cavendish sci-fi">
+          <div class="a-card-bookmark">
+            <svg width="12" height="14" viewBox="0 0 12 16" fill="none" stroke="#424147" stroke-width="1.5" stroke-linejoin="round"><path d="M1 1h10v14l-5-3.5L1 15V1z"/></svg>
+          </div>
+          <div class="a-card-chip">History</div>
+        </div>
+        <div class="a-card-body">
+          <div class="a-card-meta">
+            <div class="a-card-date">Mar 01, 2026</div>
+            <div class="a-card-title">One of the earliest sci-fi books was written in the 1600s by a duchess</div>
+            <div class="a-card-levels">
+              <span>Maturity level: 6th-12th</span>
+              <span>Reading: 800-1050L</span>
+            </div>
+          </div>
+          <div class="a-card-cta">
+            <button class="btn-medium btn-muted-medium">Add to assign...</button>
+            <button class="btn-medium btn-muted-medium">Assign</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Octavia Butler -->
+      <div class="a-card">
+        <div class="a-card-img">
+          <img src="https://newsela.imgix.net/article_media/2021/03/perserverance-martian-landing-octavia-butler-cacbf84c.jpg" alt="Octavia Butler">
+          <div class="a-card-bookmark">
+            <svg width="12" height="14" viewBox="0 0 12 16" fill="none" stroke="#424147" stroke-width="1.5" stroke-linejoin="round"><path d="M1 1h10v14l-5-3.5L1 15V1z"/></svg>
+          </div>
+          <div class="a-card-chip">Science</div>
+        </div>
+        <div class="a-card-body">
+          <div class="a-card-meta">
+            <div class="a-card-date">Feb 25, 2026</div>
+            <div class="a-card-title">Perseverance Martian landing point named after Octavia E. Butler</div>
+            <div class="a-card-levels">
+              <span>Maturity level: 6th-12th</span>
+              <span>Reading: 750-1000L</span>
+            </div>
+          </div>
+          <div class="a-card-cta">
+            <button class="btn-medium btn-muted-medium">Add to assign...</button>
+            <button class="btn-medium btn-muted-medium">Assign</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ray Bradbury -->
+      <div class="a-card">
+        <div class="a-card-img">
+          <img src="https://newsela.imgix.net/article_media/2016/07/bio-author-ray-bradbury-a3247792.jpg" alt="Ray Bradbury">
+          <div class="a-card-bookmark">
+            <svg width="12" height="14" viewBox="0 0 12 16" fill="none" stroke="#424147" stroke-width="1.5" stroke-linejoin="round"><path d="M1 1h10v14l-5-3.5L1 15V1z"/></svg>
+          </div>
+          <div class="a-card-chip">Biography</div>
+        </div>
+        <div class="a-card-body">
+          <div class="a-card-meta">
+            <div class="a-card-date">Feb 18, 2026</div>
+            <div class="a-card-title">Authors: Ray Bradbury</div>
+            <div class="a-card-levels">
+              <span>Maturity level: 6th-12th</span>
+              <span>Reading: 700-950L</span>
+            </div>
+          </div>
+          <div class="a-card-cta">
+            <button class="btn-medium btn-muted-medium">Add to assign...</button>
+            <button class="btn-medium btn-muted-medium">Assign</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
 
 </body>
 </html>
