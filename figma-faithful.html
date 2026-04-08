@@ -361,6 +361,11 @@
       flex-shrink: 0;
       display: flex;
       flex-direction: column;
+      gap: 24px; /* matches featured-col gap so heading + cards align */
+    }
+    .side-panel-cards {
+      display: flex;
+      flex-direction: column;
       gap: 12px;
     }
     .panel-card {
@@ -824,6 +829,10 @@
       <!-- Side Panel -->
       <div class="side-panel">
 
+        <h2 class="section-heading">Recent activity</h2>
+
+        <div class="side-panel-cards">
+
         <!-- Recent Assignments -->
         <div class="panel-card">
           <div class="panel-header">
@@ -927,8 +936,10 @@
           </div>
         </div>
 
-      </div>
-    </div>
+        </div><!-- end side-panel-cards -->
+
+      </div><!-- end side-panel -->
+    </div><!-- end hero-row -->
   </section>
 
 
