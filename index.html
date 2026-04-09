@@ -688,6 +688,35 @@
       margin-top: auto;
     }
 
+    /* ===================== VIDEO CARD ===================== */
+    .video-badge {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      background: rgba(0,0,0,0.75);
+      color: white;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      padding: 3px 7px;
+      border-radius: 3px;
+      letter-spacing: 0.02em;
+    }
+    .video-duration {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0,0,0,0.75);
+      color: white;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      padding: 3px 7px;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .video-duration svg { flex-shrink: 0; }
+
     /* Placeholder image gradients */
     .ph-dogs      { background: linear-gradient(160deg, #b8924a 0%, #e4c988 60%, #c8a96e 100%); }
     .ph-butterfly { background: linear-gradient(160deg, #1d6b38 0%, #3caa60 50%, #a2d96f 100%); }
@@ -962,6 +991,105 @@
   </section>
 
 
+
+
+  <!-- ============ 4-COL GRID: Video Row ============ -->
+  <section class="grid-section">
+    <h3 class="grid-heading">Videos</h3>
+    <div class="grid-4">
+
+      <!-- Card 1: Liberty Bell -->
+      <div class="a-card">
+        <div class="a-card-img">
+          <img src="https://newsela.imgix.net/article_media/2017/06/lib-history-july-4th-d137a88b.jpg" alt="What is the Liberty Bell?">
+          <span class="video-badge">Video</span>
+          <span class="video-duration">
+            <svg width="9" height="9" viewBox="0 0 10 10" fill="white"><circle cx="5" cy="5" r="4.5" stroke="white" stroke-width="1" fill="none"/><polygon points="4,3 8,5 4,7" fill="white"/></svg>
+            2:16
+          </span>
+        </div>
+        <div class="a-card-body">
+          <div class="a-card-meta">
+            <div class="a-card-date">Jun 21, 2024</div>
+            <div class="a-card-title">What is the Liberty Bell?</div>
+          </div>
+          <div class="a-card-cta">
+            <button class="btn-medium btn-muted-medium">Add to assignment</button>
+            <button class="btn-medium btn-muted-medium">Assign</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Patrick Henry -->
+      <div class="a-card">
+        <div class="a-card-img">
+          <img src="https://newsela.imgix.net/article_media/2017/04/lib-battle-brooklyn-revolution-0db505e1.jpg" alt="Patrick Henry: Give me liberty or give me death">
+          <span class="video-badge">Video</span>
+          <span class="video-duration">
+            <svg width="9" height="9" viewBox="0 0 10 10" fill="white"><circle cx="5" cy="5" r="4.5" stroke="white" stroke-width="1" fill="none"/><polygon points="4,3 8,5 4,7" fill="white"/></svg>
+            3:16
+          </span>
+        </div>
+        <div class="a-card-body">
+          <div class="a-card-meta">
+            <div class="a-card-date">Apr 16, 2025</div>
+            <div class="a-card-title">Patrick Henry: Give me liberty or give me death</div>
+            <div class="a-card-levels"><span>Maturity level: 6th-8th</span></div>
+          </div>
+          <div class="a-card-cta">
+            <button class="btn-medium btn-muted-medium">Add to assignment</button>
+            <button class="btn-medium btn-muted-medium">Assign</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Statue of Liberty foot -->
+      <div class="a-card">
+        <div class="a-card-img">
+          <img src="https://newsela.imgix.net/article_media/2016/06/primary-source-declaration-independence-6bb7c69b.jpg" alt="What's hidden at the foot of the Statue of Liberty?">
+          <span class="video-badge">Video</span>
+          <span class="video-duration">
+            <svg width="9" height="9" viewBox="0 0 10 10" fill="white"><circle cx="5" cy="5" r="4.5" stroke="white" stroke-width="1" fill="none"/><polygon points="4,3 8,5 4,7" fill="white"/></svg>
+            1:00
+          </span>
+        </div>
+        <div class="a-card-body">
+          <div class="a-card-meta">
+            <div class="a-card-date">Apr 16, 2025</div>
+            <div class="a-card-title">What's hidden at the foot of the Statue of Liberty?</div>
+            <div class="a-card-levels"><span>Maturity level: 6th-12th</span></div>
+          </div>
+          <div class="a-card-cta">
+            <button class="btn-medium btn-muted-medium">Add to assignment</button>
+            <button class="btn-medium btn-muted-medium">Assign</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Statue of Liberty -->
+      <div class="a-card">
+        <div class="a-card-img">
+          <img src="https://newsela.imgix.net/article_media/2019/07/lib-ushistory-declaration-independence-legacy-8fda0650.jpg" alt="What is the Statue of Liberty?">
+          <span class="video-badge">Video</span>
+          <span class="video-duration">
+            <svg width="9" height="9" viewBox="0 0 10 10" fill="white"><circle cx="5" cy="5" r="4.5" stroke="white" stroke-width="1" fill="none"/><polygon points="4,3 8,5 4,7" fill="white"/></svg>
+            2:30
+          </span>
+        </div>
+        <div class="a-card-body">
+          <div class="a-card-meta">
+            <div class="a-card-date">Jun 21, 2024</div>
+            <div class="a-card-title">What is the Statue of Liberty?</div>
+          </div>
+          <div class="a-card-cta">
+            <button class="btn-medium btn-muted-medium">Add to assignment</button>
+            <button class="btn-medium btn-muted-medium">Assign</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
 
 
   <!-- ============ 3-COL GRID: Unit 8B Text Sets ============ -->
