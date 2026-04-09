@@ -688,6 +688,33 @@
       margin-top: auto;
     }
 
+    /* ===================== TOPICS ROW ===================== */
+    .topics-section {
+      padding: 48px 64px 32px;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .topic-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #ABF0FD;
+      border-radius: 64px;
+      padding: 14px 28px;
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--color-neutral-700);
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+      white-space: nowrap;
+      transition: filter 0.12s;
+    }
+    .topic-pill:hover { filter: brightness(0.95); }
+    .topic-pill svg { flex-shrink: 0; opacity: 0.7; }
+
     /* ===================== VIDEO CARD ===================== */
     .video-badge {
       position: absolute;
@@ -1179,6 +1206,31 @@
 
     </div>
   </section>
+
+
+  <!-- ============ TOPICS ROW ============ -->
+  <div class="topics-section">
+    <button class="topic-pill">
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="8.5" cy="8.5" r="5.5"/><line x1="13" y1="13" x2="18" y2="18"/></svg>
+      Main Idea
+    </button>
+    <button class="topic-pill">
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="8.5" cy="8.5" r="5.5"/><line x1="13" y1="13" x2="18" y2="18"/></svg>
+      Compare and Contrast
+    </button>
+    <button class="topic-pill">
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="8.5" cy="8.5" r="5.5"/><line x1="13" y1="13" x2="18" y2="18"/></svg>
+      Cite Textual Evidence
+    </button>
+    <button class="topic-pill">
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="8.5" cy="8.5" r="5.5"/><line x1="13" y1="13" x2="18" y2="18"/></svg>
+      Cause and Effect
+    </button>
+    <button class="topic-pill">
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="8.5" cy="8.5" r="5.5"/><line x1="13" y1="13" x2="18" y2="18"/></svg>
+      Author's Argument
+    </button>
+  </div>
 
 
   <!-- ============ 4-COL GRID: Based on your recent assignments ============ -->
