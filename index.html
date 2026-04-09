@@ -574,6 +574,15 @@
       margin-bottom: 20px;
       line-height: 2rem;
     }
+    .grid-heading-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .grid-heading-row .grid-heading {
+      margin-bottom: 0;
+    }
     .grid-4 {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -957,7 +966,10 @@
 
   <!-- ============ 3-COL GRID: Unit 8B Text Sets ============ -->
   <section class="grid-section">
-    <h3 class="grid-heading">Unit 8B: Liberty and Equality</h3>
+    <div class="grid-heading-row">
+      <h3 class="grid-heading">From Unit 8B: Liberty and Equality</h3>
+      <button class="btn-view-all">View all</button>
+    </div>
     <div class="grid-3">
 
       <!-- Card 1: All Men Are Created Equal -->
