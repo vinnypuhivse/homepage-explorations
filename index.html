@@ -80,7 +80,7 @@
       width: 300px;
       flex-shrink: 0;
     }
-    .nav-search-wrap svg {
+    .nav-search-icon {
       position: absolute;
       left: 14px;
       top: 50%;
@@ -128,13 +128,7 @@
       background: rgba(255,255,255,0.18);
       font-weight: 700;
     }
-    .chevron-down {
-      width: 0; height: 0;
-      border-left: 4px solid transparent;
-      border-right: 4px solid transparent;
-      border-top: 5px solid rgba(255,255,255,0.75);
-      margin-top: 1px;
-    }
+    .nav-chevron { margin-top: 1px; opacity: 0.75; }
 
     .nav-right {
       margin-left: auto;
@@ -770,30 +764,25 @@
       <span></span><span></span><span></span>
     </div>
     <div class="nav-logo">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-        <path d="M12 3L3 8.5V15.5L12 21L21 15.5V8.5L12 3Z" fill="#0a6efa"/>
-        <path d="M12 3L21 8.5L12 14L3 8.5L12 3Z" fill="#4d9fff"/>
-      </svg>
+      <img src="https://www.figma.com/api/mcp/asset/4a87d68e-3062-4a35-a8c5-9c35d3cafbfe" width="22" height="22" alt="Newsela">
     </div>
 
     <!-- Search -->
     <div class="nav-search-wrap">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <path d="M6.5 11a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zm4.293-.207 2.914 2.914a1 1 0 0 1-1.414 1.414L9.38 12.207A5.5 5.5 0 1 1 10.793 10.793z" fill="#9b9aa0"/>
-      </svg>
+      <img src="https://www.figma.com/api/mcp/asset/4875404d-56b9-4cc9-8301-78c6cb505b84" width="16" height="16" alt="" class="nav-search-icon">
       <input class="nav-search" type="text" placeholder="Search for texts and more">
     </div>
 
     <!-- Tabs -->
     <div class="nav-tabs">
       <a class="nav-tab active">
-        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="1" y="1" width="11" height="11" rx="2" stroke="white" stroke-width="1.5"/><path d="M4 6.5h5M6.5 4v5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <img src="https://www.figma.com/api/mcp/asset/c61ebca2-b37f-4fc4-a10a-cc3004fd93c9" width="13" height="13" alt="">
         ELA
       </a>
       <a class="nav-tab">Social Studies</a>
       <a class="nav-tab">Science</a>
-      <a class="nav-tab">Content library <div class="chevron-down"></div></a>
-      <a class="nav-tab">Classes <div class="chevron-down"></div></a>
+      <a class="nav-tab">Content library <img src="https://www.figma.com/api/mcp/asset/66a7fcbb-15ce-4476-87a2-ed65568775da" width="10" height="6" alt="" class="nav-chevron"></a>
+      <a class="nav-tab">Classes <img src="https://www.figma.com/api/mcp/asset/66a7fcbb-15ce-4476-87a2-ed65568775da" width="10" height="6" alt="" class="nav-chevron"></a>
       <a class="nav-tab">Assignments</a>
     </div>
 
@@ -802,13 +791,10 @@
       <div class="nav-profile">
         <div class="nav-avatar">NM</div>
         <span class="nav-profile-name">NM</span>
-        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style="margin-left:2px"><path d="M1 1l4 4 4-4" stroke="var(--color-core-700)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <img src="https://www.figma.com/api/mcp/asset/66a7fcbb-15ce-4476-87a2-ed65568775da" width="10" height="6" alt="" style="margin-left:2px;opacity:0.6">
       </div>
       <div class="nav-icon-btn">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round">
-          <circle cx="12" cy="12" r="3"/>
-          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-        </svg>
+        <img src="https://www.figma.com/api/mcp/asset/ae3da166-9c63-4d0c-a10c-9f7f0850faab" width="20" height="20" alt="Settings">
       </div>
     </div>
   </nav>
